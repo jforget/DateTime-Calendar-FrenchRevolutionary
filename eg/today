@@ -18,6 +18,14 @@ unless ($@)
     print $d->iso8601, $d->strftime(", %A %d %B %Y%n");
   }
 
+eval 'use DateTime::Calendar::Mayan';
+unless ($@)
+  {
+    my $d = DateTime::Calendar::Mayan->now;
+    print "\nMayan calendar\n";
+    print $d->bktuk, " (baktun, katun, tun, uinal, kin)\n";
+  }
+
 eval 'use DateTime::Calendar::FrenchRevolutionary';
 unless ($@)
   {

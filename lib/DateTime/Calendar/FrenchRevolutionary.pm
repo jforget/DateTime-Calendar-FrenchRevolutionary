@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);
 use Roman;
@@ -216,9 +216,11 @@ sub _ymd2rd {
     my $rd = REV_BEGINNING - 1; # minus 1 for the zeroth Vendémiaire
     $y --;  #get years *before* this year.  Makes math easier.  :)
     # first, convert year into days. . .
-    if ($y >= 16) # Romme rule in effect, or nearly so
+    if ($y < 0 || $y >= 16) # Romme rule in effect, or nearly so
       {
-	$rd += int($y/4000) * FOUR_MILLENIA;
+        my $x = int($y/4000);
+        --$x if $y <= 0;
+	$rd += $x * FOUR_MILLENIA;
 	$y  %= 4000;
 	$rd += int($y/400)* FOUR_CENTURIES;
 	$y  %= 400;
@@ -244,7 +246,7 @@ sub _rd2ymd {
     # note:  years and days are initially days *before* today, rather than
     # today's date.  This is because of fenceposts.  :)
     $doy =  $rd - REV_BEGINNING;
-    if ($doy < $YEARS_BEGINS[16])
+    if ($doy >= 0 && $doy < $YEARS_BEGINS[16])
       {
        	$y = scalar grep { $_ <= $doy } @YEARS_BEGINS;
 	$doy -= $YEARS_BEGINS[$y - 1];
@@ -255,6 +257,7 @@ sub _rd2ymd {
 	#$doy --;
 	my $x;
 	$x    = int ($doy / FOUR_MILLENIA);
+        --$x  if $doy < 0; # So pre-1792 dates will give something that look about right
         $y   += $x * 4000;
 	$doy -= $x * FOUR_MILLENIA;
 
@@ -764,8 +767,20 @@ __DATA__
 0311F
 11 Frimaire XIII Napoléon Premier est couronné Empereur des Français
 11 Frimaire XIV Bataille d'Austerlitz : l'armée française écrase l'armée austro-russe
+0607E
+7 Ventôse X Birth of Victor Hugo
+0607F
+7 Ventôse X Naissance de Victor Hugo
+0901F
+1 Prairial VII Birth of Honoré de Balzac
+0901E
+1 Prairial VII Naissance d'Honoré de Balzac
+0925E
+25 Prairial VIII Battle of Marengo in Italy, Kleber is assassinated in Cairo
+0925F
+25 Prairial VIII Bataille de Marengo en Italie, Kléber est assassiné au Caire
 1008E
-8 Messidor II Victory of Fleurus by Jourdan. First us of aerial reco, by 
+8 Messidor II Victory of Fleurus by Jourdan. First use of aerial reco, by 
 Captain Coutelle in the balloon "L'Entreprenant".
 1008F
 8 Messidor II Victoire de Fleurus par Jourdan. Première utilisation de la

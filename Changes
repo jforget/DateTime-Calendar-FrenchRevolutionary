@@ -1,5 +1,12 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
+0.02  Décadi 10 Floréal CCXI, jour du rateau (Tuesday 2003-04-28)
+        - altered Makefile.PL so the existence of Build.PL will not cause problems.
+	- negative dates (prior to 22 September 1792): I do not know whether
+	they give proper results (year 0? leap year?) but at least you can
+	convert back to Gregorian and get the same result.
+	- added a few tests and examples
+
 0.01  Nonidi 9 Floréal CCXI, jour de la jacinthe (Monday 2003-04-27)
         - initial version.
 

@@ -1,4 +1,4 @@
-DateTime/Calendar/FrenchRevolutionary version 0.01
+DateTime/Calendar/FrenchRevolutionary version 0.02
 ==================================================
 
 This is a companion module to DateTime.pm. It implements the French
@@ -13,14 +13,16 @@ The preferred way, which requires Module::Build, is:
    ./Build test
    ./Build install
 
-If Module::Build is not installed, you can still use the old way by first
-removing Build.PL from the directory and removing the corresponding entry
-from MANIFEST, and then using the old-fashioned mantra:
+If Module::Build is not installed, you can still use the old way:
 
    perl Makefile.PL
    make
    make test
    make install
+
+In   this  case,   the   Makefile.PL  script   renames  the   Build.PL
+file.  Without this  precaution, the  make step  would try  to execute
+Build.PL and fail.
 
 Note to the users of old filesystems.
 
