@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);
 use Roman;
@@ -587,8 +587,8 @@ sub decade {
 
 #sub time_zone { $_[0]->{tz} }
 
-#sub offset { $_[0]->{tz}->offset_for_datetime($_[0]) }
-#sub _offset_from_local_time { $_[0]->{tz}->offset_for_local_datetime($_[0]) }
+sub offset { $_[0]->{tz}->offset_for_datetime($_[0]) }
+sub _offset_from_local_time { $_[0]->{tz}->offset_for_local_datetime($_[0]) }
 
 #sub is_dst { $_[0]->{tz}->is_dst_for_datetime($_[0]) }
 
@@ -785,10 +785,18 @@ Captain Coutelle in the balloon "L'Entreprenant".
 1008F
 8 Messidor II Victoire de Fleurus par Jourdan. Première utilisation de la
 reconnaissance aérienne par le capitaine Coutelle, à bord du ballon L'Entreprenant
+1103E
+3 Thermidor III Victory of Hoche at Quiberon against Royalist forces
+1103F
+3 Thermidor III Victoire de Hoche à Quiberon contre les royalistes
 1109E
 9 Thermidor II Demise of Robespierre
 1109F
 9 Thermidor II La chute de Robespierre
+1118E
+18 Thermidor IV Victory of Bonaparte against Wurmser at Castiglione
+1118F
+18 Thermidor IV Victoire de Bonaparte sur Wurmser à Castiglione
 1303E
 Jour du travail V Death of General Hoche
 1303F

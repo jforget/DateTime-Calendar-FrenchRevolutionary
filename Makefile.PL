@@ -1,32 +1,29 @@
-use ExtUtils::MakeMaker;
+use strict;
 
-# If this script is executed, that means that probably Module::Build
-# is not installed. Therefore, Build.PL is not required.
-# Yet, if any *.PL file is present at the time of WriteMakefile,
-# this *.PL file will be written in the Makefile and executed at the
-# time of the "make" step. So we must remove it before writing the Makefile.
+unless (eval "use Module::Build::Compat 0.02; 1" ) {
+    print "This module requires Module::Build to install itself.\n";
 
-if (-f 'Build.PL')
-  {
-    # Remove the name Build.PL from the filesystem...
-    rename 'Build.PL', 'Build.sav';
-    # ... and from the manifest
-    local $/ = undef;
-    open F, 'MANIFEST' or die $!;
-    (my $manifest = <F>) =~ s/Build\.PL/Build.sav/;
-    close F or die $!;
-    open F, '> MANIFEST' or die $!;
-    print F $manifest or die $!;
-    close F or die $!;
-  }
+    require ExtUtils::MakeMaker;
+    my $yn = ExtUtils::MakeMaker::prompt
+        ('  Install Module::Build from CPAN?', 'y');
 
-# Now, the usual stuff without being bothered by extraneous *.PL files
+    if ($yn =~ /^y/i) {
+        require Cwd;
+        require File::Spec;
+        require CPAN;
 
-WriteMakefile(
-    NAME		    => 'DateTime::Calendar::FrenchRevolutionary',
-    VERSION_FROM	=> 'lib/DateTime/Calendar/FrenchRevolutionary.pm',
-    PREREQ_PM		=> { DateTime => 0.06
-			     , Roman => 0 },
-    ABSTRACT        => 'DateTime object in the French Revolutionary calendar',
-    AUTHOR          => 'Jean Forget <JFORGET@cpan.org>',
-);
+        # Save this 'cause CPAN will chdir all over the place.
+        my $cwd = Cwd::cwd();
+        my $makefile = File::Spec->rel2abs($0);
+
+        CPAN::Shell->install('Module::Build::Compat');
+
+        chdir $cwd or die "Cannot chdir() back to $cwd: $!";
+        exec $^X, $makefile, @ARGV;  # Redo now that we have Module::Build
+    } else {
+        warn " *** Cannot install without Module::Build.  Exiting ...\n";
+        exit 1;
+    }
+}
+Module::Build::Compat->run_build_pl(args => \@ARGV);
+Module::Build::Compat->write_makefile();

@@ -1,6 +1,11 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
-0,03  Primidi 11 Floréal CCXI, jour de la rhubarbe (Wednesday 2003-04-30)
+0.04  Primidi 11 Thermidor CCXI, jour du panis (Tuesday 2003-07-29)
+	- the _offset_from_local_time was unduly commented out. Fixed.
+	- removed Makefile.PL. Or rather, replaced by a file suggesting that
+	the user adopts Module::Build instead of ExtUtils::MakeMaker.
+
+0.03  Primidi 11 Floréal CCXI, jour de la rhubarbe (Wednesday 2003-04-30)
 	- I had forgotten the Roman.pm prerequisite in Makefile.PL. Fixed.
 	- A few words about Roman.pm in README, too.
 
