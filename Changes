@@ -1,6 +1,31 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
-0.06
+0.07  Duodi 22 Fructidor CCXII, jour de la noisette (Tuesday 2004-09-07)
+        - I used to believe that a capturing split would allow for one set
+        of capturing parentheses which would capture the whole delimiter.
+        My knowledge of Perl is fixed, together with the on_date method
+        and the _load_event subroutine.
+        - Add _raw_feast private method.
+        - Add several methods for compatibility with DateTime: day_of_week,
+        wday, dow, week_number.
+        - Add the %{method} specifier for strftime
+        - In the Locale::xx modules, add some methods for compatibility with 
+        DateTime::Locale: month_names, am_pms, day_names, full_date_format, etc.
+        - Still more propaganda in the on_date method
+        - Insert empty lines in the on_date method, so the today example script
+        can now wrap the text
+        - The "ce_jour" method is removed, use the "on_date" method with 
+        a parameter set to "fr" instead.
+        - Check the few possible values for the locale and the time-zone.
+        - Add a few tests.
+        - The eg/result directory contains the year 213 calendar now.
+        INCOMPATIBLE CHANGES
+        - The decimal equivalent of the 1..12 clock is the 1..10 clock, 
+        not 1..5. This is because it represents the numbers printed on clockfaces.
+        - The decade method returns a 2-element list, just like DateTime's
+        week method. And by the way, the decade method is aliased to week.
+
+0.06  Septidi 27 Frimaire CCXII, jour du liège (Wednesday 2003-12-17)
 	- add test for nanoseconds... and fixed nanosecond related bug
 	- add basic support for Locale, with two languages: French and English
 	- add much more shameless propaganda for the French Revolutionary armies

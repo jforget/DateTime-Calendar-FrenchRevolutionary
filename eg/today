@@ -4,6 +4,10 @@
 
 use strict;
 use DateTime;
+use Text::Wrap;
+
+$Text::Wrap::columns = 80; # or whatever your console likes
+# or else, read recipe 1.17 from Perl Cookbook (2d ed)
 
 my $dg = DateTime->now;
 print "\nGregorian calendar\n";
@@ -32,7 +36,8 @@ unless ($@)
     my $dr = DateTime::Calendar::FrenchRevolutionary->now;
     print "\nFrench Revolution\n";
     print $dr->iso8601, $dr->strftime(", %A %d %B %EY, %Ej%n"); # in French
-    print $dr->on_date('en');                                   # in English
+    (my $text = fill('', '', $dr->on_date('en'))) =~ s/\n\n+/\n/g;
+    print $text;                                                # in English
   }
 
 eval 'use DateTime::Calendar::Pataphysical';

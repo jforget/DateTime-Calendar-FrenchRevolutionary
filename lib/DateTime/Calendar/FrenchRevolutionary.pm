@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);
 use Roman;
@@ -68,16 +68,25 @@ my $BasicValidate =
                       }
                     },
       locale    => { type => SCALAR | OBJECT,
-                     default => undef },
-      language  => { type => SCALAR | OBJECT,
-                     optional => 1 },
+                      callbacks =>
+                      { "only 'fr' and 'en' possible" =>
+                        sub { ($_[0] eq 'fr') or ($_[0] eq 'en') or ref($_[0]) =~ /(?:en|fr)$/ },
+                      },
+                     default => 'fr' },
     };
 
 my $NewValidate =
     { %$BasicValidate,
       time_zone => { type => SCALAR | OBJECT,
+                      callbacks =>
+                      { "only 'floating' possible" =>
+                        sub { ($_[0] eq 'floating') or ref($_[0]) and $_[0]->is_floating },
+                      },
                      default => 'floating' },
     };
+my $Lastday_validate = { %$BasicValidate };
+delete $Lastday_validate->{day};
+
 # Constructors
 sub new {
     my $class = shift;
@@ -158,16 +167,7 @@ sub from_object {
 
 sub last_day_of_month {
     my $class = shift;
-    my %p = validate( @_,
-                      { year   => { type => SCALAR },
-                        month  => { type => SCALAR },
-                        abt_hour   => { type => SCALAR, optional => 1 },
-                        abt_minute => { type => SCALAR, optional => 1 },
-                        abt_second => { type => SCALAR, optional => 1 },
-                        locale     => { type => SCALAR | OBJECT, optional => 1 },
-                        time_zone  => { type => SCALAR | OBJECT, optional => 1 },
-                      }
-                    );
+    my %p = validate( @_, $Lastday_validate);
     my $day = $p{month} <= 12 ? 30 : $class->_is_leap_year($p{year}) ? 6 : 5;
     return $class->new(%p, day => $day);
 }
@@ -198,6 +198,8 @@ sub set
 
     return $self;
 }
+
+sub set_time_zone { } # do nothing, only 'floating' allowed
 
 # Internal functions
 use constant REV_BEGINNING => 654415; # RD value for 1 Vendémiaire I in the Revolutionary calendar
@@ -419,10 +421,16 @@ sub day_of_month_0 { $_[0]->{local_c}{day} - 1 }
 *mday_0 = \&day_of_month_0;
 
 sub day_of_decade { $_[0]->{local_c}{day} % 10 || 10 }
-*dod  = \&day_of_decade;
+*dod         = \&day_of_decade;
+*dow         = \&day_of_decade;
+*wday        = \&day_of_decade;
+*day_of_week = \&day_of_decade;
 
 sub day_of_decade_0 { ($_[0]->{local_c}{day} - 1) % 10 }
-*dod_0  = \&day_of_decade_0;
+*dod_0         = \&day_of_decade_0;
+*dow_0         = \&day_of_decade_0;
+*wday_0        = \&day_of_decade_0;
+*day_of_week_0 = \&day_of_decade_0;
 
 sub day_name {
     my $self = shift;
@@ -447,6 +455,11 @@ sub feast_short {
   return $dt->{locale}->feast_short($dt);
 }
 *feast = \&feast_short;
+
+sub _raw_feast {
+  my ($dt) = @_;
+  return $dt->{locale}->_raw_feast($dt);
+}
 
 sub feast_long {
   my ($dt) = @_;
@@ -473,7 +486,7 @@ sub mdy {
     $sep = '-' unless defined $sep;
     return sprintf("%0.2d%s%0.2d%s%0.4d",
                    $self->{local_c}{month}, $sep,
-                   $self->{local_c}{day}, $sep,
+                   $self->{local_c}{day},   $sep,
                    $self->year);
 }
 
@@ -481,7 +494,7 @@ sub dmy {
   my ($self, $sep) = @_;
   $sep = '-' unless defined $sep;
   return sprintf("%0.2d%s%0.2d%s%0.4d",
-                 $self->{local_c}{day}, $sep,
+                 $self->{local_c}{day},   $sep,
                  $self->{local_c}{month}, $sep,
                  $self->year);
 }
@@ -494,7 +507,7 @@ sub abt_hms {
   my ($self, $sep) = @_;
   $sep = ':' unless defined $sep;
   return sprintf("%0.2d%s%0.2d%s%0.2d",
-                    $self->{local_c}{abt_hour}, $sep,
+                    $self->{local_c}{abt_hour},   $sep,
                     $self->{local_c}{abt_minute}, $sep,
                     $self->{local_c}{abt_second});
 }
@@ -510,7 +523,7 @@ sub hms {
     my ($self, $sep) = @_;
     $sep = ':' unless defined $sep;
     return sprintf("%0.1d%s%0.2d%s%0.2d",
-                    $self->{local_c}{hour}, $sep,
+                    $self->{local_c}{hour},   $sep,
                     $self->{local_c}{minute}, $sep,
                     $self->{local_c}{second} );
 }
@@ -525,11 +538,17 @@ sub iso8601 {
 
 sub is_leap_year { $_[0]->_is_leap_year($_[0]->year) }
 
-sub decade {
+sub decade_number {
   my $self = shift;
   return 3 * $self->month + int(($self->day - 1) / 10) - 2;
 }
-*decade_number = \&decade;
+*week_number = \&decade_number;
+
+sub decade {
+  my $self = shift;
+  return ($self->year, $self->decade_number);
+}
+*week = \&decade;
 
 #sub time_zone { $_[0]->{tz} }
 
@@ -564,36 +583,36 @@ sub jd {
   return $jd + ($self->{utc_rd_secs} / 86400);
 }
 
-sub mjd { $_[0]->jd - + 2_400_000.5 }
+sub mjd { $_[0]->jd - 2_400_000.5 }
 
 my %formats = (
-      'a' => sub { $_[0]->day_abbr },
-      'A' => sub { $_[0]->day_name },
-      'b' => sub { $_[0]->month_abbr },
-      'B' => sub { $_[0]->month_name },
-#      'c' => sub { $_[0]->strftime($_[0]->{locale}->preferred_datetime_format) },
-      'C' => sub { int($_[0]->year / 100) },
-      'd' => sub { sprintf '%02d', $_[0]->day_of_month },
-      'D' => sub { $_[0]->strftime('%m/%d/%y') },
-      'e' => sub { sprintf('%2d', $_[0]->day_of_month) },
-      'f' => sub { sprintf('%2d', $_[0]->month) },
-      'F' => sub { $_[0]->ymd('-') },
-      'g' => sub { substr($_[0]->year, -2) }
+        'a' => sub { $_[0]->day_abbr }
+      , 'A' => sub { $_[0]->day_name }
+      , 'b' => sub { $_[0]->month_abbr }
+      , 'B' => sub { $_[0]->month_name }
+      , 'c' => sub { $_[0]->strftime( $_[0]->{locale}->default_datetime_format ) }
+      , 'C' => sub { int($_[0]->year / 100) }
+      , 'd' => sub { sprintf '%02d', $_[0]->day_of_month }
+      , 'D' => sub { $_[0]->strftime('%m/%d/%y') }
+      , 'e' => sub { sprintf('%2d', $_[0]->day_of_month) }
+      , 'f' => sub { sprintf('%2d', $_[0]->month) }
+      , 'F' => sub { $_[0]->ymd('-') }
+      , 'g' => sub { substr($_[0]->year, -2) }
       , 'G' => sub { sprintf '%04d', $_[0]->year }
       , 'h' => sub { $_[0]->month_abbr }
       , 'H' => sub { sprintf('%d', $_[0]->hour) }
-      , 'I' => sub { my $h = $_[0]->hour; $h -= 5 if $h >= 5; sprintf('%d', $h) }
+      , 'I' => sub { my $h = $_[0]->hour || 10; sprintf('%d', $h) }
       , 'j' => sub { sprintf '%03d', $_[0]->day_of_year }
       , 'k' => sub { sprintf('%2d', $_[0]->hour) }
-      , 'l' => sub { my $h = $_[0]->hour; $h -= 5 if $h >= 5; sprintf('%2d', $h) }
+      , 'l' => sub { my $h = $_[0]->hour || 10; sprintf('%2d', $h) }
       , 'L' => sub { sprintf '%04d', $_[0]->year }
       , 'm' => sub { sprintf '%02d', $_[0]->month }
       , 'M' => sub { sprintf '%02d', $_[0]->minute }
       , 'n' => sub { "\n" } # should this be OS-sensitive?
-#     , 'p' => sub {    $_[0]->{locale}->am_pm($_[0]) }
-#     , 'P' => sub { lc $_[0]->{locale}->am_pm($_[0]) }
-      , 'p' => sub { $_[0]->hour < 5 ? 'AM' : 'PM' }
-      , 'P' => sub { $_[0]->hour < 5 ? 'am' : 'pm' }
+      , 'p' => sub {    $_[0]->{locale}->am_pm($_[0]) }
+      , 'P' => sub { lc $_[0]->{locale}->am_pm($_[0]) }
+#      , 'p' => sub { $_[0]->hour < 5 ? 'AM' : 'PM' }
+#      , 'P' => sub { $_[0]->hour < 5 ? 'am' : 'pm' }
       , 'r' => sub { $_[0]->strftime('%I:%M:%S %p') }
       , 'R' => sub { $_[0]->strftime('%H:%M') }
       , 's' => sub { $_[0]->epoch }
@@ -601,12 +620,13 @@ my %formats = (
       , 't' => sub { "\t" }
       , 'T' => sub { $_[0]->strftime('%H:%M:%S') }
       , 'u' => sub { sprintf '%2d', $_[0]->day_of_decade },
-      , 'U' => sub { $_[0]->decade }
+      , 'U' => sub { $_[0]->decade_number }
+      , 'V' => sub { $_[0]->decade_number }
       , 'w' => sub { $_[0]->day_of_decade % 10 }
-      , 'W' => sub { $_[0]->decade }
+      , 'W' => sub { $_[0]->decade_number }
       , 'y' => sub { sprintf('%02d', substr( $_[0]->year, -2 )) }
       , 'Y' => sub { sprintf '%04d', $_[0]->year }
-      , 'z' => sub { offset_as_string($_[0]->offset) }
+      , 'z' => sub { DateTime::TimeZone::offset_as_string( $_[0]->offset ) }
       , 'Z' => sub { $_[0]->{tz}->short_name_for_datetime($_[0]) }
       , '+' => sub { '+' }
       , '%' => sub { '%' }
@@ -636,9 +656,11 @@ sub strftime {
       # it defaults to E! because neither %E! nor %! exist.
       $f =~ s/
 	        %([EO]?([%a-zA-Z]))
+              | %{(\w+)}
              /
-                $formats{$1} ? $formats{$1}->($self)
-                             : $formats{$2} ? $formats{$2}->($self) : $1
+              $3 ? ($self->can($3) ? $self->$3() : "\%{$3}")
+                 : ($formats{$1} ? $formats{$1}->($self)
+                             : $formats{$2} ? $formats{$2}->($self) : $1)
              /sgex;
       return $f unless wantarray;
       push @r, $f;
@@ -652,24 +674,11 @@ sub epoch {
   return $greg->epoch;
 }
 
-#sub set_time_zone {
-#    my ($self, $tz) = @_;
-#
-#    my $was_floating = $self->{tz}->is_floating;
-#
-#    $self->{tz} = ref $tz ? $tz : DateTime::TimeZone->new(name => $tz);
-#
-#    if ($self->{tz}->is_floating && ! $was_floating)
-#      { $self->_calc_utc_rd }
-#    elsif (!$was_floating)
-#      { $self->_calc_local_rd }
-#}
-
 sub DefaultLocale {
   'fr'
 }
 
-my %events = ();
+#my %events = ();
 sub on_date {
   my ($dt, $lan) = @_;
   my $locale;
@@ -680,8 +689,6 @@ sub on_date {
     { $locale = $dt->{locale} }
   return $locale->on_date($dt);
 
-  #_load_events() unless %events;
-  #$events{$self->strftime('%m%dE')} || "";
 }
 
 # A module must return a true value. Traditionally, a module returns 1.
@@ -689,337 +696,6 @@ sub on_date {
 "Liberté, égalité, fraternité
 ou la mort !";
 
-__DATA__
-0101E
-1 Vendémiaire I The French troops enter Savoie
-1 Vendémiaire III The outposts in the woods of Aachen and Reckem are
-taken by the Army of North (Jourdan)
-0101F
-1 Vendémiaire I entrée des troupes françaises en Savoie
-1 Vendémiaire III les postes du bois d'Aix-la-Chapelle et de Reckem sont enlevés 
-par l'Armée du Nord (Jourdan)
-0102E
-2 Vendémiaire I Conquest of Chambéry
-2 Vendémiaire III The  Costouge redoubt and camp are taken by the Army
-of Eastern Pyrenees (Dugommier).
-2 Vendémiaire V The Army of Italy (Kilmaine) routs the enemy at Governolo.
-0102F
-2 Vendémiaire I conquête de Chambéry
-2 Vendémiaire III prise de la redoute et du camp de Costouge par l'Armée des
-Pyrénées orientales (Dugommier).
-2 Vendémiaire V l'Armée d'Italie (Kilmaine) met en déroute l'ennemi à Governolo.
-0103E
-3 Vendémiaire IV affair of Garesio (Miolis)
-0103F
-3 Vendémiaire IV affaire de Garesio (Miolis)
-0104E
-4 Vendémiaire II The Army of Alps (Verdelin) takes the entrenchments of
-Chatillon; the Piemontese rout across the Giffe river
-0104F
-4 Vendémiaire II l'Armée des Alpes (Verdelin) enlève de vive force les retranchements
-de Chatillon ; les Piémontais sont mis en déroute et repassent la rivière de Giffe.
-0105E
-5 Vendémiaire III The Spanish are defeated in Olia and Monteilla by the
-Army of Eastern Pyrenees (Charlet).
-0105F
-5 Vendémiaire III défaite des Espagnols à Olia et Monteilla par l'Armée des Pyrénées
-orientales (Charlet).
-0106E
-6 Vendémiaire III Surrender at Crevecoeur to the Army of the North (Delmas)
-6 Vendémiaire III Kayserlautern, Alsborn and other surrounding outposts
-are taken again by the Army of the Rhine (Michaud)
-6 Vendémiaire V The enemy attacks the Armée of Sambre et Meuse (Hardy) at
-Wurstatt, Nider-Ulm, Ober and  Nider-Iogelheim; the attack is repulsed.
-0106F
-6 Vendémiaire III capitulation de Crevecoeur devant l'Armée du Nord (Delmas)
-6 Vendémiaire III reprise de Kayserlautern, d'Alsborn et autres postes environnants
-par l'Armée du Rhin (Michaud)
-6 Vendémiaire V l'ennemi attaque l'Armée de Sambre et Meuse (Hardy) sur les
-points de Wurstatt, Nider-Ulm, Ober et Nider-Iogelheim ; l'attaque est repoussée.
-0107E
-7 Vendémiaire I Anselm's troops conquer the city of Nice and the  Montalban fortress. 
-7 Vendémiaire II The Army of Alps (Verdelin) defeats the enemy in the  Sallanges 
-defiles and takes the Saint-Martin redoubt.
-0107F
-7 Vendémiaire I prise de la ville de Nice et de la forteresse de Montalban 
-par les troupes d'Anselme.
-7 Vendémiaire II l'Armée des Alpes (Verdelin) défait l'ennemi dans les gorges
-de Sallanges et prend la redoute de Saint-Martin.
-0108E
-8 Vendémiaire V 150 men from the Army of Italy sortie from Mantoue to forage.
-They must surrender to the people of Reggio.
-0108F
-8 Vendémiaire V 150 hommes de l'Armée d'Italie font une sortie de Mantoue pour
-se procurer du fourrage. Ils doivent se rendre aux habitants de Reggio.
-0109F
-9 Vendémiaire I  Custines' Frenchs conquer the Spire city after having
-blown the gates with cannon and endured musketry fire in the streets.
-9 Vendémiaire II The Army of Alps (Chamberlhac) takes the entrenchments at
-Mont-Cormet, previously held by Piemontese.
-0109F
-9 Vendémiaire I les Français de Custines se rendent maîtres de la ville de Spire
-après avoir enfoncé les portes à coups de canons et subi un feu de mousqueterie
-dans les rues de la ville.
-9 Vendémiaire II l'Armée des Alpes (Chamberlhac) enlève de vive-force les
-retranchements de Mont-Cormet tenus par les Piémontais.
-0111E
-11 Vendémiaire II Prisy's troops (Army of Alps) take the Valmeyer outpost
-after a bayonet charge, Saint-André's and Chamberlhac's troops take the Beaufort
-outpost, General-in-Chief Kellerman's troops take Moutiers and the Saint-Maurice
-town and Ledoyen's troops storm the Madeleine pass outpost. 
-11 Vendémiaire III during the battle of Aldenhoven, the Army of Sambre-et-Meuse
-(Jourdan) routs the coalised troops.
-11 Vendémiaire V the Army of Rhine and Moselle (general-in-chief Moreau, 
-division generals Desaix and Saint-Cyr) attacks on the whole front and routs the enemy.
-0111F
-11 Vendémiaire II les troupes de Prisy de l'Armée des Alpes enlèvent le poste
-de Valmeyer à la bayonette, celles de Saint-André et de Chamberlhac enlèvent
-le poste de Beaufort, celles du général-en-chef Kellerman prennent Moutiers et 
-le bourg Saint-Maurice et celles de Ledoyen enlèvent de vive force le poste
-du Col de la Madeleine.
-11 Vendémiaire III à la bataille d'Aldenhoven, l'Armée de Sambre-et-Meuse
-(Jourdan) provoque la déroute des troupes coalisées.
-11 Vendémiaire V l'Armée du Rhin et Moselle (général-en-chef Moreau, 
-généraux de division Desaix et Saint-Cyr) attaque sur toute la ligne et met
-l'ennemi en déroute.
-0112E
-12 Vendémiaire II The Spanish troops are repulsed back in their camps in the Boulon 
-and Argelès by the Army of Eastern Pyrenees (Delatre).
-12 Vendémiaire III the land of Juliers surrenders to the Army of Sambre-et-Meuse (Jourdan).
-0112F
-12 Vendémiaire II les Espagnols sont forcés dans leurs camps du Boulon 
-et Argelès par l'Armée des Pyrénées orientales (Delatre).
-12 Vendémiaire III le pays de Juliers se rend à l'Armée de Sambre-et-Meuse (Jourdan).
-0113E
-13 Vendémiaire I the Austrians must leave the city of  Worms
-and Custines' troops enter the city.
-13 Vendémiaire II Army of Eastern Pyrenees : Dagobert's troops take
-Campredon while the Colioure garrison (Delatre) fights and routs the Spanish cavalry.
-13 Vendémiaire II arrayed in three columns (Lasalle, Mascaron and
-Dat), the Army of Western Pyrenees attacks and takes the Arau and Aure
-valley outposts.
-13 Vendémiaire IV Bonaparte represses a royalist demonstration near Saint-Roch church
-0113F
-13 Vendémiaire I les Autrichiens sont forcés d'évacuer la ville de Worms
-et les troupes de Custines y font leur entrée.
-13 Vendémiaire II Armée des Pyrénées orientales : les troupes de Dagobert prennent
-Campredon tandis que la garnison de Colioure (Delatre) combat la cavalerie espagnole
-et la met en déroute.
-13 Vendémiaire II l'Armée des Pyrénées occidentales attaque les postes d'Arau
-et de la vallée d'Aure sur trois colonnes (Lasalle, Mascaron et Dat) et les enlève.
-13 Vendémiaire IV Bonaparte réprime une manifestation royaliste à l'église Saint-Roch
-0115E
-15 Vendémiaire III Cologne surrenders to the Army of Sambre-et-Meuse (Jourdan).
-0115F
-15 Vendémiaire III Cologne se rend à l'Armée de Sambre-et-Meuse (Jourdan).
-0116E
-16 Vendémiaire V the enemy, blockaded in Mantoue by the Army of Italy (Sahuguet) 
-attempt a  4,600-troop sortie but fails.
-0116F
-16 Vendémiaire V l'ennemi, bloqué à Mantoue par l'Armée d'Italie (Sahuguet) tente
-une sortie de 4 600 hommes, sortie qui se solde par un échec.
-0117E
-17 Vendémiaire I as the French Army comes near, the  Austrians lift
-the siege of Lille.
-17 Vendémiaire III fight for and capture of Frankenthal by the Army of the Rhine (Desaix)
-0117F
-17 Vendémiaire I à l'approche de l'Armée française, les Autrichiens lèvent
-précipitamment le siège de Lille.
-17 Vendémiaire III combat et prise de Frankenthal par l'Armée du Rhin (Desaix)
-0118E
-18 Vendémiaire II bombardment of Lyon, which opens her gates to
-Dubois-de-Crancé's troops.
-18 Vendémiaire III capture of Shelaudenbach and Vollfstein by the Army of the Rhine (Michaud)
-which links with the Army of Moselle in Lautreck.
-0118F
-18 Vendémiaire II bombardement de Lyon qui ouvre ses portes aux troupes de 
-Dubois-de-Crancé.
-18 Vendémiaire III prise de Shelaudenbach et de Vollfstein par l'Armée du Rhin (Michaud)
-et jonction avec l'Armée de la Moselle à Lautreck.
-0119E
-19 Vendémiaire III before Maestricht, the Army of Sambre-et-Meuse (Duhesme) takes back
-the  Mont-Saint-Pierre castle.
-0119F
-19 Vendémiaire III devant Maestricht, l'Armée de Sambre-et-Meuse (Duhesme) reprend
-le château de Mont-Saint-Pierre.
-0120E
-20 Vendémiaire III the Army of Moselle (Moreau) marches on Birkenfeldt, Oberstein,
-Kirn and Meisenheim.
-0120F
-20 Vendémiaire III l'Armée de la Moselle (Moreau) marche sur Birkenfeldt, Oberstein,
-Kirn et Meisenheim.
-0121E
-21 Vendémiaire III the Army of the North (Delmas) enters in Bois-le-Duc.
-0121F
-21 Vendémiaire III entrée de l'Armée du Nord (Delmas) dans Bois-le-Duc.
-0122E
-22 Vendémiaire I Kellerman forces the Prussians to leave the city of Verdun.
-He enters Verdun and continues his march to the Prussians.
-0122F
-22 Vendémiaire I Kellerman force les Prussiens à évacuer la ville de Verdun.
-Il y entre et poursuit sa marche contre eux.
-0123E
-23 Vendémiaire III the Army of the Rhine (Michaud) takes Otterberg, Rockenhausen, 
-Landsberg, Alzein and Oberhausen.
-0123F
-23 Vendémiaire III l'Armée du Rhin (Michaud) prend Otterberg, Rockenhausen, 
-Landsberg, Alzein et Oberhausen.
-0124E
-24 Vendémiaire II the Army of Moselle (Delaunay) fights and routs the
-Coalised wchich had advanced on Bitche and Rorbach.
-24 Vendémiaire III fight for and capture of Gellheim and Grunstad by
-the Army of the Rhine (Michaud); the Frenchs capture also Frankenthal.
-0124F
-24 Vendémiaire II l'Armée de la Moselle (Delaunay) combat et provoque la retraite
-précipitée des coalisés qui s'étaient portés sur Bitche et Rorbach.
-24 Vendémiaire III combat et prise de Gellheim et de Grunstad par 
-l'Armée du Rhin (Michaud) ; les Français reprennent aussi Frankenthal.
-0125E
-25 Vendémiaire II combat near Sarreguemines; the Army of Moselle (Delaunay)
-repulses the enemy.
-0125F
-25 Vendémiaire II combat près de Sarreguemines ; l'Armée de la Moselle (Delaunay)
-repousse l'ennemi.
-0126E
-26 Vendémiaire I the Austrians attack and fail several times Hasnon
-(Muller commander), they are repulsed having suffered many losses.
-26 Vendémiaire II the battle of Wattignies near Maubeuge is won
-by the Army of the North (Jourdan) against the Austrians and the blockade of 
-Maubeuge is lifted.
-26 Vendémiaire III The Army of Western Pyrenees (Moncey) takes
-Iraty and the wonderful forges of Egay and Orbaycette.
-26 Vendémiaire III Army of Moselle :  general-in-chief 
-Moreau's troops take Creutznach and Custines' troops take Worms.
-26 Vendémiaire VI Army of Italy: peace traity in Campo-Formio
-near Udine between  general Bonaparte and the plenipotentiaries
-of the Emperor, king of Hungary and Bohemia.
-26 Vendémiaire VI congress in Rastadt to conclude peace between the 
-French Republic and the German Empire.
-0126F
-26 Vendémiaire I les Autrichiens attaquent plusieurs fois inutilement Hasnon
-(Muller commandant) et sont repoussés avec perte.
-26 Vendémiaire II la bataille de Wattignies près de Maubeuge est remportée
-par l'Armée du Nord (Jourdan) sur les Autrichiens et le blocus de Maubeuge est levé.
-26 Vendémiaire III l'Armée des Pyrénées occidentales (Moncey) prend la belle
-mâture d'Iraty et les superbes fonderies d'Egay et d'Orbaycette.
-26 Vendémiaire III Armée de la Moselle : les troupes du général-en-chef 
-Moreau prennent Creutznach et celles de Custines prennent Worms.
-26 Vendémiaire VI Armée d'Italie : traité de paix définitif à Campo-Formio
-près d'Udine entre le général Bonaparte et les plénipotentiaires de l'Empereur,
-roi de Hongrie et de Bohême.
-26 Vendémiaire VI congrès à Rastadt pour la conclusion de la paix entre
-la République française et l'Empire germanique.
-0127E
-27 Vendémiaire II 600 republican troops from the Army of Italy (Dugommier) 
-take a tactical advantage in  Gillette over 4,000 Austrians, Croats and Piemontese
-and repulse them.
-27 Vendémiaire III The Army of Western Pyrenees (Delabare) defeats 7,000 
-Spaniards near Buruet and Almandos.
-27 Vendémiaire III The Army of the Rhine (Michaud) routs the enemy near
-Kircheim and Worms and captures both cities.
-0127F
-27 Vendémiaire II 600 républicains de l'Armée d'Italie (Dugommier) remportent
-l'avantage à Gillette sur 4 000 Autrichiens, Croates et Piémontais et les
-repoussent.
-27 Vendémiaire III l'Armée des Pyrénées occidentales (Delabare) défait 7 000 
-Espagnols près de Buruet et d'Almandos.
-27 Vendémiaire III l'Armée du Rhin (Michaud) met en déroute l'ennemi près
-de Kircheim et de Worms et prend ces deux villes.
-0128E
-28 Vendémiaire II The Army of Italy (Dugommier) achieves a complete
-victory at Gilette over the Piemontese.
-28 Vendémiaire III The Armée of the North (Souham) defeats the enemy near Nimegen
-and destroys the legion of Rohan.
-28 Vendémiaire V The Army of the Rhin and Moselle (general-in-chief Moreau and
-division general Beaupuis) is attacked in Retzengen and Simonswald, but
-the enemy efforts fail.
-0128F
-28 Vendémiaire II l'Armée d'Italie (Dugommier) remporte
-une victoire complète à Gilette sur les Piémontais.
-28 Vendémiaire III l'Armée du Nord (Souham) défait l'ennemi près de Nimègue
-et détruit la légion de Rohan.
-28 Vendémiaire V l'Armée du Rhin et Moselle (général-en-chef Moreau et
-général de division Beaupuis) est attaquée à Retzengen et à Simonswald, les 
-efforts des ennemis sont vains.
-0129E
-29 Vendémiaire I The French Army (general-in-chief Custines) forces the
-Austrians to leave Mayence.
-29 Vendémiaire III The Armée of Moselle (Moreau) enters  Bingen
-after having expelled the Prussians from the positions they held before the town.
-29 Vendémiaire V the Army of Italy (Casalta), debarking in Corsica, advances to
-Bastia and expels the English from the fort where they had retired.
-Saint-Florent and Bonifacio also captured.
-0129F
-29 Vendémiaire I l'Armée française (général-en-chef Custines) force les
-Autrichiens à évacuer Mayence.
-29 Vendémiaire III l'Armée de la Moselle (Moreau) entre dans Bingen
-après avoir chassé les Prussiens des positions qu'ils tenaient en avant
-de la ville.
-29 Vendémiaire V l'Armée d'Italie (Casalta), débarquée en Corse, se porte
-sur Bastia et chasse les Anglais qui s'étaient retirés dans le fort.
-Prise également des villes de Saint-Florent et de Bonifacio.
-0130E
-30 Vendémiaire II the Army of Western Pyrenees (Poncet) 
-routs three Spanish columns after a five-hour firefight.
-30 Vendémiaire V Army of Sambre and Meuse (general-in-chief Beurnonville,
-division generals Championnet and Grenier): the enemy crosses the Rhine at
-six points from Bacharach up to Andernach and attacks the Neuwied bridgehead 
-but is forced to retreat.
-0130F
-30 Vendémiaire II l'Armée des Pyrénées occidentales (Poncet) met
-en déroute trois colonnes espagnoles après une fusillade de cinq heures.
-30 Vendémiaire V Armée de Sambre et Meuse (général-en-chef Beurnonville,
-généraux de division Championnet et Grenier) : l'ennemi passe le Rhin sur
-six points depuis Bacharach jusqu'à Andernach et attaque la tête de pont
-de Neuwied et est forcé à la retraite.
-0218E
-18 Brumaire VIII Bonaparte's coup: end of the Directoire, beginning of the Consulate
-0218F
-18 Brumaire VIII Coup d'état de Bonaparte : fin du Directoire, début du Consulat
-0311E
-11 Frimaire XIII Napoléon 1st is crowned Emperor of the French
-11 Frimaire XIV Austerlitz battle: the French army crushes the Austro-Russian army
-0311F
-11 Frimaire XIII Napoléon Premier est couronné Empereur des Français
-11 Frimaire XIV Bataille d'Austerlitz : l'armée française écrase l'armée austro-russe
-0607E
-7 Ventôse X Birth of Victor Hugo
-0607F
-7 Ventôse X Naissance de Victor Hugo
-0901F
-1 Prairial VII Birth of Honoré de Balzac
-0901E
-1 Prairial VII Naissance d'Honoré de Balzac
-0925E
-25 Prairial VIII Battle of Marengo in Italy, Kleber is assassinated in Cairo
-0925F
-25 Prairial VIII Bataille de Marengo en Italie, Kléber est assassiné au Caire
-1008E
-8 Messidor II Victory of Fleurus by Jourdan. First use of aerial reco, by 
-Captain Coutelle in the balloon "L'Entreprenant".
-1008F
-8 Messidor II Victoire de Fleurus par Jourdan. Première utilisation de la
-reconnaissance aérienne par le capitaine Coutelle, à bord du ballon L'Entreprenant
-1103E
-3 Thermidor III Victory of Hoche at Quiberon against Royalist forces
-1103F
-3 Thermidor III Victoire de Hoche à Quiberon contre les royalistes
-1109E
-9 Thermidor II Demise of Robespierre
-1109F
-9 Thermidor II La chute de Robespierre
-1118E
-18 Thermidor IV Victory of Bonaparte against Wurmser at Castiglione
-1118F
-18 Thermidor IV Victoire de Bonaparte sur Wurmser à Castiglione
-1303E
-Jour du travail V Death of General Hoche
-1303F
-Jour du travail V Mort du général Hoche
-1305E
-Jour des récompenses IV Death of General Marceau, age 27, at Altenkirchen
-1305F
-Jour des récompenses IV Mort du général Marceau, âgé de 27 ans, à Altenkirchen
 __END__
 
 =head1 NAME
@@ -1124,7 +800,46 @@ C<DateTime.pm> module.
 
 =item * new(...)
 
-Creates a new date object.
+Creates a new date object. This class accepts the following parameters:
+
+=over 4
+
+=item * C<year>
+
+Year number, mandatory. Year 1 corresponds to Gregorian years late 1792 
+and early 1793.
+
+=item * C<month>
+
+Month number, in the range 1..12, plus number 13 to designate the end-of-year
+additional days.
+
+=item * C<day>
+
+Day number, in the range 1..30. In the case of additional days, the range
+is 1..5 or 1..6 depending on the year (leap year or normal).
+
+=item * C<hour>, C<minute>, C<second>
+
+Decimal hour number, decimal minute number and decimal second number.
+The hour is in the 0..9 range, both other parameters are in the 0..99
+range. These parameters cannot be specified with the sexagesimal time
+parameters C<abt_>I<xxx> (see below).
+
+=item * C<abt_hour>, C<abt_minute>, C<abt_second>
+
+Sexagesimal hour number, sexagesimal minute number and sexagesimal second number.
+The hour is in the 0..23 range, both other parameters are in the 0..59
+range. These parameters cannot be specified with the decimal time
+parameters (see above).
+
+=item * C<locale>
+
+Only the values C<fr> (French) and C<en> (English) are allowed. Default
+is French. No other values are possible, even territory variants such
+as C<fr_BE> or C<en_US>.
+
+=back
 
 =item * from_epoch( epoch => $epoch )
 
@@ -1143,11 +858,14 @@ The preferred way for calendar to calendar conversion.
 
 =item * last_day_of_month( ... )
 
-Not tested
+Same as new, except that the C<day> parameter is forbidden and
+is automatically set to the end of the month. If the C<month>
+paramter is 13 for the additional days, the day is set to the
+end of the year, either the 5th or the 6th additional day.
 
 =item * clone
 
-Not tested
+Creates a replica of the original date object.
 
 =item * set( .. )
 
@@ -1180,9 +898,10 @@ at the end of the year, returns 12, which is not really a month number.
 
 =item * month_name
 
-Returns the French  name of the month. No  other language is supported
-yet.  For  the additional days at  the end of the  year, returns "jour
-complémentaire", the translation of "additional day".
+Returns the  French name of the  month or its  English translation. No
+other language is  supported yet.  For the additional  days at the end
+of  the  year,  returns  "jour  complémentaire",  the  translation  of
+"additional day".
 
 Note: The  English translations for  the month names come  from Thomas
 Carlyle's book.
@@ -1197,9 +916,11 @@ were also known as the I<Sans-culottides>.
 
 Returns the day of the month, from 1..30.
 
-=item * day_of_decade, dod
+=item * day_of_decade, dod, day_of_week, dow, wday
 
-Returns the day of the decade, from 1..10.
+Returns the day of the decade, from 1..10. The C<dow>, C<wday> and C<day_of_week>
+names are there for compatibility's sake with C<DateTime>, even if the word
+"week" is improper.
 
 =item * day_name
 
@@ -1264,19 +985,22 @@ specified for the Gregorian calendar.
 
 Returns a true value if the year is a leap year, false else.
 
-=item * decade, decade_number
+=item * decade_number, week_number
 
-Returns the I<décade> number. Note: since the I<décades> are aligned
-with the years, there is no need for a method giving the year of the
-week... er I mean I<décade>. So the methods C<decade> and C<decade_number>
-are synonymous. Especially, the C<decade> method returns a scalar, not
-a 2-element list.
+Returns the I<décade> number.
+
+=item * decade, week
+
+Returns a 2-element list, with the year number and the decade number.
+Since the I<décade> is always aligned with a month and then with a 
+year, the year element is always the same as the date's year.
+Anyhow, this is done for compatibility with DateTime's C<week> method.
 
 =item * utc_rd_values
 
-Returns the current UTC Rata Die days and seconds as a two element
-list.  This exists primarily to allow other calendar modules to create
-objects based on the values provided by this object.
+Returns the  current UTC Rata Die  days, seconds and  nanoseconds as a
+3-element list.  This exists primarily to allow other calendar modules
+to create objects based on the values provided by this object.
 
 =item * jd, mjd
 
@@ -1304,10 +1028,11 @@ of all possible format specifiers.
 
 =item * epoch
 
-Return the UTC epoch value for the datetime object.  Internally, this
-is implemented using C<Time::Local>, which uses the Unix epoch even on
-machines with a different epoch (such as Mac OS).  Datetimes before the
-start of the epoch will be returned as a negative number.
+Return the UTC epoch value  for the datetime object.  Internally, this
+is  implemented  C<expoch>  from  C<DateTime>,  which  in  turn  calls
+C<Time::Local>,  which uses  the Unix  epoch even  on machines  with a
+different epoch (such  as Mac OS).  Datetimes before  the start of the
+epoch will be returned as a negative number.
 
 Since epoch times cannot represent many dates on most platforms, this
 method may simply return undef in some cases.
@@ -1319,10 +1044,11 @@ another source of bugs.
 
 =item * on_date
 
-Gives a few historical events that took place on the same date (day+month).
-These events occur during the period of use of the calendar, that is,
-no later than Gregorian year 1805. The related events either were
-located in France, or were battles in which a French army was involved.
+Gives  a  few historical  events  that took  place  on  the same  date
+(day+month, irrespective of the  year).  These events occur during the
+period of use  of the calendar, that is, no  later than Gregorian year
+1805. The  related  events either  were  located  in  France, or  were
+battles in which a French army was involved.
 
 This  method accepts  one  optional argument,  the  language. For  the
 moment, only  "en" for English and  "fr" for French  are available. If
@@ -1405,10 +1131,8 @@ The result is a single-char string.
 
 =item * %I
 
-The hour as a decimal number using a 5-hour clock (range 0 to 4).
-Since decimal time was never actually used, we do not know whether the 
-people would have split a day in two halves. This format is provided
-by analogy with the usage of sexagesimal time in the Gregorian calendar.
+The hour as a decimal number using the numbers on a clockface, that
+is, range 1 to 10. The result is a single-char string, except for 10.
 
 =item * %j
 
@@ -1421,12 +1145,13 @@ the result is a 2-char string, the digit is preceded by a blank. (See also %H.)
 
 =item * %l
 
-The hour (5-hour clock) as a decimal number (range 1 to 4); the result
-is a 2-char string, the digit is preceded by a blank. (See also %I.)
+The hour as read from a clockface (range 1 to 10). The result is
+a  2-char string, the digit is preceded by a blank, except of course
+for 10. (See also %I.)
 
 =item * %m
 
-The month as a decimal number (range 01 to 12).
+The month as a decimal number (range 01 to 13).
 
 =item * %M
 
@@ -1481,15 +1206,14 @@ also %w.
 =item * %U
 
 The I<décade> number of the current year as a decimal number, range 00
-to 31.
+to 37.
 
 =item * %V
 
-to be adapted to FR calendar.
-The ISO 8601:1988 week number of the current year as a decimal number,
-range 01 to 53, where week 1 is the first week that has at least 4
-days in the current year, and with Monday as the first day of the
-week. See also %U and %W.
+The decade number (French Revolutionary equivalent to
+the ISO 8601:1988 week number) of the current year as a decimal number,
+range 01 to 37. Identical to %U, since décades are aligned with the
+beginning of the year.
 
 =item * %w
 
@@ -1499,7 +1223,7 @@ also %u.
 =item * %W
 
 The I<décade> number of the current year as a decimal number, range 00
-to 31.
+to 37.
 
 =item * %y
 
@@ -1563,6 +1287,8 @@ Some feast names are not translated, other's translations are doubtful
 Support for this module is provided via the datetime@perl.org email
 list. See L<http://lists.perl.org/> for more details.
 
+Please enter bug reports at L<http://rt.cpan.org/>
+
 =head1 AUTHOR
 
 Jean Forget <JFORGET@cpan.org>
@@ -1605,7 +1331,7 @@ http://www.kokogiak.com/frc/default.asp
 
 =head1 LICENSE STUFF
 
-Copyright (c) 2003 Jean Forget. All rights reserved. This program is
+Copyright (c) 2003--2004 Jean Forget. All rights reserved. This program is
 free software. You can distribute, modify, and otherwise mangle
 DateTime::Calendar::FrenchRevolutionary under the same terms as perl.
 

@@ -3,7 +3,7 @@ package DateTime::Calendar::FrenchRevolutionary::Locale;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = 0.01;
+$VERSION = '0.07'; # same as parent module DT::C::FR
 
 sub load {
   my ($self, $lang) = @_;
