@@ -13,8 +13,8 @@ sub g2r {
   $date_g->set_time_zone($tz);
   my $date_result = DateTime::Calendar::FrenchRevolutionary->from_object(object => $date_g)
                              ->strftime($format);
-  my $date_r2 = $date_r1; # Because there may be a rounding error
-  substr($date_r2, -2, 2) ++;
+  my $date_r2 = $date_r1; # Alternate date to check agains, because there may be a rounding error
+  substr($date_r2, -2, 2) ++; # add 1 second to alternate date, hoping we do not increment 99 to 100
   if ($date_result eq $date_r1 or $date_result eq $date_r2)
     { print "ok $n\n" }
   else

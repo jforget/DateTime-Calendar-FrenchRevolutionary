@@ -6,8 +6,5 @@ Check test coverage for other cases (which cases?)
 
 printf specifiers C<%V>, C<%w>
 
-Maybe support the English language, at least for the C<month_name>
-and the C<day_name> methods.
-
 Install the other F<DateTime::Calendar> modules and use them in the F<today> example
 

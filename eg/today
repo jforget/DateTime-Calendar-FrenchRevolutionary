@@ -31,8 +31,8 @@ unless ($@)
   {
     my $dr = DateTime::Calendar::FrenchRevolutionary->now;
     print "\nFrench Revolution\n";
-    print $dr->iso8601, $dr->strftime(", %A %d %B %EY, %Ej%n");
-    print $dr->on_date;
+    print $dr->iso8601, $dr->strftime(", %A %d %B %EY, %Ej%n"); # in French
+    print $dr->on_date('en');                                   # in English
   }
 
 eval 'use DateTime::Calendar::Pataphysical';

@@ -19,10 +19,10 @@ sub check {
     { print "not ok $n : expected $date_g1, got $date_g2\n" }
 }
 
-@tests = ([1789, 7, 14, 16, 15, 0]
-	, [1515, 9, 13,  8, 30, 0]
-	, [1792, 9, 21,  8, 30, 0]
-	, [1792, 9, 22,  8, 30, 0]
+@tests = ([1789, 7, 14, 16, 15, 0] # Storming of the Bastille
+	, [1515, 9, 13,  8, 30, 0] # Battle of Marignan
+	, [1792, 9, 21,  8, 30, 0] # 1 day before the DT-C-FR epoch
+	, [1792, 9, 22,  8, 30, 0] # the DT-C-FR epoch
 );
 printf "1..%d\n", scalar @tests;
 my $n = 1;

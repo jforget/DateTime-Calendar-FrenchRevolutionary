@@ -11,6 +11,16 @@ sub g2r {
     { print "not ok $n : expected $date_r, got $date_resul\n" }
 }
 
+sub g2r_en {
+  my ($n, $date_r, $format, $y, $m, $d) = @_;
+  my $date_g = DateTime->new(year => $y, month => $m, day => $d);
+  my $date_resul = DateTime::Calendar::FrenchRevolutionary->from_object(object => $date_g)->set(locale => 'en')->strftime($format);
+  if ($date_r eq $date_resul)
+    { print "ok $n\n" }
+  else
+    { print "not ok $n : expected $date_r, got $date_resul\n" }
+}
+
 my @tests = (["Nonidi 09 Thermidor II", "%A %d %B %EY", 1794,  7, 27],
 	     ["Oct 18 Bru 0008",  "%a %d %b %Y", 1799, 11,  9],
 	     ["0008",                      "%Y", 1799, 11,  9],
@@ -29,9 +39,15 @@ my @tests = (["Nonidi 09 Thermidor II", "%A %d %B %EY", 1794,  7, 27],
 ["6 (Sextidi), jour de la bagarade", "%w (%A), %Ej", 2001, 9, 12],
 	     );
 
-my $nb_tests = @tests;
+my @tests_en = (["Nineday 09 Heatidor II", "%A %d %B %EY", 1794,  7, 27],
+["Firsday 11 Vintagearious ccix, Potato Day", "%A %d %B %Ey, %EJ", 2000, 10, 2],
+[" 5 additional day 09, Rewards Day", "%e %B %y, %EJ", 2001, 9, 21],
+	     );
+
+my $nb_tests = @tests + @tests_en;
 my $n = 1;
 
 print "1..$nb_tests\n";
 
-foreach (@tests) { g2r $n++, @$_ }
+foreach (@tests   ) { g2r    $n++, @$_ }
+foreach (@tests_en) { g2r_en $n++, @$_ }

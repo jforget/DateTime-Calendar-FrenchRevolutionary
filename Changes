@@ -1,5 +1,18 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
+0.06
+	- add test for nanoseconds... and fixed nanosecond related bug
+	- add basic support for Locale, with two languages: French and English
+	- add much more shameless propaganda for the French Revolutionary armies
+
+0.05  Décadi 30 Fructidor CCXI, jour du panier (Tuesday 2003-09-16)
+	- removed the reference to Makefile.PL in README
+	- pod fixes thanks to Iain Truskett
+	- add minimal support for nanoseconds (so conversion Greg->FR->Greg will not
+	lose the precision)
+	- add much stuff for the events that occurred in Vendémiaire
+	- replace the CCXI calendars by CCXII calendars in the eg/result directory.
+
 0.04  Primidi 11 Thermidor CCXI, jour du panis (Tuesday 2003-07-29)
 	- the _offset_from_local_time was unduly commented out. Fixed.
 	- removed Makefile.PL. Or rather, replaced by a file suggesting that
