@@ -1,0 +1,12 @@
+--- #YAML:1.0
+name: DateTime-Calendar-FrenchRevolutionary
+version: 0.01
+license: perl
+distribution_type: module
+requires:
+  DateTime: 0.06
+  Roman: 0
+recommends: {}
+build_requires: {}
+conflicts: {}
+generated_by: Module::Build version 0.16

@@ -1,0 +1,39 @@
+Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
+
+0.01  Nonidi 9 Floréal CCXI, jour de la jacinthe (Monday 2003-04-27)
+        - initial version.
+
+Revision history for Perl extension Date::Convert::French_Rev.
+
+0.05  Nonidi 9 Floréal CCXI, jour de la jacinthe (Monday 2003-04-27)
+        - last version compatible with Date::Convert, next one will
+        be in the DateTime::Calendar namespace, compatible with DateTime.pm
+        - I had always believed that the additional days were not called
+        Primidi, Duodi etc. But I have found a document where they are
+        called Primidi etc. The bug in the module is fixed.
+
+0.04  Tridi 13 Fructidor CCX, jour de l'épine-vinette (2002-08-30, Friday)
+	- reorganise the directory structure along Matt Sergeant's tips
+        - include the 4000-modulus rule for leap years (according to emacs-21.2)
+        - reorganise the absolute -> FR conversion
+	- rephrase the README file
+	- add the  prerequisite for Date::Convert  in Makefile.PL (the
+	use statement and the @ISA array are not sufficient)
+        - add a few examples in the eg/ subdirectory
+	- fix a few bugs: $_ was squashed by date_string, the month value
+	was not controlled
+	- compatibility with diagnostics-1.2
+
+0.03  20 Thermidor CCIX (2001-08-07, Tuesday)
+        - rewrite the Changes file, with proper dates
+        - it seems that the 4th additional day should rather be "jour
+	de l'opinion"
+	- reformat the code
+
+0.02  19 Prairial CCIX (2001-06-07, Thursday)
+        - add the prerequisite for Roman.pm in Makefile.PL
+        - extend the "SEE ALSO" section
+
+0.01  4 Prairial CCIX (2001-05-23, Wednesday)
+	- original version; created by h2xs 1.19
+

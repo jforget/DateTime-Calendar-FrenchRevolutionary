@@ -1,0 +1,56 @@
+DateTime/Calendar/FrenchRevolutionary version 0.01
+==================================================
+
+This is a companion module to DateTime.pm. It implements the French
+Revolutionary calendar and decimal time.
+
+INSTALLATION
+
+The preferred way, which requires Module::Build, is:
+
+   perl Build.PL
+   ./Build
+   ./Build test
+   ./Build install
+
+If Module::Build is not installed, you can still use the old way by first
+removing Build.PL from the directory and removing the corresponding entry
+from MANIFEST, and then using the old-fashioned mantra:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+Note to the users of old filesystems.
+
+All  filenames  except  one  (the  most  important)  respect  the  8.3
+convention  used by  MS-DOS.  If you  use  an old  filesystem such  as
+MS-DOS's filesystem or  the old Unix filesystem with  a 14-char limit,
+you should find how the name
+  lib/DateTime/Calendar/FrenchRevolutionary.pm
+has been mangled, rename it  to a name compatible with your filesystem
+and replace  all occurrences of the  string "FrenchRevolutionary" with
+the new name in all files, including MANIFEST.
+
+ALTERNATE INSTALL
+
+This module can be installed on a perl-less computer!
+
+All you need, on this computer, is:
+  - tar and gzip, or compatible software
+  - a table-aware HTML browser (no Internet connection required if you
+  downloaded the archive from a local network or a CD-ROM)
+  - a printer.
+
+The installation steps are:
+
+- Gunzip and untar the archive.
+- Go to the eg/result subdirectory.
+- Open the various files ending in "en.html" (or, if you are a
+French-speaker, ending in "fr.html") with the HTML browser.
+- Print them.
+That's all!
+
+
+
