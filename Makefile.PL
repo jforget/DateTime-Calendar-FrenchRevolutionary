@@ -25,7 +25,8 @@ if (-f 'Build.PL')
 WriteMakefile(
     NAME		    => 'DateTime::Calendar::FrenchRevolutionary',
     VERSION_FROM	=> 'lib/DateTime/Calendar/FrenchRevolutionary.pm',
-    PREREQ_PM		=> { DateTime => 0.06 },
+    PREREQ_PM		=> { DateTime => 0.06
+			     , Roman => 0 },
     ABSTRACT        => 'DateTime object in the French Revolutionary calendar',
     AUTHOR          => 'Jean Forget <JFORGET@cpan.org>',
 );

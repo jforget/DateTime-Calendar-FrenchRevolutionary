@@ -1,4 +1,4 @@
-DateTime/Calendar/FrenchRevolutionary version 0.02
+DateTime/Calendar/FrenchRevolutionary version 0.03
 ==================================================
 
 This is a companion module to DateTime.pm. It implements the French
@@ -23,6 +23,12 @@ If Module::Build is not installed, you can still use the old way:
 In   this  case,   the   Makefile.PL  script   renames  the   Build.PL
 file.  Without this  precaution, the  make step  would try  to execute
 Build.PL and fail.
+
+Note:  This  module uses  Roman.pm.  This  is  an old  module  (1997),
+released at a time when the Makefile.PL mantra was not always done. As
+stated in this  module, it is installed by  "manually" copying it into
+lib's proper subdirectory.  Do CPAN and CPANPLUS know that? I have not
+(yet) tested.
 
 Note to the users of old filesystems.
 

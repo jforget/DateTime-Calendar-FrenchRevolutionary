@@ -1,18 +1,22 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
-0.02  Décadi 10 Floréal CCXI, jour du rateau (Tuesday 2003-04-28)
+0,03  Primidi 11 Floréal CCXI, jour de la rhubarbe (Wednesday 2003-04-30)
+	- I had forgotten the Roman.pm prerequisite in Makefile.PL. Fixed.
+	- A few words about Roman.pm in README, too.
+
+0.02  Décadi 10 Floréal CCXI, jour du rateau (Tuesday 2003-04-29)
         - altered Makefile.PL so the existence of Build.PL will not cause problems.
 	- negative dates (prior to 22 September 1792): I do not know whether
 	they give proper results (year 0? leap year?) but at least you can
 	convert back to Gregorian and get the same result.
 	- added a few tests and examples
 
-0.01  Nonidi 9 Floréal CCXI, jour de la jacinthe (Monday 2003-04-27)
+0.01  Nonidi 9 Floréal CCXI, jour de la jacinthe (Monday 2003-04-28)
         - initial version.
 
 Revision history for Perl extension Date::Convert::French_Rev.
 
-0.05  Nonidi 9 Floréal CCXI, jour de la jacinthe (Monday 2003-04-27)
+0.05  Nonidi 9 Floréal CCXI, jour de la jacinthe (Monday 2003-04-28)
         - last version compatible with Date::Convert, next one will
         be in the DateTime::Calendar namespace, compatible with DateTime.pm
         - I had always believed that the additional days were not called
