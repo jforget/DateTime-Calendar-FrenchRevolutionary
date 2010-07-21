@@ -1,12 +1,31 @@
---- #YAML:1.0
+---
 name: DateTime-Calendar-FrenchRevolutionary
-version: 0.07
+version: 0.08
+author:
+  - 'Jean Forget <JFORGET@cpan.org>'
+abstract: Dates in the French Revolutionary Calendar
 license: perl
-distribution_type: module
+resources:
+  license: http://dev.perl.org/licenses/
 requires:
   DateTime: 0.14
-  Roman: 0
-recommends: {}
-build_requires: {}
-conflicts: {}
-generated_by: Module::Build version 0.16
+  Roman: 1.22
+configure_requires:
+  Module::Build: 0.35
+provides:
+  DateTime::Calendar::FrenchRevolutionary:
+    file: lib/DateTime/Calendar/FrenchRevolutionary.pm
+    version: 0.08
+  DateTime::Calendar::FrenchRevolutionary::Locale:
+    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm
+    version: 0.08
+  DateTime::Calendar::FrenchRevolutionary::Locale::en:
+    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm
+    version: 0.08
+  DateTime::Calendar::FrenchRevolutionary::Locale::fr:
+    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm
+    version: 0.08
+generated_by: Module::Build version 0.35
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4

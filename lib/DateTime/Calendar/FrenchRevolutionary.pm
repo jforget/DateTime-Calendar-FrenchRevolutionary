@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.07';
+$VERSION = '0.08';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);
 use Roman;
@@ -202,7 +202,7 @@ sub set
 sub set_time_zone { } # do nothing, only 'floating' allowed
 
 # Internal functions
-use constant REV_BEGINNING => 654415; # RD value for 1 Vendémiaire I in the Revolutionary calendar
+use constant REV_BEGINNING => 654415; # RD value for 1 VendÃ©miaire I in the Revolutionary calendar
 use constant NORMAL_YEAR    => 365;
 use constant LEAP_YEAR      => 366;
 use constant FOUR_YEARS     =>  4 * NORMAL_YEAR + 1; # one leap year every four years
@@ -300,7 +300,7 @@ sub _calc_utc_components {
 
 sub _ymd2rd {
     my ($self, $y, $m, $d) = @_;
-    my $rd = REV_BEGINNING - 1; # minus 1 for the zeroth Vendémiaire
+    my $rd = REV_BEGINNING - 1; # minus 1 for the zeroth VendÃ©miaire
     $y --;  #get years *before* this year.  Makes math easier.  :)
     # first, convert year into days. . .
     if ($y < 0 || $y >= 16) # Romme rule in effect, or nearly so
@@ -632,6 +632,7 @@ my %formats = (
       , '%' => sub { '%' }
       , 'EY' => sub { Roman $_[0]->year }
       , 'Ey' => sub { roman $_[0]->year }
+      , '*'  => sub { $_[0]->feast_long }
       , 'Ej' => sub { $_[0]->feast_long }
       , 'EJ' => sub { $_[0]->feast_caps }
       , 'Oj' => sub { $_[0]->feast_short }
@@ -655,7 +656,7 @@ sub strftime {
       # And if the user asks for %E!,
       # it defaults to E! because neither %E! nor %! exist.
       $f =~ s/
-	        %([EO]?([%a-zA-Z]))
+	        %([EO]?([*%a-zA-Z]))
               | %{(\w+)}
              /
               $3 ? ($self->can($3) ? $self->$3() : "\%{$3}")
@@ -693,7 +694,7 @@ sub on_date {
 
 # A module must return a true value. Traditionally, a module returns 1.
 # But this module is a revolutionary one, so it discards all old traditions.
-"Liberté, égalité, fraternité
+"LibertÃ©, Ã©galitÃ©, fraternitÃ©
 ou la mort !";
 
 __END__
@@ -721,16 +722,16 @@ DateTime::Calendar::FrenchRevolutionary - Dates in the French Revolutionary Cale
 
 =head1 DESCRIPTION
 
-DateTime::Calendar::FrenchRevolutionary implements the French Revolutionary
-Calendar.  This module implements most methods of DateTime; see the
-DateTime(3) manpage for all methods.
+DateTime::Calendar::FrenchRevolutionary    implements    the    French
+Revolutionary  Calendar.   This  module  implements  most  methods  of
+DateTime; see the DateTime(3) manpage for all methods.
 
 =head1 HISTORICAL NOTES
 
 The Revolutionary calendar was in  use in France from 24 November 1793
-(4 Frimaire  II) to 31  December 1805 (10  Nivôse XIV). An  attempt to
+(4 Frimaire  II) to 31  December 1805 (10  NivÃ´se XIV). An  attempt to
 apply  the  decimal rule  (the  basis of  the  metric  system) to  the
-calendar. Therefore, the week  disappeared, replaced by the décade (10
+calendar. Therefore, the week  disappeared, replaced by the dÃ©cade (10
 days, totally different from the  English word "decade", 10 years). In
 addition, all months have exactly 3 decades, no more, no less.
 
@@ -747,21 +748,21 @@ Carlyle proposes these translations for the month names:
 
 =over 4
 
-=item Vendémiaire -> Vintagearious
+=item VendÃ©miaire -> Vintagearious
 
 =item Brumaire -> Fogarious
 
 =item Frimaire -> Frostarious
 
-=item Nivôse -> Snowous
+=item NivÃ´se -> Snowous
 
-=item Pluviôse -> Rainous
+=item PluviÃ´se -> Rainous
 
-=item Ventôse -> Windous
+=item VentÃ´se -> Windous
 
 =item Germinal -> Buddal
 
-=item Floréal -> Floweral
+=item FlorÃ©al -> Floweral
 
 =item Prairial -> Meadowal
 
@@ -779,7 +780,7 @@ reform was put on hold after two years or so and it never reappeared.
 
 =head1 METHODS
 
-Since  the week  has been  replaced by  the décade,  the corresponding
+Since  the week  has been  replaced by  the dÃ©cade,  the corresponding
 method  names  still   are  C<decade_number>,  C<day_of_decade>,  etc.
 English  speakers, please  note that  this has  nothing to  do  with a
 10-year period.
@@ -806,62 +807,62 @@ Creates a new date object. This class accepts the following parameters:
 
 =item * C<year>
 
-Year number, mandatory. Year 1 corresponds to Gregorian years late 1792 
-and early 1793.
+Year  number, mandatory. Year  1 corresponds  to Gregorian  years late
+1792 and early 1793.
 
 =item * C<month>
 
-Month number, in the range 1..12, plus number 13 to designate the end-of-year
-additional days.
+Month  number, in the  range 1..12,  plus number  13 to  designate the
+end-of-year additional days.
 
 =item * C<day>
 
-Day number, in the range 1..30. In the case of additional days, the range
-is 1..5 or 1..6 depending on the year (leap year or normal).
+Day number,  in the range 1..30.  In the case of  additional days, the
+range is 1..5 or 1..6 depending on the year (leap year or normal).
 
 =item * C<hour>, C<minute>, C<second>
 
-Decimal hour number, decimal minute number and decimal second number.
-The hour is in the 0..9 range, both other parameters are in the 0..99
-range. These parameters cannot be specified with the sexagesimal time
+Decimal hour number, decimal  minute number and decimal second number.
+The hour is in the 0..9  range, both other parameters are in the 0..99
+range. These parameters cannot  be specified with the sexagesimal time
 parameters C<abt_>I<xxx> (see below).
 
 =item * C<abt_hour>, C<abt_minute>, C<abt_second>
 
-Sexagesimal hour number, sexagesimal minute number and sexagesimal second number.
-The hour is in the 0..23 range, both other parameters are in the 0..59
-range. These parameters cannot be specified with the decimal time
-parameters (see above).
+Sexagesimal  hour number,  sexagesimal minute  number  and sexagesimal
+second number.  The hour is  in the 0..23 range, both other parameters
+are in the 0..59 range.  These parameters cannot be specified with the
+decimal time parameters (see above).
 
 =item * C<locale>
 
-Only the values C<fr> (French) and C<en> (English) are allowed. Default
-is French. No other values are possible, even territory variants such
-as C<fr_BE> or C<en_US>.
+Only   the   values   C<fr>   (French)   and   C<en>   (English)   are
+allowed.  Default  is  French.  No  other values  are  possible,  even
+territory variants such as C<fr_BE> or C<en_US>.
 
 =back
 
 =item * from_epoch( epoch => $epoch )
 
-Creates a date object from a timestamp value. This timestamp is the number of
-seconds since the computer epoch, not the calendar epoch.
+Creates a  date object from a  timestamp value. This  timestamp is the
+number of seconds since the computer epoch, not the calendar epoch.
 
 =item * now( )
 
-Creates a date object that corresponds to the precise instant the 
+Creates  a date  object that  corresponds to  the precise  instant the
 method is called.
 
 =item * from_object( object => $object, ... )
 
-Creates a date object by converting another object from the DateTime suite.
-The preferred way for calendar to calendar conversion.
+Creates a date  object by converting another object  from the DateTime
+suite.  The preferred way for calendar to calendar conversion.
 
 =item * last_day_of_month( ... )
 
-Same as new, except that the C<day> parameter is forbidden and
-is automatically set to the end of the month. If the C<month>
-paramter is 13 for the additional days, the day is set to the
-end of the year, either the 5th or the 6th additional day.
+Same as C<new>,  except that the C<day> parameter  is forbidden and is
+automatically set to the end of the month. If the C<month> paramter is
+13 for  the additional days, the  day is set  to the end of  the year,
+either the 5th or the 6th additional day.
 
 =item * clone
 
@@ -870,10 +871,10 @@ Creates a replica of the original date object.
 =item * set( .. )
 
 This method can be used to change the local components of a date time,
-or its locale.  This method accepts any parameter allowed by the
+or  its locale.   This method  accepts  any parameter  allowed by  the
 C<new()> method.
 
-This method performs parameters validation just as is done in the
+This  method performs  parameters validation  just as  is done  in the
 C<new()> method.
 
 =back
@@ -884,12 +885,13 @@ C<new()> method.
 
 =item * year
 
-Returns the year
+Returns the year. C<%G> in C<strftime>.
 
 =item * month
 
 Returns the month in the 1..12 range. If the date is an additional day
-at the end of the year, returns 13, which is not really a month number.
+at  the end  of the  year, returns  13, which  is not  really  a month
+number. C<%f> in C<strftime>.a
 
 =item * month_0
 
@@ -900,74 +902,81 @@ at the end of the year, returns 12, which is not really a month number.
 
 Returns the  French name of the  month or its  English translation. No
 other language is  supported yet.  For the additional  days at the end
-of  the  year,  returns  "jour  complémentaire",  the  translation  of
-"additional day".
+of  the  year,  returns  "jour  complÃ©mentaire",  the  translation  of
+"additional day". C<%B> in C<strftime>.
 
 Note: The  English translations for  the month names come  from Thomas
 Carlyle's book.
 
 =item * month_abbr
 
-Returns  a 3-letter abbreviation of the month name. For the additional
-days at the end of the year, returns "S-C", because these additional days
-were also known as the I<Sans-culottides>.
+Returns a 3-letter abbreviation of  the month name. For the additional
+days at the  end of the year, returns  "S-C", because these additional
+days  were also  known as  the I<Sans-culottides>.  C<%b> or  C<%h> in
+C<strftime>.
 
 =item * day_of_month, day, mday
 
-Returns the day of the month, from 1..30.
+Returns the day of the month, from 1..30. C<%d> or C<%e> in C<strftime>.
 
 =item * day_of_decade, dod, day_of_week, dow, wday
 
-Returns the day of the decade, from 1..10. The C<dow>, C<wday> and C<day_of_week>
-names are there for compatibility's sake with C<DateTime>, even if the word
-"week" is improper.
+Returns the  day of  the decade, from  1..10. The C<dow>,  C<wday> and
+C<day_of_week>   names  are  there   for  compatibility's   sake  with
+C<DateTime>, even if the word "week" is improper.
 
 =item * day_name
 
-Returns the name of the current day of the I<décade>.
+Returns  the  name of  the  current day  of  the  I<dÃ©cade>. C<%A>  in
+C<strftime>.
 
 =item * day_abbr
 
-Returns the abbreviated name of the current day of the I<décade>.
+Returns   the   abbreviated  name   of   the   current   day  of   the
+I<dÃ©cade>. C<%a> in C<strftime>.
 
 =item * day_of_year, doy
 
-Returns the day of the year.
+Returns the day of the year. C<%j> in C<strftime>.
 
 =item * feast, feast_short, feast_long, feast_caps
 
-Returns the plant, animal, mineral or tool associated with the day.
-The default format is C<short>. If requested, you can ask for 
-the C<long> format, with a C<jour de...> prefix, or the C<caps>
-format, with the first letter of the prefix and feast capitalized.
-Example: for 11 Vendémiaire, we have:
+Returns the  plant, animal, mineral  or tool associated with  the day.
+The  default format is  C<short>. If  requested, you  can ask  for the
+C<long> format,  with a C<jour  de...> prefix, or the  C<caps> format,
+with the first  letter of the prefix and  feast capitalized.  Example:
+for 11 VendÃ©miaire, we have:
 
    feast, feast_short  pomme de terre
    feast_long          jour de la pomme de terre
    feast_caps          Jour de la Pomme de terre
+
+C<%Ej>, C<%EJ>, C<%Oj> or C<%*> in C<strftime>.
 
 Note: the  English translation for  the feasts comes mainly  from Alan
 Taylor's website "Preserving the French Republican Calendar".
 
 =item * ymd, dmy, mdy
 
-Returns the date in the corresponding composite format. An optional
-parameter allows you to choose the separator between the date elements.
+Returns the  date in the  corresponding composite format.  An optional
+parameter  allows  you  to  choose  the  separator  between  the  date
+elements. C<%F> in C<strftime>.
 
 =item * abt_hour, abt_minute, abt_min, abt_second, abt_sec
 
-Return the corresponding time elements, using a sexagesimal scale.
+Return  the corresponding  time elements,  using a  sexagesimal scale.
 This is also known as the I<Anglo-Babylonian Time>.
 
 =item * hour, minute, min, second, sec
 
-Return the corresponding time elements, using a decimal scale,
-with 10 hours per day, 100 minutes per hour and 100 seconds per minute.
+Return the corresponding time elements, using a decimal scale, with 10
+hours per day, 100 minutes per hour and 100 seconds per minute. C<%H>,
+C<%M> and C<%S> in C<strftime>.
 
 =item * abt_hms
 
-Returns a composite string with the three time elements. Uses the
-I<Anglo-Babylonian Time>.  An optional parameter allows you to choose
+Returns  a composite  string with  the three  time elements.  Uses the
+I<Anglo-Babylonian Time>.  An optional  parameter allows you to choose
 the separator (C<:> by default).
 
 =item * hms
@@ -987,14 +996,14 @@ Returns a true value if the year is a leap year, false else.
 
 =item * decade_number, week_number
 
-Returns the I<décade> number.
+Returns the I<dÃ©cade> number. C<%U>, C<%V> or C<%W> in C<strftime>.
 
 =item * decade, week
 
-Returns a 2-element list, with the year number and the decade number.
-Since the I<décade> is always aligned with a month and then with a 
-year, the year element is always the same as the date's year.
-Anyhow, this is done for compatibility with DateTime's C<week> method.
+Returns a 2-element list, with  the year number and the decade number.
+Since the  I<dÃ©cade> is always  aligned with a  month and then  with a
+year, the year element is always the same as the date's year.  Anyhow,
+this is done for compatibility with DateTime's C<week> method.
 
 =item * utc_rd_values
 
@@ -1004,7 +1013,7 @@ to create objects based on the values provided by this object.
 
 =item * jd, mjd
 
-These return the Julian Day and Modified Julian Day, respectively.
+These  return the Julian  Day and  Modified Julian  Day, respectively.
 The value returned is a floating point number.  The fractional portion
 of the number represents the time portion of the datetime.
 
@@ -1098,7 +1107,7 @@ The day of the month as a decimal number (range 01 to 30).
 
 =item * %D
 
-Equivalent to %m/%d/%y.  This is not a good standard format if you
+Equivalent to  %m/%d/%y.  This  is not a  good standard format  if you
 have want both Americans and Europeans to understand the date!
 
 =item * %e
@@ -1112,12 +1121,12 @@ Equivalent to %Y-%m-%d (the ISO 8601 date format)
 
 =item * %G
 
-Strictly similar to C<%Y>, since I<décades> are aligned with 
+Strictly similar to C<%Y>, since I<dÃ©cades> are aligned with 
 the beginning of the year in this calendar.
 
 =item * %g
 
-Strictly similar to C<%y>, since I<décades> are aligned with 
+Strictly similar to C<%y>, since I<dÃ©cades> are aligned with 
 the beginning of the year in this calendar.
 
 =item * %h
@@ -1131,7 +1140,7 @@ The result is a single-char string.
 
 =item * %I
 
-The hour as a decimal number using the numbers on a clockface, that
+The hour  as a decimal number  using the numbers on  a clockface, that
 is, range 1 to 10. The result is a single-char string, except for 10.
 
 =item * %j
@@ -1140,14 +1149,15 @@ The day of the year as a decimal number (range 001 to 366).
 
 =item * %k
 
-The hour (10-hour clock) as a decimal number (range 0 to 9); 
-the result is a 2-char string, the digit is preceded by a blank. (See also %H.)
+The  hour (10-hour  clock) as  a decimal  number (range  0 to  9); the
+result is a 2-char string, the digit is preceded by a blank. (See also
+%H.)
 
 =item * %l
 
-The hour as read from a clockface (range 1 to 10). The result is
-a  2-char string, the digit is preceded by a blank, except of course
-for 10. (See also %I.)
+The hour  as read from a  clockface (range 1  to 10). The result  is a
+2-char string, the digit is preceded  by a blank, except of course for
+10. (See also %I.)
 
 =item * %m
 
@@ -1163,7 +1173,7 @@ A newline character.
 
 =item * %p
 
-Either `AM' or `PM' according to the given time value, or the
+Either  `AM'  or  `PM' according  to  the  given  time value,  or  the
 corresponding strings for the current locale.  Noon is treated as `pm'
 and midnight as `am'.
 
@@ -1179,8 +1189,8 @@ equivalent to `%I:%M:%S %p'.
 
 =item * %R
 
-The decimal time in 10-hour notation (%H:%M). (SU) For a version including the
-seconds, see %T below.
+The  decimal time  in 10-hour  notation  (%H:%M). (SU)  For a  version
+including the seconds, see %T below.
 
 =item * %s
 
@@ -1200,29 +1210,29 @@ The decimal time in 10-hour notation (%H:%M:%S).
 
 =item * %u
 
-The day of the I<décade> as a decimal, range 1 to 10, Primidi being 1.  See
+The day of the I<dÃ©cade> as a decimal, range 1 to 10, Primidi being 1.  See
 also %w.
 
 =item * %U
 
-The I<décade> number of the current year as a decimal number, range 00
+The I<dÃ©cade> number of the current year as a decimal number, range 00
 to 37.
 
 =item * %V
 
 The decade number (French Revolutionary equivalent to
 the ISO 8601:1988 week number) of the current year as a decimal number,
-range 01 to 37. Identical to %U, since décades are aligned with the
+range 01 to 37. Identical to %U, since dÃ©cades are aligned with the
 beginning of the year.
 
 =item * %w
 
-The day of the I<décade> as a decimal, range 0 to 9, Décadi being 0.  See
+The day of the I<dÃ©cade> as a decimal, range 0 to 9, DÃ©cadi being 0.  See
 also %u.
 
 =item * %W
 
-The I<décade> number of the current year as a decimal number, range 00
+The I<dÃ©cade> number of the current year as a decimal number, range 00
 to 37.
 
 =item * %y
@@ -1244,15 +1254,16 @@ to write years when using the French Revolutionary calendar.
 
 =item * %z
 
-The time-zone as hour offset from UTC.  Required to emit
-RFC822-conformant dates (using "%a, %d %b %Y %H:%M:%S %z").
-Since the module does not support time zones, this gives
-silly results and you cannot be RFC822-conformant.
-Anyway, RFC822 requires the Gregorian calendar, doesn't it?
+The   time-zone  as   hour  offset   from  UTC.    Required   to  emit
+RFC822-conformant dates (using "%a, %d %b %Y %H:%M:%S %z").  Since the
+module does not  support time zones, this gives  silly results and you
+cannot  be RFC822-conformant.  Anyway,  RFC822 requires  the Gregorian
+calendar, doesn't it?
 
 =item * %Z
 
-The time zone or name or abbreviation, should the module have supported them.
+The  time  zone  or  name  or abbreviation,  should  the  module  have
+supported them.
 
 =item * %%
 
@@ -1264,9 +1275,9 @@ A literal `%' character.
 
 =head2 Time Zones
 
-Only the I<floating> time zone is supported.  Time zones were created
-in the late XIXth century, at a time when instant communication
-(electric telegraph) made it necessary.  But at this time, the French
+Only the I<floating> time zone  is supported.  Time zones were created
+in  the late  XIXth  century,  at a  time  when instant  communication
+(electric telegraph) made it necessary.   But at this time, the French
 Revolutionary calendar was no longer in use.
 
 =head2 Leap Seconds
@@ -1309,9 +1320,9 @@ calendar/cal-french.el in emacs-21.2 or xemacs 21.1.8
 
 =head2 Books
 
-Quid 2001, M and D Frémy, publ. Robert Laffont
+Quid 2001, M and D FrÃ©my, publ. Robert Laffont
 
-Agenda Républicain 197 (1988/89), publ. Syros Alternatives
+Agenda RÃ©publicain 197 (1988/89), publ. Syros Alternatives
 
 Any French schoolbook about the French Revolution
 

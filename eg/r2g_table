@@ -22,7 +22,7 @@ die "The number of columns must be a multiple of 4 plus 1 (e.g. 5, 9 or 13)"
 
 # Because the  Gregorian leap day  may occur in  the middle of  a French
 # Revolutionary year,  each F-R  year is divided  into two  parts: begin
-# (Vend閙iaire  to  mid-Vent魋e)  and  end  (mid-Vent魋e  to  additional
+# (Vend茅miaire  to  mid-Vent么se)  and  end  (mid-Vent么se  to  additional
 # days). The French Revolutionary leap  day is not a problem, it appears
 # at  the  end of  the  year,  and therefore  has  no  influence on  the
 # formulas.
@@ -30,7 +30,7 @@ my @parts = ('b', 'e');
 
 # For each year and each part, we store the G day number of a specific F-R day.
 # This specific day is
-#      b => 1 Vend閙iaire => ?? September
+#      b => 1 Vend茅miaire => ?? September
 #      e => 1 Germinal    => ?? March
 # We partially store the reverse : for each part or year and each G day number,
 # which year can be taken as an sample.
@@ -107,8 +107,8 @@ if ($lang eq 'fr')
 else
   { $ref_labels = do "$FindBin::Bin/labels_en" }
 my %labels = %$ref_labels;
-my @fr_month = qw (Vend閙iaire Brumaire Frimaire Niv魋e   Pluvi魋e  Vent魋e 
-                   Germinal    Flor閍l  Prairial Messidor Thermidor Fructidor);
+my @fr_month = qw (Vend茅miaire Brumaire Frimaire Niv么se   Pluvi么se  Vent么se 
+                   Germinal    Flor茅al  Prairial Messidor Thermidor Fructidor);
 push @fr_month, "Sans-Culottides<br>$labels{add_days}";
 
 html_1($labels{title1});
@@ -172,8 +172,8 @@ sub build_intervals {
 
 #
 # Compute the formulas for a sample year and for a month.
-# 1st Vend閙iaire I is 22 September 1792, and 30 Vend閙iaire I is 21 October I.
-# Therefore, for Vend閙iaire I, we have two formulas : "+21 Sep" and "-9 Oct".
+# 1st Vend茅miaire I is 22 September 1792, and 30 Vend茅miaire I is 21 October I.
+# Therefore, for Vend茅miaire I, we have two formulas : "+21 Sep" and "-9 Oct".
 # Since all French Revolutionary months have 30 days, only one computation is necessary.
 # Exception: the additional days are grouped in a notional 13th month, which lasts
 # either 5 or 6 days. In this case, we have 3 formulas for September, at the cost of 2 conversions.
@@ -284,7 +284,7 @@ sub usage {
   my ($day) = @_;
   my ($y, $m, $d) = unpack "A4A2A2", sprintf "%08d", $day;
   $y += 0; # Remove the leading zeros
-  # We want neither Vent魋e nor additional days for the first example,
+  # We want neither Vent么se nor additional days for the first example,
   # so we choose a random month.
   if ($m == 6 || $m == 13)
     {
@@ -320,7 +320,7 @@ sub usage {
   print;
   print "\n";
 
-  # Second example: Vent魋e
+  # Second example: Vent么se
   # $m = 6;
   #$date = new Date::Convert::French_Rev $y, 6, $d;
   #$title_date = $date->date_string("%d %B %EY");
@@ -377,8 +377,8 @@ with 13 or even 17, you get a wide table with fewer lines.
 The  instructions for  use need  a date  as an  example. The  user can
 select the  date that  will be used  as an example  (French Revolution
 date,  YYYYMMDD numeric  format). Actually,  the instructions  use two
-examples: the first one not in Vent魋e, the second one in Vent魋e.  If
-the user provides a date in  Vent魋e, the program will select a random
+examples: the first one not in Vent么se, the second one in Vent么se.  If
+the user provides a date in  Vent么se, the program will select a random
 month for the first example.
 
 =item lang

@@ -3,7 +3,7 @@ package DateTime::Calendar::FrenchRevolutionary::Locale;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '0.07'; # same as parent module DT::C::FR
+$VERSION = '0.08'; # same as parent module DT::C::FR
 
 sub load {
   my ($self, $lang) = @_;
@@ -14,4 +14,4 @@ sub load {
 }
 # A module must return a true value. Traditionally, a module returns 1.
 # But this module is a revolutionary one, so it discards all old traditions.
-"Amour sacré de la patrie, conduis soutiens nos bras vengeurs.";
+"Amour sacrÃ© de la patrie, conduis soutiens nos bras vengeurs.";

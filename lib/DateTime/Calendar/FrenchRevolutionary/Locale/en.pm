@@ -2,7 +2,7 @@ package DateTime::Calendar::FrenchRevolutionary::Locale::en;
 
 use vars qw($VERSION);
 
-$VERSION = '0.07'; # same as parent module DT::C::FR
+$VERSION = '0.08'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vin Fog Fro Sno Rai Win Bud Flo Mea Rea Hea Fru S-C);
 
@@ -19,24 +19,24 @@ my @decade_days_short = qw (Fir Two Thi Fou Fif Six Sev Eig Nin Ten);
 
 my @am_pms = qw(AM PM);
 
-my %date_formats = (
-"short" => "\%d\/\%m\/\%Y",
-"medium" => "\%a\ \%d\ \%b\ \%Y",
-"long" => "\%A\ \%d\ \%B\ \%EY",
-"full" => "\%A\ \%d\ \%B\ \%EY\,\ \%{feast_long\}",
-);
-
-my %time_formats = (
-"short" => "\%H\:\%M",
-"medium" => "\%H\:\%M\:\%S",
-"long" => "\%H\:\%M\:\%S",
-"full" => "\%H\ h\ \%M\ mn \%S\ s",
-);
-
 my $date_before_time = "1";
 my $default_date_format_length = "medium";
 my $default_time_format_length = "medium";
 my $date_parts_order = "dmy";
+
+my %date_formats = (
+    "short"  => "\%d\/\%m\/\%Y",
+    "medium" => "\%a\ \%d\ \%b\ \%Y",
+    "long"   => "\%A\ \%d\ \%B\ \%EY",
+    "full"   => "\%A\ \%d\ \%B\ \%EY\,\ \%{feast_long\}",
+);
+
+my %time_formats = (
+    "short"  => "\%H\:\%M",
+    "medium" => "\%H\:\%M\:\%S",
+    "long"   => "\%H\:\%M\:\%S",
+    "full"   => "\%H\ h\ \%M\ mn \%S\ s",
+);
 
 # When initializing an array with lists within lists, it means one of two things:
 # Either it is a newbie who does not know how to make multi-dimensional arrays,
@@ -47,7 +47,7 @@ my $date_parts_order = "dmy";
 # This array is mainly based on http://www.kokogiak.com/frc/default.asp
 # Used with permission from Alan Taylor
 my @feast = (
-# Vendémiaire
+# VendÃ©miaire
 	qw(
        grapes			saffron		sweet_chestnut	colchic		horse
        balsam			carrot		amaranth	parsnip		vat
@@ -59,9 +59,9 @@ my @feast = (
 # Brumaire
 	qw(
        apple		celery		pear			beet		goose
-       heliotrope	fig		black_salsify		whitebeam	plow
+       heliotrope	fig		block_salsify		whitebeam	plow
        salsify		water_caltrop	jerusalem_artichoke	endive		turkey
-       ?chervis		cress		plumbago		?grenade	harrows
+       ?chervis		cress		plumbago		pomegranate	harrows
        ?bacchante	?azerole	madder			orange		pheasant
        pistachio	?macjonc	quince			corme		roller
 	),
@@ -74,7 +74,7 @@ my @feast = (
        maple_sugar	heather		reed		sorrel		cricket
        umbrella_pine	liege		truffle		olive		shovel
 	),
-# Nivôse
+# NivÃ´se
 	qw(
        peat		 coal		bitumen		sulphur		dog
        lava		 topsoil	manure		saltpeter	flail
@@ -83,7 +83,7 @@ my @feast = (
        ?gypsum		 salt		iron		copper		cat
        tin		 lead		zinc		mercury		sifter
 	),
-# Pluviôse
+# PluviÃ´se
 	qw(
        wood_laurel	moss		?fragon		snow-flower		bull
        thyme		?amadouvier	mezereon	poplar			axe
@@ -92,13 +92,13 @@ my @feast = (
        candytuft	daphne		grass		colonial_bentgrass	hare
        woad		hazel_tree	cyclamen	celandine		sleigh
 	),
-# Ventôse
+# VentÃ´se
 	qw(
        coltsfoot	dogwood		hoary_stock	privet		billygoat
        hazelwort	alaternus	violet		eared_willow	spade
        narcissus	elm		fumitory	hedge_mustard	goat
        spinach		leopard's_bane	pimpernel	chervil		line
-       mandrake	        parsley		?cochléaria	daisy		tuna_fish
+       mandrake	        parsley		?cochlÃ©aria	daisy		tuna_fish
        dandelion	windflower	capillary	ash		dibble
 	),
 # Germinal
@@ -110,14 +110,14 @@ my @feast = (
        redbud		roman_lettuce	chestnut_tree	rocket		pigeon
        lilac		anemone		pansy		bilberry	transplant_tool
 	),
-# Floréal
+# FlorÃ©al
 	qw(
        rose		oak			fern		hawthorn	nightingale
        culverwort	lily_of_the_valley	mushroom	hyacinth	rake
        rhubarb		sainfoin		?gold_bar	chamerops	silkworm
        consound		burnet			?gold_basket	orache		hoe
        statice		fritillary		borage		valerian	carp
-       spindletree	chive			?buglosse	?sénevé		shepherd_staff
+       spindletree	chive			?buglosse	?sÃ©nevÃ©		shepherd_staff
 	),
 # Prairial
 	qw(
@@ -125,7 +125,7 @@ my @feast = (
        balm		wheat		martagon	wild_thyme	scythe
        strawberry	betony		pea		acacia		quail
        carnation	elder_tree	poppy		lime		pitchfork
-       barbel		chamomile	honeysuckle	curds		tench
+       barbel		camomile	honeysuckle	curds		tench
        jasmine		vervain		thyme		peony		carriage
 	),
 # Messidor
@@ -134,12 +134,12 @@ my @feast = (
        rosemary		cucumber	shallot		wormwood	sickle
        coriander	artichoke	clove		lavender	chamois
        tobacco		currant		woodpea		cherry		park
-       mint		cumin		bean		?orcanète	guinea_hen
+       mint		cumin		bean		?orcanÃ¨te	guinea_hen
        sage		garlic		tare		corn		chalemy
 	),
 # Thermidor
 	qw(
-       german_wheat	?soup_stock	melon		ryegrass	ram
+       german_wheat	mullein  	melon		ryegrass	ram
        horsetail	wormwood	carthame	blackberry	watering_can
        parsnip		?salicorne	apricot		basil		ewe
        marshmallow	flax		almond		gentian		waterlock
@@ -155,7 +155,7 @@ my @feast = (
        wild_rose	hazelnut	hops		sorghum		crayfish
        bitter_orange	goldenrod	corn		chestnut	basket
 	),
-# Jours complémentaires
+# Jours complÃ©mentaires
 	qw(
        virtue            engineering    labour          opinion          rewards
        revolution
@@ -199,7 +199,7 @@ sub feast_short {
   my $lb = $feast[$date->day_of_year_0];
   $lb =~ s/^\?//;
   $lb =~ s/_/ /g;
-  return substr($lb, 1);
+  return $lb;
 }
 
 sub feast_long {
@@ -222,13 +222,13 @@ sub    full_date_format      { $_[0]->date_formats->{full} }
 sub    long_date_format      { $_[0]->date_formats->{long} }
 sub  medium_date_format      { $_[0]->date_formats->{medium} }
 sub   short_date_format      { $_[0]->date_formats->{short} }
-sub default_date_format      { $_[0]->date_formats->{ $_[0]->{default_date_format_length} } }
+sub default_date_format      { $_[0]->date_formats->{ $_[0]->default_date_format_length } }
 
 sub    full_time_format      { $_[0]->time_formats->{full} }
 sub    long_time_format      { $_[0]->time_formats->{long} }
 sub  medium_time_format      { $_[0]->time_formats->{medium} }
 sub   short_time_format      { $_[0]->time_formats->{short} }
-sub default_time_format      { $_[0]->time_formats->{ $_[0]->{default_time_format_length} } }
+sub default_time_format      { $_[0]->time_formats->{ $_[0]->default_time_format_length } }
 
 sub _datetime_format_pattern_order { $_[0]->date_before_time ? (0, 1) : (1, 0) }
 
@@ -238,8 +238,8 @@ sub  medium_datetime_format { join ' ', ( $_[0]->medium_date_format, $_[0]->medi
 sub   short_datetime_format { join ' ', ( $_[0]->short_date_format, $_[0]->short_time_format )[ $_[0]->_datetime_format_pattern_order ] }
 sub default_datetime_format { join ' ', ( $_[0]->default_date_format, $_[0]->default_time_format )[ $_[0]->_datetime_format_pattern_order ] }
 
-sub default_date_format_length { $_[0]->{default_date_format_length} }
-sub default_time_format_length { $_[0]->{default_time_format_length} }
+sub default_date_format_length { $default_date_format_length }
+sub default_time_format_length { $default_time_format_length }
 
 sub month_names         { [ @months ] }
 sub month_abbreviations { [ @months_short ] }
@@ -262,191 +262,191 @@ sub on_date {
 sub _load_events {
   %event = ('dummy', split /(\d{4})\n/, <<'EVENTS');
 0101
-1 Vendémiaire I. The French troops enter Savoie
+1 VendÃ©miaire I. The French troops enter Savoie
 
-1 Vendémiaire III. The posts in the woods of Aachen and Reckem are
+1 VendÃ©miaire III. The posts in the woods of Aachen and Reckem are
 taken by the Army of North.
 
 0102
-2 Vendémiaire I. Conquest of Chambéry
+2 VendÃ©miaire I. Conquest of ChambÃ©ry
 
-2 Vendémiaire III. The Costouge redoubt and camp are taken by the Army
+2 VendÃ©miaire III. The Costouge redoubt and camp are taken by the Army
 of Eastern Pyrenees.
 
-2 Vendémiaire V. The Army of Italy routs the enemy at Governolo.
+2 VendÃ©miaire V. The Army of Italy routs the enemy at Governolo.
 
 0103
-3 Vendémiaire IV. Affair of Garesio.
+3 VendÃ©miaire IV. Affair of Garesio.
 
 0104
-4 Vendémiaire II. The Army of Alps takes the 
+4 VendÃ©miaire II. The Army of Alps takes the 
 Chatillon fieldworks; Piemontese rout across the Giffe river.
 
 0105
-5 Vendémiaire III. The Spanish are defeated in Olia and Monteilla by the
+5 VendÃ©miaire III. The Spanish are defeated in Olia and Monteilla by the
 Army of Eastern Pyrenees.
 
 0106
-6 Vendémiaire III. Surrender at Crevecoeur to the Army of the North.
+6 VendÃ©miaire III. Surrender at Crevecoeur to the Army of the North.
 
-6 Vendémiaire III. Kayserlautern, Alsborn and other surrounding posts
+6 VendÃ©miaire III. Kayserlautern, Alsborn and other surrounding posts
 are taken again by the Army of the Rhine.
 
-6 Vendémiaire V. The enemy attacks the Army of Sambre and Meuse at
+6 VendÃ©miaire V. The enemy attacks the Army of Sambre and Meuse at
 Wurstatt, Nider-Ulm, Ober and Nider-Ingelheim; the attack is repulsed.
 
 0107
-7 Vendémiaire I. Anselme's troops conquer the city of Nice and the Montalban fortress. 
+7 VendÃ©miaire I. Anselme's troops conquer the city of Nice and the Montalban fortress. 
 
-7 Vendémiaire II. The Army of Alps (Verdelin) defeats the enemy in the Sallanges 
+7 VendÃ©miaire II. The Army of Alps (Verdelin) defeats the enemy in the Sallanges 
 defiles and takes the Saint-Martin redoubt.
 
 0108
-8 Vendémiaire V. 150 men from the Army of Italy sortie from Mantoue to forage.
+8 VendÃ©miaire V. 150 men from the Army of Italy sortie from Mantoue to forage.
 They must surrender to the people of Reggio.
 
 0109
-9 Vendémiaire I. Custines' French conquer Spire.
+9 VendÃ©miaire I. Custines' French conquer Spire.
 
-9 Vendémiaire II. The Army of Alps takes the fieldworks at
+9 VendÃ©miaire II. The Army of Alps takes the fieldworks at
 Mont-Cormet, previously held by Piemontese.
 
 0111
-11 Vendémiaire II. Prisy's troops (Army of Alps) take the Valmeyer outpost
-after a bayonet charge, Saint-André's and Chamberlhac's troops take the Beaufort
+11 VendÃ©miaire II. Prisy's troops (Army of Alps) take the Valmeyer outpost
+after a bayonet charge, Saint-AndrÃ©'s and Chamberlhac's troops take the Beaufort
 post, General-in-Chief Kellerman's troops take Moutiers and the Saint-Maurice
 town and Ledoyen's troops storm the Madeleine pass post. 
 
-11 Vendémiaire III. Battle of Aldenhoven, the Army of Sambre and Meuse
+11 VendÃ©miaire III. Battle of Aldenhoven, the Army of Sambre and Meuse
 routs the coalised troops.
 
-11 Vendémiaire V. The Army of Rhine and Moselle attacks
+11 VendÃ©miaire V. The Army of Rhine and Moselle attacks
 on the whole front and routs the enemy.
 
 0112
-12 Vendémiaire II. The Spanish troops are repulsed back in their camps in the Boulon 
-and Argelès by the Army of Eastern Pyrenees.
+12 VendÃ©miaire II. The Spanish troops are repulsed back in their camps in the Boulon 
+and ArgelÃ¨s by the Army of Eastern Pyrenees.
 
-12 Vendémiaire III. The land of Juliers surrenders to the Army of Sambre and Meuse.
+12 VendÃ©miaire III. The land of Juliers surrenders to the Army of Sambre and Meuse.
 
 0113
-13 Vendémiaire I. The Austrians must leave Worms
+13 VendÃ©miaire I. The Austrians must leave Worms
 and Custines' troops enter the city.
 
-13 Vendémiaire II Army of Eastern Pyrenees: Dagobert's troops take
+13 VendÃ©miaire II Army of Eastern Pyrenees: Dagobert's troops take
 Campredon while the Colioure garrison fights and routs the Spanish cavalry.
 
-13 Vendémiaire II Army of Western Pyrenees. Attacks and capture of the
+13 VendÃ©miaire II Army of Western Pyrenees. Attacks and capture of the
 Arau and Aure valley posts.
 
-13 Vendémiaire IV. Bonaparte suppresses a royalist demonstration at the 
+13 VendÃ©miaire IV. Bonaparte suppresses a royalist demonstration at the 
 Saint-Roch church in Paris
 
 0115
-15 Vendémiaire III. Cologne surrenders to the Army of Sambre and Meuse.
+15 VendÃ©miaire III. Cologne surrenders to the Army of Sambre and Meuse.
 
 0116
-16 Vendémiaire V. The enemy, blockaded in Mantoue by the Army of Italy
+16 VendÃ©miaire V. The enemy, blockaded in Mantoue by the Army of Italy
 attempt a 4,600-troop sortie but fails.
 
 0117
-17 Vendémiaire I. The Austrians call off the siege of Lille.
+17 VendÃ©miaire I. The Austrians call off the siege of Lille.
 
-17 Vendémiaire III. Fight for and capture of Frankenthal by the Army of the Rhine.
+17 VendÃ©miaire III. Fight for and capture of Frankenthal by the Army of the Rhine.
 
 0118
-18 Vendémiaire II. Bombardment of Lyon, which opens her gates to
-Dubois-de-Crancé's troops.
+18 VendÃ©miaire II. Bombardment of Lyon, which opens her gates to
+Dubois-de-CrancÃ©'s troops.
 
-18 Vendémiaire III. Capture of Shelaudenbach and Vollfstein by the Army of the Rhine
+18 VendÃ©miaire III. Capture of Shelaudenbach and Vollfstein by the Army of the Rhine
 which links with the Army of Moselle in Lautreck.
 
 0119
-19 Vendémiaire III. Before Maestricht, the Army of Sambre and Meuse takes back
+19 VendÃ©miaire III. Before Maestricht, the Army of Sambre and Meuse takes back
 the Mont-Saint-Pierre castle.
 
 0120
-20 Vendémiaire III. The Army of Moselle marches on Birkenfeldt, Oberstein,
+20 VendÃ©miaire III. The Army of Moselle marches on Birkenfeldt, Oberstein,
 Kirn and Meisenheim.
 
 0121
-21 Vendémiaire III. The Army of the North enters in Bois-le-Duc.
+21 VendÃ©miaire III. The Army of the North enters in Bois-le-Duc.
 
 0122
-22 Vendémiaire I. Kellerman forces the Prussians to leave the city of Verdun.
+22 VendÃ©miaire I. Kellerman forces the Prussians to leave the city of Verdun.
 He enters Verdun and continues his march to the Prussians.
 
 0123
-23 Vendémiaire III. The Army of the Rhine takes Otterberg, Rockenhausen, 
+23 VendÃ©miaire III. The Army of the Rhine takes Otterberg, Rockenhausen, 
 Landsberg, Alzein and Oberhausen.
 
 0124
-24 Vendémiaire II. The Army of Moselle fights and routs the
+24 VendÃ©miaire II. The Army of Moselle fights and routs the
 Coalised who had advanced on Bitche and Rorbach.
 
-24 Vendémiaire III. Fight for and capture of Gellheim and Grunstad by
+24 VendÃ©miaire III. Fight for and capture of Gellheim and Grunstad by
 the Army of the Rhine; the French capture also Frankenthal.
 
 0125
-25 Vendémiaire II. Combat near Sarreguemines; the Army of Moselle
+25 VendÃ©miaire II. Combat near Sarreguemines; the Army of Moselle
 repulses the enemy.
 
-25 Vendémiaire II. Queen Marie-Antoinette is beheaded.
+25 VendÃ©miaire II. Queen Marie-Antoinette is beheaded.
 
 0126
-26 Vendémiaire I. The Austrians attack Hasnon and fail several times.
+26 VendÃ©miaire I. The Austrians attack Hasnon and fail several times.
 
-26 Vendémiaire II. Victory of Wattignies near Maubeuge against the
+26 VendÃ©miaire II. Victory of Wattignies near Maubeuge against the
 Austrians and end of the blockade of Maubeuge.
 
-26 Vendémiaire III The Army of Western Pyrenees takes
+26 VendÃ©miaire III The Army of Western Pyrenees takes
 Iraty, Egay and Orbaycette.
 
-26 Vendémiaire III Army of Moselle. General-in-chief 
+26 VendÃ©miaire III Army of Moselle. General-in-chief 
 Moreau's troops take Creutznach and Custines' troops take Worms.
 
-26 Vendémiaire VI Army of Italy. Peace treaty in Campo-Formio
+26 VendÃ©miaire VI Army of Italy. Peace treaty in Campo-Formio
 near Udine between Bonaparte and the Austrians.
 
-26 Vendémiaire VI. Congress in Rastadt to conclude peace between the 
+26 VendÃ©miaire VI. Congress in Rastadt to conclude peace between the 
 French Republic and the German Empire.
 
 0127
-27 Vendémiaire II Army of Italy. 600 republican troops repulse 4,000
+27 VendÃ©miaire II Army of Italy. 600 republican troops repulse 4,000
 Austrians, Croats and Piemontese.
 
-27 Vendémiaire III The Army of Western Pyrenees defeats 7,000 
+27 VendÃ©miaire III The Army of Western Pyrenees defeats 7,000 
 Spaniards near Buruet and Almandos.
 
-27 Vendémiaire III The Army of the Rhine routs the enemy near
+27 VendÃ©miaire III The Army of the Rhine routs the enemy near
 Kircheim and Worms and captures both cities.
 
 0128
-28 Vendémiaire II The Army of Italy achieves a complete
+28 VendÃ©miaire II The Army of Italy achieves a complete
 victory at Gilette over the Piemontese.
 
-28 Vendémiaire III The Army of the North defeats the enemy near Nimegen
+28 VendÃ©miaire III The Army of the North defeats the enemy near Nimegen
 and destroys the legion of Rohan.
 
-28 Vendémiaire V The Army of the Rhin and Moselle is attacked in
+28 VendÃ©miaire V The Army of the Rhin and Moselle is attacked in
 Retzengen and Simonswald.
 
 0129
-29 Vendémiaire I The French Army forces the
+29 VendÃ©miaire I The French Army forces the
 Austrians to leave Mayence.
 
-29 Vendémiaire III The Armée of Moselle enters Bingen.
+29 VendÃ©miaire III The ArmÃ©e of Moselle enters Bingen.
 
-29 Vendémiaire V. The Army of Italy, debarking in Corsica,
+29 VendÃ©miaire V. The Army of Italy, debarking in Corsica,
 captures Bastia, Saint-Florent and Bonifacio.
 
-29 Vendémiaire XIV Battle of Trafalgar.
+29 VendÃ©miaire XIV Battle of Trafalgar.
 
 0130
-30 Vendémiaire II. The Army of Western Pyrenees
+30 VendÃ©miaire II. The Army of Western Pyrenees
 routs three Spanish columns after a five-hour firefight.
 
-30 Vendémiaire V Army of Sambre and Meuse. Enemy crossing of the Rhine
+30 VendÃ©miaire V Army of Sambre and Meuse. Enemy crossing of the Rhine
 at Bacharach and Andernach and failed attack of the Neuwied
 bridgehead.
 
@@ -543,7 +543,7 @@ garrison is repulsed by a French bayonet charge.
 18 Brumaire I. The French capture Tournay.
 
 18 Brumaire III Army of the North. Triumphant entry of the French
-into Nimègue.
+into NimÃ¨gue.
 
 18 Brumaire VIII. Bonaparte's coup: end of Directorate, beginning of Consulate
 
@@ -661,7 +661,7 @@ artillery is spiked.
 4 Frimaire II Army of Italy. 800 Piemontese defeated by 500 French at
 Castel-Genest and Brec, capture of Figaretto.
 
-4 Frimaire III Army of Western Pyrenees. Victory in Ostés.
+4 Frimaire III Army of Western Pyrenees. Victory in OstÃ©s.
 
 0306
 6 Frimaire IV Army of Italy. Fights in Spinardo and other places.
@@ -669,7 +669,7 @@ Castel-Genest and Brec, capture of Figaretto.
 0307
 7 Frimaire I Army of the Rhine. The city of Liege is taken.
 
-7 Frimaire III Army of Eastern Pyrenees. Capture of the Figuières
+7 Frimaire III Army of Eastern Pyrenees. Capture of the FiguiÃ¨res
 fortress.
 
 0308
@@ -760,14 +760,14 @@ Jamaica wood, the Austrians are repulsed.
 near Villelongue.
 
 0402
-2 Nivôse II Army of the Rhine and Moselle. The enemy defeated at Werd.
+2 NivÃ´se II Army of the Rhine and Moselle. The enemy defeated at Werd.
 
 0403
-3 Nivôse II Army of the Rhine and Moselle. All fieldworks at
+3 NivÃ´se II Army of the Rhine and Moselle. All fieldworks at
 Bischweiller, Druzenheim and Haguenau are taken.
 
 0405
-5 Nivôse II Army of the Rhine and Moselle. The enemy is routed at
+5 NivÃ´se II Army of the Rhine and Moselle. The enemy is routed at
 Oberseebach. Capture of the castle of Geisberg.
 
 0406
@@ -775,118 +775,118 @@ Army of the Rhine and Moselle. The enemy is forced to evacuate the
 lines of Lauter and Weissembourg and to lift the blockade of Landau.
 
 0407
-7 Nivôse II Army of the Rhine. The French capture the posts at
+7 NivÃ´se II Army of the Rhine. The French capture the posts at
 Germersheim and Spire.
 
 0408
-8 Nivôse III Army of the North. Crossing of the Vaal, capture of
-Bommel and the Saint-André fort, surrender of Grave.
+8 NivÃ´se III Army of the North. Crossing of the Vaal, capture of
+Bommel and the Saint-AndrÃ© fort, surrender of Grave.
 
 0413
-13 Nivôse I Army of the North. Elements of the French vanguard enter
+13 NivÃ´se I Army of the North. Elements of the French vanguard enter
 the region of Luxembourg and grab the Emperor's warchest.
 
 0414
-14 Nivôse II Army of the West. The island of Noirmoutiers is taken
+14 NivÃ´se II Army of the West. The island of Noirmoutiers is taken
 from the Vendean rebels.
 
 0417
-17 Nivôse II Army of the Rhine and Moselle. Worms captured.
+17 NivÃ´se II Army of the Rhine and Moselle. Worms captured.
 
-17 Nivôse III Army of Western Pyrenees. Trinité fort captured.
+17 NivÃ´se III Army of Western Pyrenees. TrinitÃ© fort captured.
 
 0420
-20 Nivôse VI Army of Italy. Two French columns converge on Rome to
+20 NivÃ´se VI Army of Italy. Two French columns converge on Rome to
 avenge the death of general Duphot and the insult to the ambassador of
 the French Republic. Popular uprising and
 overthrow of the papal government.
 
 0422
-22 Nivôse III Army of the North. Capture of Thiel and six forts.
+22 NivÃ´se III Army of the North. Capture of Thiel and six forts.
 
 0423
-23 Nivôse II Army of Western Pyrenees. 400 Republican troops storm the
+23 NivÃ´se II Army of Western Pyrenees. 400 Republican troops storm the
 "poste de la Montagne" of Louis XIV.
 
-23 Nivôse V Army of Italy. Fight of Saint-Michel before Verona. The
+23 NivÃ´se V Army of Italy. Fight of Saint-Michel before Verona. The
 enemy attacks the Montebaldo line and is repulsed.
 
 0424
-24 Nivôse III Army of the North. Capture of Heusdin.
+24 NivÃ´se III Army of the North. Capture of Heusdin.
 
 0425
-25 Nivôse V Army of Italy. Battle of Rivoli, the enemy is completely
+25 NivÃ´se V Army of Italy. Battle of Rivoli, the enemy is completely
 routed.
 
 0426
-26 Nivôse V Army of Italy. 10 000 enemy troops cross at Anghiari.
+26 NivÃ´se V Army of Italy. 10 000 enemy troops cross at Anghiari.
 
-26 Nivôse V Army of Italy. General Provera, leading 6 000 troops,
+26 NivÃ´se V Army of Italy. General Provera, leading 6 000 troops,
 attacks the Saint-George suburb of Mantoue to no effect.
 
 0427
-27 Nivôse II Army of the Rhine and Moselle. The enemies sortie from
+27 NivÃ´se II Army of the Rhine and Moselle. The enemies sortie from
 the Vauban fort but they are repulsed.
 
-27 Nivôse V Battle of the Favorite (suburb of Mantoue), Wurmser
+27 NivÃ´se V Battle of the Favorite (suburb of Mantoue), Wurmser
 sorties from Mantoue and fails, and Provera must capitulate.
 
 0428
-28 Nivôse III Army of the North. Capture of Utrecht, Amersford and
+28 NivÃ´se III Army of the North. Capture of Utrecht, Amersford and
 the Greb lines, crossing of the Lech.
 
 0429
-29 Nivôse II Army of the Rhine. The coalized evacuate completely the
+29 NivÃ´se II Army of the Rhine. The coalized evacuate completely the
 Lower-Rhine department. The Vauban fort is taken back.
 
-29 Nivôse III Army of the North. Capture of Gertuydemberg.
+29 NivÃ´se III Army of the North. Capture of Gertuydemberg.
 
 0502
-2 Pluviôse I Louis XVI is beheaded.
+2 PluviÃ´se I Louis XVI is beheaded.
 
-2 Pluviôse II Army of Western Pyrenees. 200 French storm the
+2 PluviÃ´se II Army of Western Pyrenees. 200 French storm the
 Harriette redoubt near Ispeguy.
 
-2 Pluviôse III Army of the North. The towns of Gorcum, Dordrecht and
+2 PluviÃ´se III Army of the North. The towns of Gorcum, Dordrecht and
 Amsterdam surrender to the French.
 
 0504
-4 Pluviôse II Army of Var. The English leave the Hyeres islands.
+4 PluviÃ´se II Army of Var. The English leave the Hyeres islands.
 
 0507
-7 Pluviôse V Army of Italy. The enemy, repulsed beyond the Brenta, is
+7 PluviÃ´se V Army of Italy. The enemy, repulsed beyond the Brenta, is
 reached at Carpenedelo, and forced to retreat.
 
 0508
-8 Pluviôse V Army of Italy. The enemy, pursued in the Tyrol gorges, is
+8 PluviÃ´se V Army of Italy. The enemy, pursued in the Tyrol gorges, is
 reached at Avio.
 
 0509
-9 Pluviôse V Army of Italy. General Murat lands in Torgole and repulses the enemy;
+9 PluviÃ´se V Army of Italy. General Murat lands in Torgole and repulses the enemy;
 General Vial outflank them. The French enter in Roveredo and Trente.
 
-9 Pluviôse VI Army of Italy. Capture of the town of Ancône, by the
+9 PluviÃ´se VI Army of Italy. Capture of the town of AncÃ´ne, by the
 French army, which continues toward Rome through Maurata.
 
 0510
-10 Pluviôse V Army of the Rhine and Moselle. The Republican army
+10 PluviÃ´se V Army of the Rhine and Moselle. The Republican army
 sorties from the Huningue brigdgehead and repulses the enemy.
 
 0513
-13 Pluviôse I The French Republic declares war on the King of England
+13 PluviÃ´se I The French Republic declares war on the King of England
 and the Stathouder of Holland.
 
-13 Pluviôse VI Army of Italy. A column of the Army of Italy crosses
+13 PluviÃ´se VI Army of Italy. A column of the Army of Italy crosses
 the Geneva region and establishes its headquarters in Ferney-Voltaire.
 
 0514
-14 Pluviôse V Army of Italy. The French attack the remnants of the
+14 PluviÃ´se V Army of Italy. The French attack the remnants of the
 Austrian army behind the Lavis and repulse them.
 The French enter Jmola, Faenza and Forli.
 Capitulation of Mantoue.
 
 0515
-15 Pluviôse III Army of Western Pyrenees. Capture of Roses, after a
+15 PluviÃ´se III Army of Western Pyrenees. Capture of Roses, after a
 27-day siege.
 
 Army of the North. Conquest of Holland: all the fortresses and
@@ -894,43 +894,43 @@ warships are controlled by the French. The French troops enter
 Midelbourg and Flesingue.
 
 0517
-17 Pluviôse III Army of Western Pyrenees. Complete Spanish rout at
+17 PluviÃ´se III Army of Western Pyrenees. Complete Spanish rout at
 Sare and Berra.
 
-15,000 Spanish are vanquished and routed at Urrugne and
+15 000 Spanish are vanquished and routed at Urrugne and
 Chauvin-Dragon.
 
 0518
-18 Pluviôse V Army of Italy. The enemy outposts are repulsed on the
+18 PluviÃ´se V Army of Italy. The enemy outposts are repulsed on the
 Adige right bank. Derunbano captured.
 
 0521
-21 Pluviôse V Army of Italy. The Pope's troops, on the highground
+21 PluviÃ´se V Army of Italy. The Pope's troops, on the highground
 before Ancona, are surrounded and taken prisoners without a single
 shot. Ancona captured.
 
-21 Pluviôse VI Army of Italy. The French troops continue their advance
+21 PluviÃ´se VI Army of Italy. The French troops continue their advance
 on Rome.
 
 0522
-22 Pluviôse V Army of Italy. Capture of Lorette.
+22 PluviÃ´se V Army of Italy. Capture of Lorette.
 
 0527
-27 Pluviôse VI Army of Italy. The French enter in Rome. General
+27 PluviÃ´se VI Army of Italy. The French enter in Rome. General
 Berthier proclaims the Roman Republic.
 
 0601
-1 Ventôse II Army of the Rhine. The French capture the Ogersheim post.
+1 VentÃ´se II Army of the Rhine. The French capture the Ogersheim post.
 
-1 Ventôse V Army of Italy. Treaty of peace with the Pope, signed in
+1 VentÃ´se V Army of Italy. Treaty of peace with the Pope, signed in
 Tolentino.
 
 0604
-4 Ventôse V Army of Italy. The Treviso post is taken back.
+4 VentÃ´se V Army of Italy. The Treviso post is taken back.
 
 0605
-5 Ventôse V Army of Italy. The enemy is repulsed out of its
-fieldworks in Foi. Then the French encounter a Tyrolian Jäger corps
+5 VentÃ´se V Army of Italy. The enemy is repulsed out of its
+fieldworks in Foi. Then the French encounter a Tyrolian JÃ¤ger corps
 and defeat them.
 
 The French, attacked in Bidole, smash the enemy. Kellerman crosses
@@ -938,65 +938,65 @@ the Piave in San-Mamma, and routs some enemy hussards who were
 defending the crossing.
 
 0607
-7 Ventôse X. Birth of Victor Hugo
+7 VentÃ´se X. Birth of Victor Hugo
 
 0611
-11 Ventôse III Army of Eastern Pyrenees. Bezalu captured.
+11 VentÃ´se III Army of Eastern Pyrenees. Bezalu captured.
 
 0612
-12 Ventôse V Army of Italy. The French attack the enemy at Monte
+12 VentÃ´se V Army of Italy. The French attack the enemy at Monte
 di-Savaro and beat him.
 
 0615
-15 Ventôse VI Army of Helvetia. Capitulation of the city of Berne.
+15 VentÃ´se VI Army of Helvetia. Capitulation of the city of Berne.
 
 0616
-16 Ventôse II Army of Ardennes. Fight near Soumoy and Cerffontaine;
+16 VentÃ´se II Army of Ardennes. Fight near Soumoy and Cerffontaine;
 the enemy is defeated.
 
 0617
-17 Ventôse I. War is declared on the King of Spain.
+17 VentÃ´se I. War is declared on the King of Spain.
 
 0618
-18 Ventôse II Army of the Moselle. Three Austrian battalions are
+18 VentÃ´se II Army of the Moselle. Three Austrian battalions are
 defeated on the Joegerthal highground.
 
 0620
-20 Ventôse V Army of Italy. A French division goes to Feltre; as it
-nears the town, the enemy evacuates the Cordevoie line and goes to
+20 VentÃ´se V Army of Italy. A French division goes to Feltre; as it
+nears the town, the enemy evacuates the Cordevole line and goes to
 Bellurn.
 
 0622
-22 Ventôse V Army of Italy. The 21th Light crosses the Piava opposite
+22 VentÃ´se V Army of Italy. The 21th Light crosses the Piava opposite
 to the Vidor village and repulses the enemy.
 
 0623
-23 Ventôse V Army of Italy. Fight in Sacile. Fight in Bellurn, in
+23 VentÃ´se V Army of Italy. Fight in Sacile. Fight in Bellurn, in
 which the enemy rearguard is surrounded and taken prisoner.
 
-23 Ventôse VI. After five murderous fights, the Swiss evacuate Morat.
+23 VentÃ´se VI. After five murderous fights, the Swiss evacuate Morat.
 
 0626
-26 Ventôse V Army of Italy. Crossing of the Tagliamento, despite a
+26 VentÃ´se V Army of Italy. Crossing of the Tagliamento, despite a
 superior enemy force and a deliberate resistance. The Gradisca village
 is taken.
 
 0627
-27 Ventôse VI Treaty of alliance and trade between the French and
+27 VentÃ´se VI Treaty of alliance and trade between the French and
 Cisalpin Republics.
 
 0628
-28 Ventôse V Army of Italy. Capture of Palma Nova, which the enemy
+28 VentÃ´se V Army of Italy. Capture of Palma Nova, which the enemy
 must evacuate.
 
 0629
-29 Ventôse V Army of Italy. Capture of the town of Gradisca. Crossing
+29 VentÃ´se V Army of Italy. Capture of the town of Gradisca. Crossing
 of the Casasola bridge.
 
-29 Ventôse XII The Duke of Enghien is executed.
+29 VentÃ´se XII The Duke of Enghien is executed.
 
 0630
-30 Ventôse V Army of Italy. Fight of Lavis. The enemy troops are
+30 VentÃ´se V Army of Italy. Fight of Lavis. The enemy troops are
 surrounded by the French.
 
 0701
@@ -1051,7 +1051,7 @@ the Massena division.
 
 0715
 15 Germinal V Army of Italy. Fight at Hundsmarck; the enemy rearguard is defeated by
-the French vanguard. The French enter Hundsmark, Kiotenfeld, Mureau
+the French vanguard. The French enter Hundsmark, Kintenfeld, Mureau
 and Judembourg.
 
 0716
@@ -1063,7 +1063,7 @@ the enemy posts are repulsed.
 
 Army of Italy. Capture of the Fougasse camp.
 
-17 Germinal II Execution of Georges Danton, Camille Desmoulins and Fabre d'Églantine.
+17 Germinal II Execution of Georges Danton, Camille Desmoulins and Fabre d'Ã‰glantine.
 
 0718
 18 Germinal II Army of Italy. Capture of all the posts near Breglio,
@@ -1109,7 +1109,7 @@ Tiperdange.
 
 26 Germinal IV Army of Italy. Battle of Millesimo, won against the
 Austro-Sards. Fight at Dego, the enemy is routed. Fight and capture
-of Saint-Jean, if the valley of Barmida. Capture of Batisolo, Bagnosco
+of Saint-Jean, in the valley of Barmida. Capture of Batisolo, Bagnosco
 and Pontenocetto. Capture of the Montezemo redoubts.
 
 0727
@@ -1128,33 +1128,33 @@ Army of Italy. Fifteen hundred Austrians defeated at Ponte-di-Nava.
 and the enemy is completely routed.
 
 0802
-2 Floréal I Army of Western Pyrenees. Skirmish in Jurgazza Mondi.
+2 FlorÃ©al I Army of Western Pyrenees. Skirmish in Jugazza Mondi.
 
 0803
-3 Floréal II Army of the Ardennes. Complete rout of the enemy at
+3 FlorÃ©al II Army of the Ardennes. Complete rout of the enemy at
 Aussoy, near Philippeville, after a 12-hour fight.
 
-3 Floréal IV Army of Italy. Fight and conquest of the town of Mondovi.
+3 FlorÃ©al IV Army of Italy. Fight and conquest of the town of Mondovi.
 
 0804
-4 Floréal II Army of the Rhine. Victory near Kurweiller.
+4 FlorÃ©al II Army of the Rhine. Victory near Kurweiller.
 
 0805
-5 Floréal I Army of Eastern Pyrenees. Skirmish in Samouragaldi,
+5 FlorÃ©al I Army of Eastern Pyrenees. Skirmish in Samouragaldi,
 during which 200 French troops defeat 400 Spanish troops.
 Bombardment of Fontarabie.
 
-5 Floréal II Army of the Alps. All the redoubts in Mount Valaisan and
+5 FlorÃ©al II Army of the Alps. All the redoubts in Mount Valaisan and
 Mount Saint-Bernard are stormed.
 
-5 Floréal IV Army of Italy. The French troops enter the town of Bêne.
+5 FlorÃ©al IV Army of Italy. The French troops enter the town of BÃªne.
 
 0806
-6 Floréal IV Army of Italy. Capture of Fossano, Cherasco and Alba.
+6 FlorÃ©al IV Army of Italy. Capture of Fossano, Cherasco and Alba.
 
 0807
-7 Floréal II Army of Western Pyrenees. The Spanish and Emigrate
-troops are repulsed from Arnéguy and Irameaca.
+7 FlorÃ©al II Army of Western Pyrenees. The Spanish and Emigrate
+troops are repulsed from ArnÃ©guy and Irameaca.
 
 Army of the Ardennes. Victory after a hard-fought 4-hour fight. The
 Bossu high-grounds are stormed. The Army of Ardennes and the Army of
@@ -1168,98 +1168,98 @@ Arrola.
 4000 Spanish infantry troops and 10 Spanish cavalry squadrons rout at
 Roqueluche.
 
-7 Floréal VI Birth of Eugène Delacroix
+7 FlorÃ©al VI Birth of EugÃ¨ne Delacroix
 
 0808
-8 Floréal II Army of Eastern Pyrenees. 3000 French troops repulse
+8 FlorÃ©al II Army of Eastern Pyrenees. 3000 French troops repulse
 10000 enemy troops from the village of Oms. They take the defile and
 the bridge of Ceret.
 
 0809
-9 Floréal IV Army of Italy. Armistice signed with the king of
+9 FlorÃ©al IV Army of Italy. Armistice signed with the king of
 Sardinia.
 
 0810
-10 Floréal II Army of the North. Victory at Mont-Castel over 20,000
+10 FlorÃ©al II Army of the North. Victory at Mont-Castel over 20,000
 Austrians. Capture of Menin and much artillery.
 
 Army of Italy. Victory over the Piemontese and capture of Saorgio.
 
-10 Floréal IV The French troops enter the cities of Ceva and Coni.
+10 FlorÃ©al IV The French troops enter the cities of Ceva and Coni.
 
-10 Floréal V Treaty of peace between the French Republic and the Pope.
+10 FlorÃ©al V Treaty of peace between the French Republic and the Pope.
 
 0811
-11 Floréal II Army of Eastern Pyrenees. Victorious battle against
-Spanish troops, at Albères; storming of the famous Montesquiou
+11 FlorÃ©al II Army of Eastern Pyrenees. Victorious battle against
+Spanish troops, at AlbÃ¨res; storming of the famous Montesquiou
 redoubt.
 
-11 Floréal V Army of Italy. Peace preliminaries between the French
+11 FlorÃ©al V Army of Italy. Peace preliminaries between the French
 Republic and the Austrian Emperor, signed at Leoben by general
 Buonaparte and the Emperor's plenipotentiaries.
 
 0812
-12 Floréal II Army of the Rhine. Capture of Lambsheim and Franckental
+12 FlorÃ©al II Army of the Rhine. Capture of Lambsheim and Franckental
 by the French; the gates of the latter town are destroyed by
 cannon-fire.
 
 0815
-15 Floréal II Army of Eastern Pyrenees. The French occupy the
+15 FlorÃ©al II Army of Eastern Pyrenees. The French occupy the
 high-grounds of cap de Bearn and of the land of Las-Daines. The siege
 of Collioure begins.
 
-15 Floréal III Army of Eastern Pyrenees. The Spanish troops attack the
+15 FlorÃ©al III Army of Eastern Pyrenees. The Spanish troops attack the
 Cistella camp but are beaten and repulsed.
 
 0816
-16 Floréal IV Army of Italy. The French enter the town of Tortonne.
+16 FlorÃ©al IV Army of Italy. The French enter the town of Tortonne.
 
 0817
-17 Floréal III Army of Eastern Pyrenees. General reconnaissance by the
+17 FlorÃ©al III Army of Eastern Pyrenees. General reconnaissance by the
 French on the Crespia and Bascara highgrounds and on the Fluvia.
 
 0818
-18 Floréal IV Army of Italy. Reconnaissance on the Po bank, toward
+18 FlorÃ©al IV Army of Italy. Reconnaissance on the Po bank, toward
 Plaisance.
 
 0819
-19 Floréal II Lavoisier is guillotined.
+19 FlorÃ©al II Lavoisier is guillotined.
 
-19 Floréal IV Army of Italy. The Republican vanguard crosses the Po.
+19 FlorÃ©al IV Army of Italy. The Republican vanguard crosses the Po.
 Fight in Fombio.
 
 0820
-20 Floréal II Army of the Alps. The Mirabouck fort is taken, after a
+20 FlorÃ©al II Army of the Alps. The Mirabouck fort is taken, after a
 14-hour attack. The Villeneuve-des-Prats post is captured.
 Capture of the Maupertuis redoubt.
 
-20 Floréal III Army of Eastern Pyrenees. Attack of the camp of the
+20 FlorÃ©al III Army of Eastern Pyrenees. Attack of the camp of the
 Musquirachu montain; the enemy flees and discards its camp, already
 set-up.
 
-20 Floréal IV Army of Italy. Near Cordogno, the Austrians attack the
+20 FlorÃ©al IV Army of Italy. Near Cordogno, the Austrians attack the
 Laharpe division, and are strongly repulsed by the Republican troops
 which take Casale.
 
 Armistice concluded with the Duke of Parma.
 
 0821
-21 Floréal II Army of the Ardennes. Capture of Thuin by the French
+21 FlorÃ©al II Army of the Ardennes. Capture of Thuin by the French
 troops.
 
-21 Floréal IV Army of Italy. Battle of Lody: crossing of the bridge
+21 FlorÃ©al IV Army of Italy. Battle of Lody: crossing of the bridge
 defended by Beaulieu's complete army.
 
 0822
-22 Floréal II Army of the North. The enemy is defeated before Tournay.
+22 FlorÃ©al II Army of the North. The enemy is defeated before Tournay.
 7-hour fight before Courtray: the enemy is completely routed. The
 enemy is routed at Ingelsmunster.
 
-22 Floréal IV Army of Italy. Capture of Pizzighitone. The French enter
-Crémone.
+22 FlorÃ©al IV Army of Italy. Capture of Pizzighitone. The French enter
+CrÃ©mone.
 
 0823
-23 Floréal II Army of the Ardennes. The French capture all fieldworks
+23 FlorÃ©al II Army of the Ardennes. The French capture all fieldworks
 in the Merbes camp, from which the enemy retreat.
 During the crossing of the Sambre, the 49th Regiment grenadiers throw
 themselves into the water to help the skirmishers and rout the Bourbon
@@ -1269,29 +1269,29 @@ The 68th Regiment defends alone a bridge attacked by more Austrians
 and do not yield.
 
 0824
-24 Floréal II Army of the Ardennes. Hard-fought combat: the village of
+24 FlorÃ©al II Army of the Ardennes. Hard-fought combat: the village of
 Grandreng near Beaumont is taken and retaken three times.
 
 0825
-25 Floréal II Army of the Alps. The Republican troops storms the
+25 FlorÃ©al II Army of the Alps. The Republican troops storms the
 Riveto and la Ramasse redoubts and other posts on Mount-Cenis.
 
 0826
-26 Floréal IV Army of Italy. Peace is concluded with the king of
+26 FlorÃ©al IV Army of Italy. Peace is concluded with the king of
 Sardinia.
 
 0827
-27 Floréal II Army of Eastern Pyrenees. The Collioure garrison
+27 FlorÃ©al II Army of Eastern Pyrenees. The Collioure garrison
 sorties. 3000 Spanish troops are repulsed with loss. The
 general-in-chief is wounded during this action.
 
 0828
-28 Floréal IV Army of Italy. The French occupy Milan, Pavie and Come.
+28 FlorÃ©al IV Army of Italy. The French occupy Milan, Pavie and Come.
 
-28 Floréal XII "The government of the French Republic is given to an emperor."
+28 FlorÃ©al XII "The government of the French Republic is given to an emperor."
 
 0829
-29 Floréal II Army of the North. The enemy is defeated at Moescroen.
+29 FlorÃ©al II Army of the North. The enemy is defeated at Moescroen.
 Victorious battle against the coalised, between Menin and Courtray.
 
 Army of the Ardennes. Glorious resistance of 1500 French troops
@@ -1302,13 +1302,13 @@ Army of Western Pyrenees. Six enemy stores are taken. The Spanish
 troops are repulsed by a bayonet attack until their camp in Berra.
 
 0830
-30 Floréal II Army of Eastern Pyrenees. The Spanish troops rout near
-Figuières.
+30 FlorÃ©al II Army of Eastern Pyrenees. The Spanish troops rout near
+FiguiÃ¨res.
 
 Army of the Ardennes. 160 French in the castel of Bouillon defend
 against numerous enemies.
 
-30 Floréal VI Bombardment of Ostende by the English, and 4000 English
+30 FlorÃ©al VI Bombardment of Ostende by the English, and 4000 English
 troops land. The French surround them, take 2000 prisoners and cause
 the remainder to reimbark. The English general is seriously wounded.
 
@@ -1319,7 +1319,7 @@ and Erquelinne after a 6-hour fight.
 1 Prairial IV Army of Italy. An armistice with the Duke of Modene is
 concluded.
 
-1 Prairial VII. Birth of Honoré de Balzac
+1 Prairial VII. Birth of HonorÃ© de Balzac
 
 0904
 4 Prairial II Army of the Rhine. Battle of Schifferstadt, won
@@ -1329,7 +1329,7 @@ Austrian general is killed.
 Army of Moselle. Complete rout of Beaulieu's vanguard.
 
 0905
-5 Prairial II Army of the Ardennes. Victory at Merbes-le-Château
+5 Prairial II Army of the Ardennes. Victory at Merbes-le-ChÃ¢teau
 after a general charge.
 
 0906
@@ -1420,7 +1420,7 @@ Army of Sambre and Meuse. Dierdoff and Montabaur captured.
 
 0919
 19 Prairial II Army of Eastern Pyrenees. 4,000 Spanish troops are
-defeated by a small number of French troops, beyond la Jonquière;
+defeated by a small number of French troops, beyond la JonquiÃ¨re;
 Bellegarde taken.
 
 The French occupy Campredon and various posts.
@@ -1625,7 +1625,7 @@ Cisalpin Republic.
 21 Messidor IV Army of Sambre and Meuse. Crossing of the Lahn; the army
 marches on Frankfurt and Mayence.
 
-Army of the Rhine and Moselle. Fight before Raspadret in the defile
+Army of the Rhine and Moselle. Fight before Rastadt and in the defile
 before Guersbach; the enemy retreats behind Dourlach.
 
 Army of Sambre and Meuse. Fight before Butzbach, Obermel and
@@ -1665,7 +1665,7 @@ Army of the Rhine and Moselle. The Haslach and Haussen posts are taken.
 
 1027
 27 Messidor II Army of Sambre and Meuse. The post of the Iron Mountain,
-after Louvain, is stormed by the French, who also conquer the town of
+near Louvain, is stormed by the French, who also conquer the town of
 Louvain, despite the strong enemy resistance.
 
 Army of the North. Capture of the town of Malines.
@@ -1742,7 +1742,7 @@ village.
 Koenigstein fort.
 
 1109
-9 Thermidor I Army of Sambre and Meuse. The French enter Liège.
+9 Thermidor I Army of Sambre and Meuse. The French enter LiÃ¨ge.
 
 9 Thermidor II. Robespierre's downfall.
 
@@ -1801,7 +1801,7 @@ Army of Sambre and Meuse. Fight at Altendorff.
 
 1120
 20 Thermidor IV Army of Italy. The French occupy their former
-positions, cross the Mincio and enter Vérone.
+positions, cross the Mincio and enter VÃ©rone.
 
 1121
 21 Thermidor II Army of Moselle. Capture of the fieldworks on the
@@ -1898,7 +1898,7 @@ defeated in Eibon. Spanish rout at Ermilla.
 4000 enemy rout and the French troops enter Oudoroa.
 
 1213
-13 Fructidor II Army of Sambre and Meuse. Condé taken back.
+13 Fructidor II Army of Sambre and Meuse. CondÃ© taken back.
 
 1214
 14 Fructidor III Army of the Alps and Italy. 4,000 Piemontese troops
@@ -1976,7 +1976,7 @@ routed.
 
 1224
 24 Fructidor I Army of the Alps. French advantage in the plain of
-Aigne-Belle.
+Aigue-Belle.
 
 24 Fructidor III Army of Sambre and Meuse. The French army crosses the
 Rhine in front of the enemy, which opposes the crossing to no avail.
@@ -2081,7 +2081,7 @@ EVENTS
 
 # A module must return a true value. Traditionally, a module returns 1.
 # But this module is a revolutionary one, so it discards all old traditions.
-"Ah ! ça ira ! ça ira !";
+"Ah ! Ã§a ira ! Ã§a ira !";
 
 __END__
 

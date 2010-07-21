@@ -32,23 +32,23 @@ sub g2r_em {
     { print "not ok $n : expected $date_r, got $date_resul\n" }
 }
 
-@tests = ([" 1 Vend閙iaire I",    "%e %B %EY", 1792,  9, 22],
+@tests = ([" 1 Vend茅miaire I",    "%e %B %EY", 1792,  9, 22],
 	  [" 2 Brumaire II",      "%e %B %EY", 1793, 10, 23],
 	  [" 9 Thermidor II",     "%e %B %EY", 1794,  7, 27],
 	  [" 3 Frimaire III",     "%e %B %EY", 1794, 11, 23],
-	  ["13 Vend閙iaire IV",   "%e %B %EY", 1795, 10,  5],
-	  [" 4 Niv魋e IV",        "%e %B %EY", 1795, 12, 25],
-	  [" 5 Pluvi魋e V",       "%e %B %EY", 1797,  1, 24],
-	  [" 6 Vent魋e VI",       "%e %B %EY", 1798,  2, 24],
+	  ["13 Vend茅miaire IV",   "%e %B %EY", 1795, 10,  5],
+	  [" 4 Niv么se IV",        "%e %B %EY", 1795, 12, 25],
+	  [" 5 Pluvi么se V",       "%e %B %EY", 1797,  1, 24],
+	  [" 6 Vent么se VI",       "%e %B %EY", 1798,  2, 24],
 	  ["18 Brumaire VIII",    "%e %B %EY", 1799, 11,  9],
 	  [" 8 Germinal IX",      "%e %B %EY", 1801,  3, 29],
-	  ["10 Flor閍l XII",      "%e %B %EY", 1804,  4, 30],
+	  ["10 Flor茅al XII",      "%e %B %EY", 1804,  4, 30],
 	  ["12 Prairial XV",      "%e %B %EY", 1807,  6,  1],
 	  ["14 Messidor XVIII",   "%e %B %EY", 1810,  7,  3],
 	  ["16 Thermidor XXI",    "%e %B %EY", 1813,  8,  4],
 	  ["18 Fructidor XXIV",   "%e %B %EY", 1816,  9,  4],
-	  ["12 Niv魋e CCVIII",    "%e %B %EY", 2000,  1,  1], # Y2K compatible?
-	  ["22 Flor閍l CCIX",     "%e %B %EY", 2001,  5, 11],
+	  ["12 Niv么se CCVIII",    "%e %B %EY", 2000,  1,  1], # Y2K compatible?
+	  ["22 Flor茅al CCIX",     "%e %B %EY", 2001,  5, 11],
 	  );
 
 printf "1..%d\n", 2 * scalar @tests;

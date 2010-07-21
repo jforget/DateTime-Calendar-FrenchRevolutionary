@@ -16,18 +16,19 @@ GetOptions('lang=s' => \$lang, 'kitten=s' => \$pict);
 # I18N
 #
 my $ref_labels;
-if ($lang eq 'fr')
-  { $ref_labels = do "$FindBin::Bin/labels_fr" }
-else
-  { $ref_labels = do "$FindBin::Bin/labels_en" }
+if ($lang eq 'fr') {
+  $ref_labels = do "$FindBin::Bin/labels_fr";
+}
+else {
+  $ref_labels = do "$FindBin::Bin/labels_en";
+}
 my %labels = %$ref_labels;
 
 my $annee;
-foreach $annee (@ARGV)
-  {
-    warn "Invalid year", next if $annee <= 0;
-    prt_cal ($annee);
-  }
+foreach $annee (@ARGV) {
+  warn "Invalid year", next if $annee <= 0;
+  prt_cal ($annee);
+}
 
 
 sub prt_cal {
@@ -38,7 +39,9 @@ sub prt_cal {
   # HTML header
   print <<"EOT";
 <html>
-<head><title>$labels{calendar}</title></head>
+<head><title>$labels{calendar}</title>
+<meta http-equiv='content-type' content='Text/html; charset=utf-8' />
+</head>
 <body>
 EOT
   print qq(<p align='center'><img src='$pict'>\n) if $pict;
@@ -48,29 +51,28 @@ EOT
 <h3 align='center'>$year_1-$year_2</h3>
 <table border width='90%'>
 <tr align='center'>
-<td>Vendémiaire<br>$labels{month3}[8]-$labels{month3}[9]</td>
+<td>VendÃ©miaire<br>$labels{month3}[8]-$labels{month3}[9]</td>
 <td>Brumaire<br>$labels{month3}[9]-$labels{month3}[10]</td>
 <td>Frimaire<br>$labels{month3}[10]-$labels{month3}[11]</td>
-<td>Nivôse<br>$labels{month3}[11]-$labels{month3}[0]</td>
-<td>Pluviôse<br>$labels{month3}[0]-$labels{month3}[1]</td>
-<td>Ventôse<br>$labels{month3}[1]-$labels{month3}[2]</td>
+<td>NivÃ´se<br>$labels{month3}[11]-$labels{month3}[0]</td>
+<td>PluviÃ´se<br>$labels{month3}[0]-$labels{month3}[1]</td>
+<td>VentÃ´se<br>$labels{month3}[1]-$labels{month3}[2]</td>
 </tr>
 EOT
 
   # Building the first six months
   my $row = '';
-  foreach my $m (1..6)
-    {
-      my $cell = join '<br>', map { one_day($year, $m, $_) } (1..30);
-      $row .= "<td><pre><br>$cell</pre></td>\n";
-    }
+  foreach my $m (1..6) {
+    my $cell = join '<br />', map { one_day($year, $m, $_) } (1..30);
+    $row .= "<td><pre><br>$cell</pre></td>\n";
+  }
 
   # Printing the first six months and the headers for the last six months
   print <<"EOT";
 <tr align='center'>$row</tr>
 <tr align='center'>
 <td>Germinal<br>$labels{month3}[2]-$labels{month3}[3]</td>
-<td>Floréal<br>$labels{month3}[3]-$labels{month3}[4]</td>
+<td>FlorÃ©al<br>$labels{month3}[3]-$labels{month3}[4]</td>
 <td>Prairial<br>$labels{month3}[4]-$labels{month3}[5]</td>
 <td>Messidor<br>$labels{month3}[5]-$labels{month3}[6]</td>
 <td>Thermidor<br>$labels{month3}[6]-$labels{month3}[7]</td>
@@ -80,11 +82,10 @@ EOT
 
   # Building the "-al" and "-idor" months
   $row = "";
-  foreach my $m (7..12)
-    {
-      my $cell = join '<br>', map { one_day($year, $m, $_) } (1..30);
-      $row .= "<td><pre><br>$cell</pre></td>\n";
-    }
+  foreach my $m (7..12) {
+    my $cell = join '<br />', map { one_day($year, $m, $_) } (1..30);
+    $row .= "<td><pre><br>$cell</pre></td>\n";
+  }
   print "<tr align='center'>$row</tr>\n";
   
   # Additional days.
@@ -93,8 +94,9 @@ EOT
   $last = 6 if DateTime::Calendar::FrenchRevolutionary->new(year => $year)->is_leap_year;
   # The additional days are printed in an horizontal row, one per cell
   $row = "";
-  foreach my $rd (1 .. $last)
-    { $row .= "<td><pre><br>" . one_day($year, 13, $rd) . "</pre></td>\n" }
+  foreach my $rd (1 .. $last) {
+    $row .= "<td><pre><br>" . one_day($year, 13, $rd) . "</pre></td>\n";
+  }
   print <<"EOT";
 <tr align='center'><td colspan='6'>$labels{add_days}</td></tr>
 <tr align='center'>$row</tr>
