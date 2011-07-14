@@ -1,4 +1,5 @@
 #!/usr/local/bin/perl -w
+# Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
 #
 # Printing a French Revolutionary calendar
 #
@@ -112,6 +113,8 @@ sub one_day {
 }
 
 __END__
+
+=encoding utf8
 
 =head1 NAME
 

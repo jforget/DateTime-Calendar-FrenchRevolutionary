@@ -1,7 +1,11 @@
-DateTime/Calendar/FrenchRevolutionary version 0.05
-==================================================
+DateTime::Calendar::FrenchRevolutionary version 0.09
+====================================================
 
-This is a companion module to DateTime.pm. It implements the French
+DateTime::Calendar::FrenchRevolutionary is copyright (c) 2003,
+2004, 2010, 2011 Jean Forget
+
+
+This is  a companion module  to DateTime.pm. It implements  the French
 Revolutionary calendar and decimal time.
 
 INSTALLATION
@@ -50,4 +54,12 @@ French-speaker, ending in "fr.html") with the HTML browser.
 That's all!
 
 
+LICENSE INFORMATION
 
+This module  is free software; you  can redistribute it  and modify it
+under the  same terms as Perl  5.12.2. For more details,  see the full
+text of the licenses in the directory LICENSE.
+
+This program is distributed in the hope that it will be useful, but it
+is provided “as is” and without any express or implied warranties. For
+details, see the full text of the license in the file LICENSE.

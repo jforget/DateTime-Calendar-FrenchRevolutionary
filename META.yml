@@ -1,31 +1,31 @@
 ---
-name: DateTime-Calendar-FrenchRevolutionary
-version: 0.08
+abstract: 'Dates in the French Revolutionary Calendar'
 author:
   - 'Jean Forget <JFORGET@cpan.org>'
-abstract: Dates in the French Revolutionary Calendar
-license: perl
-resources:
-  license: http://dev.perl.org/licenses/
-requires:
-  DateTime: 0.14
-  Roman: 1.22
 configure_requires:
-  Module::Build: 0.35
-provides:
-  DateTime::Calendar::FrenchRevolutionary:
-    file: lib/DateTime/Calendar/FrenchRevolutionary.pm
-    version: 0.08
-  DateTime::Calendar::FrenchRevolutionary::Locale:
-    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm
-    version: 0.08
-  DateTime::Calendar::FrenchRevolutionary::Locale::en:
-    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm
-    version: 0.08
-  DateTime::Calendar::FrenchRevolutionary::Locale::fr:
-    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm
-    version: 0.08
-generated_by: Module::Build version 0.35
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3603'
+license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
+name: DateTime-Calendar-FrenchRevolutionary
+provides:
+  DateTime::Calendar::FrenchRevolutionary:
+    file: lib/DateTime/Calendar/FrenchRevolutionary.pm
+    version: 0.09
+  DateTime::Calendar::FrenchRevolutionary::Locale:
+    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm
+    version: 0.09
+  DateTime::Calendar::FrenchRevolutionary::Locale::en:
+    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm
+    version: 0.09
+  DateTime::Calendar::FrenchRevolutionary::Locale::fr:
+    file: lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm
+    version: 0.09
+requires:
+  DateTime: 0.14
+  Roman: 1.22
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.09

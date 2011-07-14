@@ -1,8 +1,10 @@
+# Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
+
 package DateTime::Calendar::FrenchRevolutionary::Locale::fr;
 
 use vars qw($VERSION);
 
-$VERSION = '0.08'; # same as parent module DT::C::FR
+$VERSION = '0.09'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vnd Bru Fri Niv Plu Vnt Ger Flo Pra Mes The Fru S-C);
 #my @add_days_short= qw (Vertu Génie Trav Raison Récomp Révol);
@@ -290,6 +292,8 @@ Espagnols à Olia et Monteilla.
 6 Vendémiaire V Armée de Sambre et Meuse. L'ennemi attaque sur les
 points de Wurstatt, Nider-Ulm, Ober et Nider-Ingelheim et est repoussé.
 
+6 Vendémiaire XII Naissance de Prosper Mérimée
+
 0107
 7 Vendémiaire I. Prise de la ville de Nice et de la forteresse de Montalban.
 
@@ -457,8 +461,7 @@ Comines, Werwick, Ronek, Alluin, Menin, Furnes et Poperingues.
 1 Brumaire II Armée du Rhin. Prise d'Alzey et d'Oppenheim.
 
 0202
-2 Brumaire II Armée d'Italie. Défaite à Utel de cinq mille ennemis par
-neuf cents républicains, après onze heures de combat.
+2 Brumaire II Armée d'Italie. Défaite à Utel de cinq mille ennemis.
 
 2 Brumaire II Armée du Rhin. Attaque du poste de Breitenstein par les
 Autrichiens ; l'ennemi repoussé.
@@ -593,13 +596,12 @@ Strasbourg trois postes ennemis vaillamment défendus.
 26 Brumaire IV. Combat du champ di Pietri.
 
 0227
-27 Brumaire II Armée de la Moselle Défaite de quatre mille Autrichiens
-devant Bitche. Déroute complète des Autrichiens près Lébach. Prise
+27 Brumaire II Armée de la Moselle. Défaite autrichienne
+devant Bitche. Déroute des Autrichiens près Lébach. Prise
 de Bising et de Blise-Castel.
 
 27 Brumaire III Armée des Pyrénées orientales. Dugommier général en
-chef, tué d'un coup d'obus dans l'affaire de St. Sébastien de la
-Mouga.
+chef, tué à St. Sébastien de la Mouga.
 
 27 Brumaire III Armée des Pyrénées orientales. Bataille gagnée sur
 les Espagnols à Saint-Sébastien.
@@ -619,6 +621,8 @@ Parme.
 0229
 29 Brumaire II L'Armée du Rhin enlève deux redoutes formidables près
 de Bouxweiller.
+
+29 Brumaire VIII Naissance de René Caillé
 
 0230
 30 Brumaire II Armée des Pyrénées orientales. Bataille gagnée à Escola,
@@ -725,6 +729,9 @@ vive force les redoutes de Salbach.
 0319
 19 Frimaire II Armée du Rhin. Prise des hauteurs de Dawendorff, après
 une action très vive.
+
+0320
+20 Frimaire XII Naissance d'Hector Berlioz
 
 0321
 21 Frimaire I Armée du Nord. Prise des villes de Wezem et de Wert et
@@ -860,6 +867,9 @@ Bas-Rhin par les coalisés ; reprise du fort Vauban.
 
 29 Nivôse III Armée du Nord. Prise de Gertuydemberg.
 
+0430
+30 Nivôse VI Naissance d'Auguste Comte
+
 0502
 2 Pluviôse I Exécution de Louis XVI.
 
@@ -926,6 +936,9 @@ par cinq mille républicains.
 0518
 18 Pluviôse V Armée d'Italie. Les avant-postes de l'ennemi repoussés
 sur la droite de l'Adige ; prise de Derunbano.
+
+0520
+20 Pluviôse IV Naissance de Barthélémy Prosper Enfantin
 
 0521
 21 Pluviôse V Armée d'Italie. Prise d'Ancône.
@@ -1053,6 +1066,9 @@ résistance, l'ennemi est mis en déroute.
 6 Germinal V Armée d'Italie. Affaire de la Chinse ; prise de ce poste
 important.
 
+0707
+26 Germinal V Naissance d'Alfred de Vigny
+
 0708
 8 Germinal V Armée d'Italie. Des bataillons ennemis, fraîchement
 arrivés du Rhin, entreprennent de défendre la gorge d'Innsbruck ; ils
@@ -1071,7 +1087,7 @@ les Français entrent dans Neumarck et Freissels.
 
 0714
 14 Germinal II Armée des Pyrénées occidentales. Les Français enlèvent
-de vive force les retranchemens d'Ozoné, près Saint-Jean de Luz, et
+de vive force les retranchements d'Ozoné, près Saint-Jean de Luz, et
 mettent en fuite les Espagnols.
 
 14 Germinal V Armée d'Italie. Les Autrichiens, vaincus sur tous les
@@ -1143,6 +1159,8 @@ Austro-Sardes. Combat de Dego, déroute de l'ennemi. Combat et prise
 de Saint-Jean, dans la vallée de la Barmida. Prise de Batisolo, de
 Bagnosco et de Pontenocetto. Prise des redoutes de Montezemo.
 
+26 Germinal V Naissance d'Adolphe Thiers
+
 0727
 27 Germinal II Armée de la Moselle. Les Français occupent les
 hauteurs de Mertzig, après en avoir chassé l'ennemi.
@@ -1171,8 +1189,7 @@ Aussoy, près Philippeville, après un combat de douze heures.
 3 Floréal IV Armée d'Italie. Combat et prise de la ville de Mondovi.
 
 0804
-4 Floréal II Armée du Rhin. Victoire remportée auprès de
-Kurweiller.
+4 Floréal II Armée du Rhin. Victoire remportée auprès de Kurweiller.
 
 0805
 5 Floréal I Armée des Pyrénées orientales. Affaire de Samouragaldi,
@@ -1217,8 +1234,7 @@ de trois mille, chassent dix mille ennemis du village d'Oms ; ils
 enlèvent les gorges et le pont du Ceret.
 
 0809
-9 Floréal IV Armée d'Italie. Armistice conclu avec le roi de
-Sardaigne.
+9 Floréal IV Armée d'Italie. Armistice conclu avec le roi de Sardaigne.
 
 0810
 10 Floréal II Armée du Nord. Victoire à Mont-Castel sur vingt mille
@@ -1325,8 +1341,7 @@ force les redoutes de Riveto, de la Ramasse, et autres postes sur le
 Mont-Cénis.
 
 0826
-26 Floréal IV Armée d'Italie. Conclusion de la paix avec le roi de
-Sardaigne.
+26 Floréal IV Armée d'Italie. Conclusion de la paix avec le roi de Sardaigne.
 
 0827
 27 Floréal II Armée des Pyrénées orientales. Sortie de la garnison de
@@ -1441,12 +1456,14 @@ les troupes républicaines.
 
 13 Prairial IV Armée d'Italie. Prise de la forteresse de Peschiera.
 
-Armée de Sambre et Meuse. Prise des retranchemens de la Sieg et de la
+Armée de Sambre et Meuse. Prise des retranchements de la Sieg et de la
 Acher.
 
 0914
 14 Prairial II Armée des Ardennes. Déroute des ennemis, près du bois
 de Sainte-Marie.
+
+14 Prairial IV Naissance de Sadi Carnot
 
 0915
 15 Prairial II Armée des Pyrénées occidentales. Bataille gagnée sur
@@ -1465,7 +1482,7 @@ Armée d'Italie. Entrée des Français dans Véronne.
 16 Prairial IV Armée d'Italie. Six cents grenadiers Français enlèvent
 à la baïonnette le faubourg S. Georges, et la tête du pont de Mantoue.
 
-Prise du faubourg de Cherial, de ses retranchemens, et de la tour ;
+Prise du faubourg de Cherial, de ses retranchements, et de la tour ;
 l'ennemi est forcé de se retirer dans Mantoue.
 
 0917
@@ -1531,7 +1548,7 @@ déroute de vingt-huit mille Espagnols.
 26 Prairial IV Armée de Sambre et Meuse. Six compagnies de grenadiers
 s'emparent de Nassau.
 
-Armée du Rhin et Moselle. Les retranchemens des Autrichiens entre
+Armée du Rhin et Moselle. Les retranchements des Autrichiens entre
 Franckental et le Rehut, sont forcés par les Français.
 
 0927
@@ -1633,7 +1650,7 @@ Armée du Nord. Prise de la ville d'Ostende et de son port.
 1014
 Armée du Nord. Entrée des Français dans Tournay.
 
-Armée du Rhin. Les retranchemens ennemis et plusieurs de leurs
+Armée du Rhin. Les retranchements ennemis et plusieurs de leurs
 avant-postes sont forcés et pris par les Français.
 
 Armée des Pyrénées occidentales. Les Républicains enlèvent toutes les
@@ -1668,7 +1685,7 @@ de Freudenstatt.
 énorme de l'ennemi sur le champ de bataille ; il est chassé de
 Kupenheim, et contraint de repasser la Murg.
 
-Armée d'Italie. Enlèvement à la baïonette des retranchemens
+Armée d'Italie. Enlèvement à la baïonette des retranchements
 autrichiens, entre la tête du lac de Garde et l'Adige, et de la
 position de Ballone.
 
@@ -1856,6 +1873,8 @@ L'ennemi est battu à Lonado.
 
 1114
 Armée d'Italie. Reprise de Brescia.
+
+14 Thermidor VII Naissance de Sophie Rostopchine, future comtesse de Ségur
 
 1115
 15 Thermidor IV Armée de Sambre et Meuse. prise de Koenigshoffen.
@@ -2072,7 +2091,7 @@ Suisses sont mis en pleine déroute.
 
 1224
 24 Fructidor I Armée des Alpes. Avantage remporté par les Français,
-dans la plaine d'Aigne-Belles.
+dans la plaine d'Aigue-Belles.
 
 24 Fructidor III Armée de Sambre et Meuse. L'armée française passe le
 Rhin en présence de l'ennemi, qui s'y oppose inutilement, et le

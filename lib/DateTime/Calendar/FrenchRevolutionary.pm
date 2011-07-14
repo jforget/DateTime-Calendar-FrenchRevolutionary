@@ -1,10 +1,12 @@
+# Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
+
 package DateTime::Calendar::FrenchRevolutionary;
 
 use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.08';
+$VERSION = '0.09';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);
 use Roman;
@@ -95,7 +97,6 @@ sub new {
     my $self = {};
 
     $self->{tz} = DateTime::TimeZone->new(name => 'floating');
-    $args{locale} = delete $args{language} if exists $args{language};
     $args{locale} = $class->DefaultLocale unless defined $args{locale};
     if ( ref $args{locale} )
       { $self->{locale} = $args{locale} }
@@ -572,7 +573,7 @@ sub _abt_seconds_as_components { int($_[1] / 3600), int($_[1] % 3600 / 60), $_[1
 # Decimal time
 sub _time_as_seconds { .864 * ($_[1] * 10000 + $_[2] * 100 + $_[3]) }
 sub _seconds_as_components { 
-  my $sec = $_[1] / .864; 
+  my $sec = int(.5 + $_[1] / .864); 
   int($sec / 10000), int($sec % 10000 / 100), $sec % 100 
 }
 
@@ -611,8 +612,6 @@ my %formats = (
       , 'n' => sub { "\n" } # should this be OS-sensitive?
       , 'p' => sub {    $_[0]->{locale}->am_pm($_[0]) }
       , 'P' => sub { lc $_[0]->{locale}->am_pm($_[0]) }
-#      , 'p' => sub { $_[0]->hour < 5 ? 'AM' : 'PM' }
-#      , 'P' => sub { $_[0]->hour < 5 ? 'am' : 'pm' }
       , 'r' => sub { $_[0]->strftime('%I:%M:%S %p') }
       , 'R' => sub { $_[0]->strftime('%H:%M') }
       , 's' => sub { $_[0]->epoch }
@@ -698,6 +697,8 @@ sub on_date {
 ou la mort !";
 
 __END__
+
+=encoding utf8
 
 =head1 NAME
 
@@ -860,8 +861,8 @@ suite.  The preferred way for calendar to calendar conversion.
 =item * last_day_of_month( ... )
 
 Same as C<new>,  except that the C<day> parameter  is forbidden and is
-automatically set to the end of the month. If the C<month> paramter is
-13 for  the additional days, the  day is set  to the end of  the year,
+automatically set to  the end of the month.  If the C<month> parameter
+is 13 for the additional days, the  day is set to the end of the year,
 either the 5th or the 6th additional day.
 
 =item * clone
@@ -891,7 +892,7 @@ Returns the year. C<%G> in C<strftime>.
 
 Returns the month in the 1..12 range. If the date is an additional day
 at  the end  of the  year, returns  13, which  is not  really  a month
-number. C<%f> in C<strftime>.a
+number. C<%f> in C<strftime>.
 
 =item * month_0
 
@@ -1066,10 +1067,11 @@ not given, the method will use the date object's current locale.
 Not all eligible events are portrayed there. The events database will
 be expanded in future versions.
 
-Most military events are extracted from I<Calendrier Militaire>, a book
-written by an anonymous author in VII (1798) or so. I guess there is 
-no longer any copyright attached. Please note that this is a propaganda
-book, which therefore gives a very biased view of the events.
+Most  military events  are extracted  from I<Calendrier  Militaire>, a
+book written by an anonymous author in VII (1798) or so. I guess there
+is  no longer  any  copyright attached.  Please  note that  this is  a
+propaganda  book, which  therefore gives  a  very biased  view of  the
+events.
 
 =back
 
@@ -1147,6 +1149,20 @@ is, range 1 to 10. The result is a single-char string, except for 10.
 
 The day of the year as a decimal number (range 001 to 366).
 
+=item * %Ej
+
+The feast for the day, in long format ("jour de la pomme de terre").
+Also available as C<%*>.
+
+=item * %EJ
+
+The feast for  the day, in capitalised long format  ("Jour de la Pomme
+de terre").
+
+=item * %Oj
+
+The feast for the day, in short format ("pomme de terre").
+
 =item * %k
 
 The  hour (10-hour  clock) as  a decimal  number (range  0 to  9); the
@@ -1184,8 +1200,8 @@ the current locale.
 
 =item * %r
 
-The decimal time in a.m.  or p.m. notation.  In the POSIX locale this is
-equivalent to `%I:%M:%S %p'.
+The decimal time in a.m.  or  p.m. notation.  In the POSIX locale this
+is equivalent to `%I:%M:%S %p'.
 
 =item * %R
 
@@ -1210,8 +1226,8 @@ The decimal time in 10-hour notation (%H:%M:%S).
 
 =item * %u
 
-The day of the I<décade> as a decimal, range 1 to 10, Primidi being 1.  See
-also %w.
+The day of the I<décade> as a decimal, range 1 to 10, Primidi being 1.
+See also %w.
 
 =item * %U
 
@@ -1220,15 +1236,15 @@ to 37.
 
 =item * %V
 
-The decade number (French Revolutionary equivalent to
-the ISO 8601:1988 week number) of the current year as a decimal number,
-range 01 to 37. Identical to %U, since décades are aligned with the
+The  decade  number  (French   Revolutionary  equivalent  to  the  ISO
+8601:1988 week number) of the  current year as a decimal number, range
+01  to  37.  Identical to  %U,  since  décades  are aligned  with  the
 beginning of the year.
 
 =item * %w
 
-The day of the I<décade> as a decimal, range 0 to 9, Décadi being 0.  See
-also %u.
+The day of the  I<décade> as a decimal, range 0 to  9, Décadi being 0.
+See also %u.
 
 =item * %W
 
@@ -1249,8 +1265,8 @@ The year as a lowercase Roman number.
 
 =item * %EY
 
-The year as a uppercase Roman number, which is the traditional way
-to write years when using the French Revolutionary calendar.
+The year as a uppercase Roman  number, which is the traditional way to
+write years when using the French Revolutionary calendar.
 
 =item * %z
 
@@ -1265,6 +1281,11 @@ calendar, doesn't it?
 The  time  zone  or  name  or abbreviation,  should  the  module  have
 supported them.
 
+=item * %*
+
+The feast for the day, in long format ("jour de la pomme de terre").
+Also available as C<%Ej>.
+
 =item * %%
 
 A literal `%' character.
@@ -1276,9 +1297,10 @@ A literal `%' character.
 =head2 Time Zones
 
 Only the I<floating> time zone  is supported.  Time zones were created
-in  the late  XIXth  century,  at a  time  when instant  communication
-(electric telegraph) made it necessary.   But at this time, the French
-Revolutionary calendar was no longer in use.
+in  the  late  XIXth  century,  at  a  time  when  fast  communication
+(railroads)  and instant  communication (electric  telegraph)  made it
+necessary.  But at this time, the French Revolutionary calendar was no
+longer in use.
 
 =head2 Leap Seconds
 
@@ -1304,8 +1326,9 @@ Please enter bug reports at L<http://rt.cpan.org/>
 
 Jean Forget <JFORGET@cpan.org>
 
-based on Dave Rolsky's DateTime module,  Eugene van der Pijll's 
-DateTime::Calendar::Pataphysical module and my prior Date::Convert::French_Rev module.
+based  on  Dave  Rolsky's  DateTime  module, Eugene  van  der  Pijll's
+DateTime::Calendar::Pataphysical      module     and      my     prior
+Date::Convert::French_Rev module.
 
 The development of this module is hosted by I<Les Mongueurs de Perl>,
 L<http://www.mongueurs.net/>.
@@ -1342,8 +1365,9 @@ http://www.kokogiak.com/frc/default.asp
 
 =head1 LICENSE STUFF
 
-Copyright (c) 2003--2004 Jean Forget. All rights reserved. This program is
-free software. You can distribute, modify, and otherwise mangle
-DateTime::Calendar::FrenchRevolutionary under the same terms as perl.
+Copyright  (c)  2003,  2004,   2010,  2012  Jean  Forget.  All  rights
+reserved. This  program is free software. You  can distribute, modify,
+and otherwise mangle DateTime::Calendar::FrenchRevolutionary under the
+same terms as perl 5.12.2.
 
 =cut

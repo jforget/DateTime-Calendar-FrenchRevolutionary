@@ -1,6 +1,17 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
-0.08  Tridi 3 Thermidoc CCXVIII, jour du melon (Wednesday 2010-07-21)
+0.09  Sextidi 26 Messidor CCXIX, jour de la sauge (also known as Bastille Day, Thursday 2011-07-14)
+        - Fix the long running bug shown by 45_lastday.t when using an interpreter 
+        configured with long double (closing ticket 61230)
+        - Add still more tests.
+        - A few minor modification in the "on_date" data
+        - A few typos in the documentation (partial resolution of ticket 61228, but I am
+        sure some other typos exist).
+        - Remove the semi-support of the old parameter "language". Anyhow, it was
+        rejected by Params::Validate.
+        - add encoding POD directive, hoping the documentation will look better on the web
+
+0.08  Tridi 3 Thermidor CCXVIII, jour du melon (Wednesday 2010-07-21)
         - strftime uses "%*" as an alternative to "%Ej" (closing ticket 17231)
         - various spelling errors in the "on_date" method
         - new 46_lastday.t test script, to analyse the spurious errors found by some CPAN testers
@@ -16,6 +27,7 @@ Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 0.07  Duodi 22 Fructidor CCXII, jour de la noisette (Tuesday 2004-09-07)
         - I used to believe that a capturing split would allow for one set
         of capturing parentheses which would capture the whole delimiter.
+        I did not know that you can capture only a part of the delimiter if you want.
         My knowledge of Perl is fixed, together with the on_date method
         and the _load_event subroutine.
         - Add _raw_feast private method.

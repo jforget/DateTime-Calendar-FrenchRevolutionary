@@ -3,7 +3,7 @@ use DateTime::Calendar::FrenchRevolutionary;
 
 #my $nb_tests = @tests;
 my $n = 1;
-my $nb_tests = 12;
+my $nb_tests = 26;
 
 print "1..$nb_tests\n";
 
@@ -142,3 +142,138 @@ if ($@)
 else
   { printf "not ok 12, unexpected success with time zone Paris\n" }
 
+# Checking the dummy set_time_zone method
+my $iso_paris = $d->iso8601;
+my $iso_chicago;
+eval { $d->set_time_zone("America/Chicago");
+       $iso_chicago = $d->iso8601; };
+
+if ($@ eq '' && $iso_paris eq $iso_chicago ) {
+  print "ok 13\n";
+}
+elsif ($@) {
+  print "not ok 13, error $@\n";
+}
+else {
+  print "not ok 13, changed from $iso_paris to $iso_chicago\n";
+}
+
+# Checking the on_date method
+$d = DateTime::Calendar::FrenchRevolutionary->new( year  => 8,
+                                         month =>  2,
+                                         day   => 18,
+					 locale => 'fr');
+my $event_fr = <<'EOF';
+18 Brumaire I. Prise de la ville de Tournay par les Français.
+
+18 Brumaire III Armée du Nord. Entrée triomphante des Français dans
+Nimègue.
+
+18 Brumaire VIII. Coup d'état de Bonaparte : fin du Directoire, début du Consulat
+
+EOF
+my $event_en = <<'EOF';
+18 Brumaire I. The French capture Tournay.
+
+18 Brumaire III Army of the North. Triumphant entry of the French
+into Nimègue.
+
+18 Brumaire VIII. Bonaparte's coup: end of Directorate, beginning of Consulate
+
+EOF
+if ($d->on_date eq $event_fr) {
+  print "ok 14\n";
+}
+else {
+  print "not ok 14, wrong French event\n";
+}
+
+if ($d->on_date('en') eq $event_en) {
+  print "ok 15\n";
+}
+else {
+  print "not ok 15, wrong English event\n";
+}
+
+# Checking the on_date method on an eventless day
+$d = DateTime::Calendar::FrenchRevolutionary->new( year  => 8,
+                                         month =>  2,
+                                         day   => 10,
+					 locale => 'fr');
+if ($d->on_date eq '') {
+  print "ok 16\n";
+}
+else {
+  print "not ok 16, wrong French lack of event\n";
+}
+
+if ($d->on_date('en') eq '') {
+  print "ok 17\n";
+}
+else {
+  print "not ok 17, wrong English lack of event\n";
+}
+
+# Checking the dmy and mdy methods
+if ($d->dmy eq '10-02-0008') {
+  print "ok 18\n";
+}
+else {
+  printf "not ok 18, dmy = '%s' instead of '10-02-0008'\n", $d->dmy;
+}
+
+if ($d->dmy('.') eq '10.02.0008') {
+  print "ok 19\n";
+}
+else {
+  printf "not ok 19, dmy = '%s' instead of '10.02.0008'\n", $d->dmy('.');
+}
+
+if ($d->mdy eq '02-10-0008') {
+  print "ok 20\n";
+}
+else {
+  printf "not ok 20, mdy = '%s' instead of '02-10-0008'\n", $d->mdy;
+}
+
+if ($d->mdy('.') eq '02.10.0008') {
+  print "ok 21\n";
+}
+else {
+  printf "not ok 21, mdy = '%s' instead of '02.10.0008'\n", $d->mdy('.');
+}
+
+$d = DateTime::Calendar::FrenchRevolutionary->from_epoch(epoch => 1_000_000_000);
+if ($d->epoch == 1_000_000_000) {
+  print "ok 22\n";
+}
+else {
+  printf "not ok 22, epoch = %d instead of 1_000_000_000\n", $d->epoch;
+}
+if (int($d->jd) == 2452161) {
+  print "ok 23\n";
+}
+else {
+  printf "not ok 23, jd = %d instead of\n", $d->jd;
+}
+if (int($d->mjd) == 52161) {
+  print "ok 24\n";
+}
+else {
+  printf "not ok 24, mjd = %d instead of\n", $d->mjd;
+}
+my @decade = $d->decade;
+if ($decade[0] == 209 && $decade[1] == 36) {
+  print "ok 25\n";
+}
+else {
+  print "not ok 25, decade = ($decade[0], $decade[1]) instead of (209, 36)\n";
+}
+
+$d1 = $d->clone;
+if ($d1->year == $d->year && $d1->month == $d->month && $d1->day == $d->day) {
+  print "ok 26\n";
+}
+else {
+  print "not ok 26, clone failed\n";
+}

@@ -1,8 +1,10 @@
+# Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
+
 package DateTime::Calendar::FrenchRevolutionary::Locale::en;
 
 use vars qw($VERSION);
 
-$VERSION = '0.08'; # same as parent module DT::C::FR
+$VERSION = '0.09'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vin Fog Fro Sno Rai Win Bud Flo Mea Rea Hea Fru S-C);
 
@@ -294,6 +296,8 @@ are taken again by the Army of the Rhine.
 
 6 Vendémiaire V. The enemy attacks the Army of Sambre and Meuse at
 Wurstatt, Nider-Ulm, Ober and Nider-Ingelheim; the attack is repulsed.
+
+6 Vendémiaire XII Birth of Prosper Mérimée
 
 0107
 7 Vendémiaire I. Anselme's troops conquer the city of Nice and the Montalban fortress. 
@@ -597,12 +601,11 @@ and captures three enemy posts near Strasburg.
 26 Brumaire IV Fight of the di Pietri field.
 
 0227
-27 Brumaire II Army of Moselle. 4,000 Austrians defeated before
-Bitche. The Austrians near Lebach are utterly routed. Bising and
-Blise-Castel captured.
+27 Brumaire II Army of Moselle. Austrian defeat before Bitche. Austrian
+rout near Lebach. Bising and Blise-Castel captured.
 
 27 Brumaire III Army of Eastern Pyrenees. General-in-chief Dugommier
-is killed by a shell in the skirmish of St. Sebastien de la Mouga.
+killed at St. Sebastien de la Mouga.
 
 27 Brumaire III Army of Eastern Pyrenees. Victorious battle against
 the Spaniards at Saint-Sebastien.
@@ -621,6 +624,8 @@ Duke of Parme.
 29 Brumaire II The Army of the Rhine captures two redoubts near
 Bouxweiller.
 
+29 Brumaire VIII Birth of René Caillé
+
 0230
 30 Brumaire II Army of Eastern Pyrenees. Victorious battle at Escola,
 Liers, Vilartoly, against 50,000 Spanish troops.
@@ -635,7 +640,7 @@ defeated near Blascheidt, and Lorentsweiller.
 in the forest of Grunnevald, near Luxemburg.
 
 1 Frimaire V Army of Italy. The enemy is repetively attacked and
-repulsed from Castel-Nobo to Rivoli, la Corona, and along the Adige
+repulsed from Castel-Novo to Rivoli, la Corona, and along the Adige
 river until Dolce.
 
 0302
@@ -719,6 +724,9 @@ Salbach redoubts.
 
 0319
 19 Frimaire II Army of the Rhine. The Dawendorff highgrounds are captured.
+
+0320
+20 Frimaire XII Birth of Hector Berlioz
 
 0321
 21 Frimaire I Army of the North. Capture of Wezem, Wert and Ruremonde.
@@ -841,6 +849,9 @@ Lower-Rhine department. The Vauban fort is taken back.
 
 29 Nivôse III Army of the North. Capture of Gertuydemberg.
 
+0430
+30 Nivôse VI Birth of Auguste Comte
+
 0502
 2 Pluviôse I Louis XVI is beheaded.
 
@@ -903,6 +914,9 @@ Chauvin-Dragon.
 0518
 18 Pluviôse V Army of Italy. The enemy outposts are repulsed on the
 Adige right bank. Derunbano captured.
+
+0520
+20 Pluviôse IV Birth of Barthélémy Prosper Enfantin
 
 0521
 21 Pluviôse V Army of Italy. The Pope's troops, on the highground
@@ -1026,6 +1040,9 @@ resistance, the enemy is routed.
 6 Germinal V Army of Italy. Affair of the Chinse; this important 
 position is taken.
 
+0707
+26 Germinal V Birth of Alfred de Vigny
+
 0708
 8 Germinal V Army of Italy. Enemy battalions, fresh from the Rhine
 front, attempt to defend the Innsbruck defile; they are repulsed by
@@ -1046,7 +1063,7 @@ enter Neumarck and Freissels.
 fieldworks, near Saint-Jean de Luz and rout the Spanish troops.
 
 14 Germinal V Army of Italy. The Austrians, beaten everywhere,
-evacuate Tyrol. Prince Charles retreat toward Vienna and is beaten by
+evacuate Tyrol. Prince Charles retreats toward Vienna and is beaten by
 the Massena division.
 
 0715
@@ -1111,6 +1128,8 @@ Tiperdange.
 Austro-Sards. Fight at Dego, the enemy is routed. Fight and capture
 of Saint-Jean, in the valley of Barmida. Capture of Batisolo, Bagnosco
 and Pontenocetto. Capture of the Montezemo redoubts.
+
+26 Germinal V Birth of Adolphe Thiers
 
 0727
 27 Germinal II Army of the Moselle. The French occupy the highground
@@ -1385,6 +1404,8 @@ captured.
 0914
 14 Prairial II Army of the Ardennes. The enemy is routed near the
 Sainte-Marie woods.
+
+14 Prairial IV Birth of Sadi Carnot
 
 0915
 15 Prairial II Army of Western Pyrenees. Battle won on several
@@ -1768,6 +1789,8 @@ beaten at Lonado.
 1114
 Army of Italy. Brescia taken back.
 
+14 Thermidor VII Birth of Sophie Rostopchine, later known as countess of Ségur
+
 1115
 15 Thermidor IV Army of Sambre and Meuse. Capture of Koenigshoffen.
 
@@ -1976,7 +1999,7 @@ routed.
 
 1224
 24 Fructidor I Army of the Alps. French advantage in the plain of
-Aigue-Belle.
+Aigue-Belles.
 
 24 Fructidor III Army of Sambre and Meuse. The French army crosses the
 Rhine in front of the enemy, which opposes the crossing to no avail.
@@ -2085,6 +2108,8 @@ EVENTS
 
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
 DateTime::Calendar::FrenchRevolutionary::Locale::en -- English localization for the French 
@@ -2140,17 +2165,18 @@ Returns a 3-letter abbreviation for the English day name.
 
 =item * feast_short ($date)
 
-Hopefully returns an adequate English translation for the plant, animal
-or tool that correspond to C<$date>'s feast.
+Hopefully  returns  an adequate  English  translation  for the  plant,
+animal or tool that correspond to C<$date>'s feast.
 
 Note: in some cases, the feast French name is left untranslated, while
-in some other cases, the translation is inadequate. If you are fluent in
-both French and English, do not hesitate to send corrections to the author.
+in some other cases, the  translation is inadequate. If you are fluent
+in both French and English, do not hesitate to send corrections to the
+author.
 
 =item * feast_long ($date)
 
-Same as C<feast_short>, with a "day" suffix, as in the current calendar's
-"groundhog day" or "Colombus day".
+Same  as  C<feast_short>, with  a  "day"  suffix,  as in  the  current
+calendar's "groundhog day" or "Colombus day".
 
 =item * feast_caps ($date)
 
@@ -2158,12 +2184,12 @@ Same as C<feast_long> with capitalized first letters.
 
 =item * on_date ($date)
 
-Gives a small text about the events which occurred the same month and day
-as C<$date> between the calendar's epoch (22 Sep 1792) and the day
+Gives a small text about the  events which occurred the same month and
+day as C<$date> between the calendar's epoch (22 Sep 1792) and the day
 it was rescinded (31 Dec 1805).
 
-Most of these events come from an anonymous propaganda book published
-in year VIII (1799--1800). The others are common knowledge available
+Most of these events come  from an anonymous propaganda book published
+in year  VIII (1799--1800). The others are  common knowledge available
 in any French History book or any encyclopedia.
 
 =back
@@ -2196,8 +2222,9 @@ http://www.kokogiak.com/frc/default.asp
 
 =head1 LICENSE STUFF
 
-Copyright (c) 2003 Jean Forget. All rights reserved. This program is
-free software. You can distribute, modify, and otherwise mangle
-DateTime::Calendar::FrenchRevolutionary under the same terms as perl.
+Copyright  (c)  2003,  2004,   2010,  2011  Jean  Forget.  All  rights
+reserved. This  program is free software. You  can distribute, modify,
+and otherwise mangle DateTime::Calendar::FrenchRevolutionary under the
+same terms as perl 5.12.2.
 
 =cut
