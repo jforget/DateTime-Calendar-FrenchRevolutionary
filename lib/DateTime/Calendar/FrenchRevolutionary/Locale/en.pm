@@ -1,18 +1,19 @@
 # Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 
 package DateTime::Calendar::FrenchRevolutionary::Locale::en;
 
 use vars qw($VERSION);
 
-$VERSION = '0.09'; # same as parent module DT::C::FR
+$VERSION = '0.10'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vin Fog Fro Sno Rai Win Bud Flo Mea Rea Hea Fru S-C);
 
 # based on Thomas Carlyle's book:
 my @months = qw(Vintagearious Fogarious Frostarious
-		Snowous       Rainous   Windous
-		Buddal        Floweral  Meadowal
-		Reapidor      Heatidor  Fruitidor);
+                Snowous       Rainous   Windous
+                Buddal        Floweral  Meadowal
+                Reapidor      Heatidor  Fruitidor);
 
 push @months, "additional day";
 
@@ -48,120 +49,121 @@ my %time_formats = (
 # comments in some places.
 # This array is mainly based on http://www.kokogiak.com/frc/default.asp
 # Used with permission from Alan Taylor
+# Checked with Jonathan Badger's FrenchRevCal-ruby and Wikipedia
 my @feast = (
 # Vendémiaire
-	qw(
-       grapes			saffron		sweet_chestnut	colchic		horse
-       balsam			carrot		amaranth	parsnip		vat
-       potato			everlasting	squash		reseda		ass
-       ?beauty_of_the_night	pumpkin		buckwheat	sunflower	press
-       hemp			peach		turnip		amarillis	ox
-       eggplant			pepper		tomato		barley		barrel
-	),
+        qw(
+       grape                    saffron         ?sweet_chestnut ?colchic        horse
+       impatiens                carrot          amaranth        parsnip         vat
+       potato                   strawflower     ?squash         mignonette      donkey
+       four_o'clock_flower      pumpkin         buckwheat       sunflower       wine-press
+       hemp                     peach           turnip          amaryllis       ox
+       eggplant                 chili_pepper    tomato          barley          barrel
+        ),
 # Brumaire
-	qw(
-       apple		celery		pear			beet		goose
-       heliotrope	fig		block_salsify		whitebeam	plow
-       salsify		water_caltrop	jerusalem_artichoke	endive		turkey
-       ?chervis		cress		plumbago		pomegranate	harrows
-       ?bacchante	?azerole	madder			orange		pheasant
-       pistachio	?macjonc	quince			corme		roller
-	),
+        qw(
+       apple            celery          pear                    beet_root       goose
+       heliotrope       fig             black_salsify           ?whitebeam      plow
+       salsify          water_chestnut  jerusalem_artichoke     endive          turkey
+       skirret          cress           ?plumbago               pomegranate     harrow
+       ?bacchante       azarole         madder                  orange          pheasant
+       pistachio        tuberous_pea    quince                  service_tree    roller
+        ),
 # Frimaire
-	qw(
-       rampion	 	turnips		chicory		medlar		pig
-       mache		cauliflower	honey		juniper		pick
-       wax		horseradish	cedar		fir_tree	roe-deer
-       gorse		cypress		ivy		savine		grub-hoe
-       maple_sugar	heather		reed		sorrel		cricket
-       umbrella_pine	liege		truffle		olive		shovel
-	),
+        qw(
+       rampion          turnip          chicory         medlar          pig
+       corn_salad       cauliflower     honey           juniper         pickaxe
+       wax              horseradish     cedar_tree      fir_tree        roe_deer
+       gorse            cypress_tree    ivy             savin_juniper   grub-hoe
+       maple_tree       heather         reed            sorrel          cricket
+       pinenut          cork            truffle         olive           shovel
+        ),
 # Nivôse
-	qw(
-       peat		 coal		bitumen		sulphur		dog
-       lava		 topsoil	manure		saltpeter	flail
-       granite		 clay		slate		sandstone	rabbit
-       flint		 marl	  	limestone	marble		horse_carriage
-       ?gypsum		 salt		iron		copper		cat
-       tin		 lead		zinc		mercury		sifter
-	),
+        qw(
+       peat              coal           bitumen         sulphur         dog
+       lava              topsoil        manure          saltpeter       flail
+       granite           clay           slate           sandstone       rabbit
+       flint             marl           limestone       marble          winnowing_basket
+       gypsum            salt           iron            copper          cat
+       tin               lead           zinc            mercury         sieve
+        ),
 # Pluviôse
-	qw(
-       wood_laurel	moss		?fragon		snow-flower		bull
-       thyme		?amadouvier	mezereon	poplar			axe
-       hellebore	broccoli	sweet_laurel    cobnut			cow
-       boxwood		lichen		yew		lungwort		billhook
-       candytuft	daphne		grass		colonial_bentgrass	hare
-       woad		hazel_tree	cyclamen	celandine		sleigh
-	),
+        qw(
+       spurge_laurel    moss            butcher's_broom snowdrop                bull
+       laurustinus      tinder_polypore mezereon        poplar_tree             axe
+       hellebore        broccoli        laurel          common_hazel            cow
+       box_tree         lichen          yew_tree        lungwort                billhook
+       pennycress       daphne          couch_grass     common_knotgrass        hare
+       woad             hazel_tree      cyclamen        celandine               sleigh
+        ),
 # Ventôse
-	qw(
-       coltsfoot	dogwood		hoary_stock	privet		billygoat
-       hazelwort	alaternus	violet		eared_willow	spade
-       narcissus	elm		fumitory	hedge_mustard	goat
-       spinach		leopard's_bane	pimpernel	chervil		line
-       mandrake	        parsley		?cochléaria	daisy		tuna_fish
-       dandelion	windflower	capillary	ash		dibble
-	),
+        qw(
+       coltsfoot        dogwood                   ?hoary_stock      privet          billygoat
+       wild_ginger      mediterranean_buckthorn   violet            goat_willow     spade
+       narcissus        elm_tree                  fumitory          hedge_mustard   goat
+       spinach          leopard's_bane            pimpernel         chervil         line
+       mandrake         parsley                   scurvy_grass      daisy           tuna_fish
+       dandelion        windflower                maidenhair_fern   ash_tree        dibble
+        ),
 # Germinal
-	qw(
-       primula		plane_tree	asparagus	tulip		hen
-       white_beet	birch		jonquil		alder		hatchery
-       periwinkle	hornbeam	morel		beech		bee
-       lettuce		larch		hemlock		radish		hive
-       redbud		roman_lettuce	chestnut_tree	rocket		pigeon
-       lilac		anemone		pansy		bilberry	transplant_tool
-	),
+        qw(
+       primula          plane_tree      asparagus       tulip           hen
+       chard            birch_tree      daffodil        alder           hatchery
+       periwinkle       hornbeam        morel           beech_tree      bee
+       lettuce          larch           hemlock         radish          hive
+       ?redbud          roman_lettuce   chestnut_tree   rocket          pigeon
+       lilac            anemone         pansy           blueberry       grafter
+        ),
 # Floréal
-	qw(
-       rose		oak			fern		hawthorn	nightingale
-       culverwort	lily_of_the_valley	mushroom	hyacinth	rake
-       rhubarb		sainfoin		?gold_bar	chamerops	silkworm
-       consound		burnet			?gold_basket	orache		hoe
-       statice		fritillary		borage		valerian	carp
-       spindletree	chive			?buglosse	?sénevé		shepherd_staff
-	),
+        qw(
+       rose             oak_tree                fern            hawthorn        nightingale
+       columbine        lily_of_the_valley      mushroom        hyacinth        rake
+       rhubarb          sainfoin                wallflower      ?chamerops      silkworm
+       comfrey          burnet                  basket_of_gold  orache          hoe
+       ?statice         fritillary              borage          valerian        carp
+       spindletree      chive                   bugloss         wild_mustard    shepherd_staff
+        ),
 # Prairial
-	qw(
-       alfalfa		day-lily	clover		angelic		duck
-       balm		wheat		martagon	wild_thyme	scythe
-       strawberry	betony		pea		acacia		quail
-       carnation	elder_tree	poppy		lime		pitchfork
-       barbel		camomile	honeysuckle	curds		tench
-       jasmine		vervain		thyme		peony		carriage
-	),
+        qw(
+       alfalfa          day-lily        clover          angelica        duck
+       lemon_balm       oat_grass       martagon        wild_thyme      scythe
+       strawberry       betony          pea             acacia          quail
+       carnation        elder_tree      poppy           lime            pitchfork
+       barbel           camomile        honeysuckle     bedstraw        tench
+       jasmine          vervain         thyme           peony           carriage
+        ),
 # Messidor
-	qw(
-       rye		oats		onion		speedwell	mule
-       rosemary		cucumber	shallot		wormwood	sickle
-       coriander	artichoke	clove		lavender	chamois
-       tobacco		currant		woodpea		cherry		park
-       mint		cumin		bean		?orcanète	guinea_hen
-       sage		garlic		tare		corn		chalemy
-	),
+        qw(
+       rye              oats            onion           speedwell       mule
+       rosemary         cucumber        shallot         wormwood        sickle
+       coriander        artichoke       clove           lavender        chamois
+       tobacco          currant         vetchling       cherry          park
+       mint             cumin           bean            alkanet         guinea_hen
+       sage             garlic          tare            corn            shawm
+        ),
 # Thermidor
-	qw(
-       german_wheat	mullein  	melon		ryegrass	ram
-       horsetail	wormwood	carthame	blackberry	watering_can
-       parsnip		?salicorne	apricot		basil		ewe
-       marshmallow	flax		almond		gentian		waterlock
-       carline		caper		lentil		horseheal	otter
-       myrtle		oil-seed_rape	lupin		cotton		mill
-	),
+        qw(
+       spelt            mullein         melon           ryegrass        ram
+       horsetail        mugwort         safflower       blackberry      watering_can
+       ?parsnip         glasswort       apricot         basil           ewe
+       marshmallow      flax            almond          gentian         waterlock
+       carline_thistle  caper           lentil          horseheal       otter
+       myrtle           oil-seed_rape   lupin           cotton          mill
+        ),
 # Fructidor
-	qw(
-       plum		millet		?lycoperdon	barley		salmon
-       tuberose		sucrion		?apocyn		liquorice	stepladder	
-       watermelon	fennel		barberry	nut		trout
-       lemon		teasel		buckthorn	?tagette	?basket
-       wild_rose	hazelnut	hops		sorghum		crayfish
-       bitter_orange	goldenrod	corn		chestnut	basket
-	),
+        qw(
+       plum             millet          lycoperdon      barley          salmon
+       tuberose         bere            dogbane         liquorice       stepladder      
+       watermelon       fennel          barberry        walnut          trout
+       lemon            teasel          buckthorn       marigold        harverting_basket
+       wild_rose        hazelnut        hops            sorghum         crayfish
+       bitter_orange    goldenrod       corn            chestnut        basket
+        ),
 # Jours complémentaires
-	qw(
+        qw(
        virtue            engineering    labour          opinion          rewards
        revolution
-	 ));
+         ));
 
 my %event = ();
 
@@ -624,7 +626,7 @@ Duke of Parme.
 29 Brumaire II The Army of the Rhine captures two redoubts near
 Bouxweiller.
 
-29 Brumaire VIII Birth of René Caillé
+29 Brumaire VIII Birth of René Caillé, the first European to enter Timbuktu
 
 0230
 30 Brumaire II Army of Eastern Pyrenees. Victorious battle at Escola,
@@ -948,8 +950,7 @@ fieldworks in Foi. Then the French encounter a Tyrolian Jäger corps
 and defeat them.
 
 The French, attacked in Bidole, smash the enemy. Kellerman crosses
-the Piave in San-Mamma, and routs some enemy hussards who were
-defending the crossing.
+the Piave in San-Mamma, and routs some enemy hussards.
 
 0607
 7 Ventôse X. Birth of Victor Hugo
@@ -1640,7 +1641,7 @@ Chapelle-Saint-Lambert; the enemy routs.
 
 20 Messidor V Army of Italy. As a result of the conquests of the Army
 of Italy, general Bonaparte goes to Milan, and installs the
-Cisalpin Republic.
+Cisalpine Republic.
 
 1021
 21 Messidor IV Army of Sambre and Meuse. Crossing of the Lahn; the army
@@ -1664,7 +1665,7 @@ Ettlingen, Durlach and Carlsruh.
 
 1024
 24 Messidor III Army of Western Pyrenees. Capture of the 
-Deybat fortified camp.
+Deybar fortified camp.
 
 1025
 25 Messidor I Jean-Paul Marat is assassinated by Charlotte Corday while taking a bath.
@@ -2128,8 +2129,10 @@ This module provides localization for DateTime::Calendar::FrenchRevolutionary.
 Usually, its methods will be invoked only from DT::C::FR.
 
 The month  names come  from Thomas Carlyle's  book. Most of  the feast
-names come from Alan Taylor's kokogiak.com web site. The day names are
-from this module's author.
+names  come from Alan  Taylor's kokogiak.com  web site,  later checked
+with  Wikipedia  and   with  Jonathan  Badger's  French  Revolutionary
+Calendar module written in Ruby.  The day names are from this module's
+author.
 
 =head1 USAGE
 
@@ -2216,13 +2219,19 @@ Calendrier Militaire, anonymous
 
 =head2 Internet
 
-http://datetime.perl.org/
+L<http://datetime.perl.org/>
 
-http://www.kokogiak.com/frc/default.asp
+L<http://www.kokogiak.com/frc/default.asp> (the link still exists, but
+it seems  to no  longer include stuff  about the  French Revolutionary
+calendar.)
+
+L<https://github.com/jhbadger/FrenchRevCal-ruby>
+
+L<http://en.wikipedia.org/wiki/French_Republican_Calendar>
 
 =head1 LICENSE STUFF
 
-Copyright  (c)  2003,  2004,   2010,  2011  Jean  Forget.  All  rights
+Copyright (c)  2003, 2004, 2010,  2011, 2012 Jean Forget.   All rights
 reserved. This  program is free software. You  can distribute, modify,
 and otherwise mangle DateTime::Calendar::FrenchRevolutionary under the
 same terms as perl 5.12.2.

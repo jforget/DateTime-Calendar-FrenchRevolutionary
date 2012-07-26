@@ -218,9 +218,9 @@ année après la proclamation de la Première République, vous n'êtes pas
 limités à la  période pendant laquelle le calendrier  a réellement été
 utilisé.  Par exemple, vous pouvez demander le calendrier pour l'année
 210,  ce qui correspond  dans le  calendrier grégorien  à fin  2001 et
-début  2002.   La sortie  obtenue  est  un  fichier HTML.  Le  fichier
-comporte de brèves indications permettant de trouver la correspondance
-avec le calendrier grégorien.
+début 2002.  La sortie obtenue est  un fichier HTML codé en UTF-8.  Le
+fichier  comporte  de  brèves  indications permettant  de  trouver  la
+correspondance avec le calendrier grégorien.
 
 =head1 OPTIONS DE C<prt_cal>
 
@@ -318,7 +318,7 @@ Français
 =item columns
 
 Nombre de colonnes  à utiliser pour la première  table. Ce nombre doit
-être un  multuple de 4, plus  1 : 5, 9,  13 ou 17.  Compte  tenu de la
+être un  multiple de 4, plus  1 : 5, 9,  13 ou 17.  Compte  tenu de la
 quasi-périodicité des jours bissextiles,  les années sont groupées par
 4 dans la première table.  Il faut une colonne supplémentaire pour les
 titres  de  ligne.   Notez  que  vous  pouvez  spécifier  des  nombres

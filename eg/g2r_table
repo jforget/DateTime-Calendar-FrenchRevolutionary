@@ -406,10 +406,10 @@ g2r_table [--columns=I<number>] [--example=I<date>] [--lang=I<language>] [--tabl
 =head1 DESCRIPTION
 
 This program prints five tables, plus  a small text showing how to use
-these tables.  The output  uses the HTML  format. When printed  from a
-table-aware web  browser, these tables  allow a computer-less  user to
-convert dates from the  Gregorian calendar to the French Revolutionary
-calendar.
+these tables.   The output uses  UTF-8 encoding and HTML  format. When
+printed  from  a  table-aware   web  browser,  these  tables  allow  a
+computer-less user to convert dates from the Gregorian calendar to the
+French Revolutionary calendar.
 
 =head1 OPTIONS
 

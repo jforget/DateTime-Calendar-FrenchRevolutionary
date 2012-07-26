@@ -1,17 +1,18 @@
 # Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 
 package DateTime::Calendar::FrenchRevolutionary::Locale::fr;
 
 use vars qw($VERSION);
 
-$VERSION = '0.09'; # same as parent module DT::C::FR
+$VERSION = '0.10'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vnd Bru Fri Niv Plu Vnt Ger Flo Pra Mes The Fru S-C);
 #my @add_days_short= qw (Vertu Génie Trav Raison Récomp Révol);
 my @months = qw(Vendémiaire Brumaire  Frimaire
                 Nivôse      Pluviôse  Ventôse
-	        Germinal    Floréal   Prairial
-	        Messidor    Thermidor Fructidor);
+                Germinal    Floréal   Prairial
+                Messidor    Thermidor Fructidor);
 push @months, "jour complémentaire";
 
 my @decade_days = qw (Primidi Duodi Tridi Quartidi Quintidi Sextidi Septidi Octidi Nonidi Décadi);
@@ -46,118 +47,118 @@ my %time_formats = (
 # comments in some places.
 my @feast = (
 # Vendémiaire
-	qw(
+        qw(
        0raisin           0safran           1châtaigne        1colchique        0cheval
        1balsamine        1carotte          2amarante         0panais           1cuve
        1pomme_de_terre   2immortelle       0potiron          0réséda           2âne
        1belle_de_nuit    1citrouille       0sarrasin         0tournesol        0pressoir
-       0chanvre          1pêche            0navet            2amaryllis        0boeuf
+       0chanvre          1pêche            0navet            2amaryllis        0bœuf
        2aubergine        0piment           1tomate           2orge             0tonneau
-	),
+        ),
 # Brumaire
-	qw(
+        qw(
        1pomme            0céleri           1poire            1betterave        2oie
        2héliotrope       1figue            1scorsonère       2alisier          1charrue
        0salsifis         1macre            0topinambour      2endive           0dindon
        4chervis          0cresson          1dentelaire       1grenade          1herse
        5bacchante        2azerole          1garance          2orange           0faisan
        1pistache         4macjon           0coing            0cormier          0rouleau
-	),
+        ),
 # Frimaire
-	qw(
+        qw(
        1raiponce         0turneps          1chicorée         1nèfle            0cochon
        1mâche            0chou-fleur       0miel             0genièvre         1pioche
        1cire             0raifort          0cèdre            0sapin            0chevreuil
        2ajonc            0cyprès           0lierre           1sabine           0hoyau
        2érable-sucre     1bruyère          0roseau           2oseille          0grillon
        0pignon           0liège            1truffe           2olive            1pelle
-	),
+        ),
 # Nivôse
-	qw(
+        qw(
        1tourbe           1houille          0bitume           0soufre           0chien
        1lave             1terre_végétale   0fumier           0salpêtre         0fléau
        0granit           2argile           2ardoise          0grès             0lapin
        0silex            1marne            1pierre_à_chaux   0marbre           0van
        1pierre_à_plâtre  0sel              0fer              0cuivre           0chat
        2étain            0plomb            0zinc             0mercure          0crible
-	),
+        ),
 # Pluviôse
-	qw(
+        qw(
        1lauréole         1mousse           0fragon           0perce-neige      0taureau
        0laurier-thym     2amadouvier       0mézéréon         0peuplier         1cognée
        2ellébore         0brocoli          0laurier          2avelinier        1vache
        0buis             0lichen           2if               1pulmonaire       1serpette
        0thlaspi          0thymelé          0chiendent        1traînasse        0lièvre
        1guède            0noisetier        0cyclamen         1chélidoine       0traîneau
-	),
+        ),
 # Ventôse
-	qw(
+        qw(
        0tussilage        0cornouiller      0violier          0troène           0bouc
        2asaret           2alaterne         1violette         0marsault         1bêche
        0narcisse         2orme             1fumeterre        0vélar            1chèvre
        2épinard          0doronic          0mouron           0cerfeuil         0cordeau
        1mandragore       0persil           0cochléaria       1pâquerette       0thon
        0pissenlit        1sylvie           0capillaire       0frêne            0plantoir
-	),
+        ),
 # Germinal
-	qw(
+        qw(
        1primevère        0platane          2asperge          1tulipe           1poule
        1blette           0bouleau          1jonquille        2aulne            0couvoir
        1pervenche        0charme           1morille          0hêtre            2abeille
        1laitue           0mélèze           1ciguë            0radis            1ruche
        0gainier          1romaine          0marronnier       1roquette         0pigeon
        0lilas            2anémone          1pensée           1myrtille         0greffoir
-	),
+        ),
 # Floréal
-	qw(
+        qw(
        1rose             0chêne            1fougère          2aubépine         0rossignol
        2ancolie          0muguet           0champignon       1jacinthe         0rateau
        1rhubarbe         0sainfoin         0bâton-d'or       4chamérisier      0ver_à_soie
        1consoude         1pimprenelle      1corbeille-d'or   2arroche          0sarcloir
        0statice          1fritillaire      1bourrache        1valériane        1carpe
        0fusain           1civette          1buglosse         0sénevé           1houlette
-	),
+        ),
 # Prairial
-	qw(
+        qw(
        1luzerne          2hémérocalle      0trèfle           2angélique        0canard
        1mélisse          0fromental        0martagon         0serpolet         1faux
        1fraise           1bétoine          0pois             2acacia           1caille
-       2oeillet          0sureau           0pavot            0tilleul          1fourche
+       2œillet           0sureau           0pavot            0tilleul          1fourche
        0barbeau          1camomille        0chèvrefeuille    0caille-lait      1tanche
        0jasmin           1verveine         0thym             1pivoine          0chariot
-	),
+        ),
 # Messidor
-	qw(
+        qw(
        0seigle           2avoine           2oignon           1véronique        0mulet
        0romarin          0concombre        2échalotte        2absinthe         1faucille
        1coriandre        2artichaut        1giroflée         1lavande          0chamois
        0tabac            1groseille        1gesse            1cerise           0parc
        1menthe           0cumin            0haricot          2orcanète         1pintade
        1sauge            2ail              1vesce            0blé              5chalémie
-	),
+        ),
 # Thermidor
-	qw(
+        qw(
        2épautre          0bouillon-blanc   0melon            2ivraie           0bélier
        1prèle            2armoise          0carthame         1mûre             2arrosoir
        4panis            4salicor          2abricot          0basilic          1brebis
        1guimauve         0lin              2amande           1gentiane         2écluse
        1carline          0câprier          1lentille         2aunée            1loutre
        1myrte            0colza            0lupin            0coton            0moulin
-	),
+        ),
 # Fructidor
-	qw(
+        qw(
        1prune            0millet           0lycoperdon       2escourgeon       0saumon
        1tubéreuse        4sucrion          2apocyn           1réglisse         2échelle
        1pastèque         0fenouil          2épine-vinette    1noix             1truite
        0citron           1cardère          0nerprun          0tagette          1hotte
        2églantier        1noisette         0houblon          0sorgho           2écrevisse
        5bagarade         1verge-d'or       0maïs             0marron           0panier
-	),
+        ),
 # Jours complémentaires
-	qw(
+        qw(
        1vertu            0génie            0travail          2opinion          3récompenses
        1révolution
-	 ));
+         ));
 my @prefix = ('jour du ', 'jour de la ', "jour de l'", 'jour des ');
 
 my %event = ();
@@ -285,7 +286,7 @@ de Chatillon ; les Piémontais sont mis en déroute et repassent la rivière de 
 Espagnols à Olia et Monteilla.
 
 0106
-6 Vendémiaire III. Capitulation de Crevecoeur devant l'Armée du Nord.
+6 Vendémiaire III. Capitulation de Crevecœur devant l'Armée du Nord.
 
 6 Vendémiaire III Armée du Rhin. Reprise de Kayserlautern et d'Alsborn.
 
@@ -622,7 +623,7 @@ Parme.
 29 Brumaire II L'Armée du Rhin enlève deux redoutes formidables près
 de Bouxweiller.
 
-29 Brumaire VIII Naissance de René Caillé
+29 Brumaire VIII Naissance de René Caillé, le premier européen à entrer à Tombouctou
 
 0230
 30 Brumaire II Armée des Pyrénées orientales. Bataille gagnée à Escola,
@@ -970,8 +971,7 @@ ses retranchements ; les Français tombent ensuite sur un corps de
 chasseurs Tyroliens et les défont.
 
 Les Français, attaqués à Bidole, battent complètement l'ennemi.
-Kellerman passe la Piave à San-Mamma, et met en fuite un poste de
-hussards ennemis qui en défendaient le passage.
+Kellerman passe la Piave à San-Mamma, et met en fuite des hussards ennemis.
 
 0607
 7 Ventôse X. Naissance de Victor Hugo
@@ -995,7 +995,7 @@ défaite de l'ennemi.
 
 0618
 18 Ventôse II Armée de la Moselle. Défaite de trois bataillons
-autrichiens sur les hauteurs des forges de Joegerthal.
+autrichiens sur les hauteurs des forges de Jœgerthal.
 
 0620
 20 Ventôse V. Armée d'Italie. Une division de l'armée française se
@@ -1739,7 +1739,7 @@ d'Ettlingen, Durlach et Carlsruh.
 
 1024
 24 Messidor III Armée des Pyrénées occidentales. Prise du camp
-retranché de Deybat.
+retranché de Deybar.
 
 1025
 25 Messidor I Jean-Paul Marat est assassiné dans son bain par Charlotte Corday.

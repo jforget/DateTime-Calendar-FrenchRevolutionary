@@ -1,5 +1,10 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
+0.10  Nonidi 9 Thermidor CCXX, jour de la mûre, 218th anniversary of Robespierre's downfall (also known as Thursday 2012-07-26)
+        - a few documentation fixes
+        - use the oe ligature where appropriate
+        - check the English translations for feasts
+
 0.09  Sextidi 26 Messidor CCXIX, jour de la sauge (also known as Bastille Day, Thursday 2011-07-14)
         - Fix the long running bug shown by 45_lastday.t when using an interpreter 
         configured with long double (closing ticket 61230)

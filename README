@@ -1,8 +1,8 @@
-DateTime::Calendar::FrenchRevolutionary version 0.09
+DateTime::Calendar::FrenchRevolutionary version 0.10
 ====================================================
 
 DateTime::Calendar::FrenchRevolutionary is copyright (c) 2003,
-2004, 2010, 2011 Jean Forget
+2004, 2010, 2011, 2012 Jean Forget
 
 
 This is  a companion module  to DateTime.pm. It implements  the French

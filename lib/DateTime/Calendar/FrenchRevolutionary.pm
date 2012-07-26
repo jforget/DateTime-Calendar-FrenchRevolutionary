@@ -1,4 +1,5 @@
-# Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
+# Copyright (c) 2003, 2004, 2010, 2011, 2012 Jean Forget. All rights reserved.
 
 package DateTime::Calendar::FrenchRevolutionary;
 
@@ -6,7 +7,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.09';
+$VERSION = '0.10';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);
 use Roman;
@@ -363,7 +364,7 @@ sub _rd2ymd {
 	$doy -= $x * FOUR_YEARS;
 
 	$x    = int ($doy / NORMAL_YEAR);
-        # The division above divides the 4-year period, 1461 days,
+        # The integer division above divides the 4-year period, 1461 days,
         # into 5 parts: 365, 365, 365, 365 and 1. This mathematically sound operation
         # is wrong with respect to the calendar, which needs to divide
         # into 4 parts: 365, 365, 365 and 366. Therefore the adjustment below.
@@ -708,17 +709,16 @@ DateTime::Calendar::FrenchRevolutionary - Dates in the French Revolutionary Cale
 
   use DateTime::Calendar::FrenchRevolutionary;
 
+  # Use the date "18 Brumaire VIII" (Brumaire being the second month)
   $dt = DateTime::Calendar::FrenchRevolutionary->new( year  => 8,
                                          month =>  2,
                                          day   => 18,
                                        );
 
-  # convert FrenchRevolutionary->Gregorian...
-
+  # convert from French Revolutionary to Gregorian...
   $dtgreg = DateTime->from_object( object => $dt );
 
   # ... and back again
-
   $dtrev = DateTime::Calendar::FrenchRevolutionary->from_object( object => $dtgreg );
 
 =head1 DESCRIPTION
@@ -729,11 +729,22 @@ DateTime; see the DateTime(3) manpage for all methods.
 
 =head1 HISTORICAL NOTES
 
+=head2 Preliminary Note
+
+The documentation  uses the  word I<décade> (the  first "e"  having an
+acute  accent). This  French word  is  I<not> the  translation of  the
+English  word  "decade"  (ten-year  period).  It  means  a  ten-I<day>
+period.
+
+For  your  information, the  French  word  for  a ten-year  period  is
+I<décennie>.
+
+=head2 Description
+
 The Revolutionary calendar was in  use in France from 24 November 1793
 (4 Frimaire  II) to 31  December 1805 (10  Nivôse XIV). An  attempt to
 apply  the  decimal rule  (the  basis of  the  metric  system) to  the
-calendar. Therefore, the week  disappeared, replaced by the décade (10
-days, totally different from the  English word "decade", 10 years). In
+calendar. Therefore, the week  disappeared, replaced by the décade. In
 addition, all months have exactly 3 decades, no more, no less.
 
 At first,  the year was  beginning on the  equinox of autumn,  for two
@@ -775,9 +786,19 @@ Carlyle proposes these translations for the month names:
 
 =back
 
+Each month has  a duration of 30 days. Since a  year lasts 365.25 days
+(or so), five  additional days (or six on leap  years) are added after
+Fructidor. These days  are called I<Sans-Culottides>.  For programming
+purposes, they are  considered as a 13th month  (much shorter than the
+12 others).
+
 There was also an attempt to decimalize the day's subunits, with 1 day
 = 10 hours, 1 hour = 100 minutes and 1 minute = 100 seconds.  But this
 reform was put on hold after two years or so and it never reappeared.
+
+Other reforms to decimalize the time has been proposed during the last
+part of  the XIXth  Century, but these  reforms were not  applied too.
+And they are irrelevant for this French Revolutionary calendar module.
 
 =head1 METHODS
 
@@ -786,15 +807,15 @@ method  names  still   are  C<decade_number>,  C<day_of_decade>,  etc.
 English  speakers, please  note that  this has  nothing to  do  with a
 10-year period.
 
-The module supports both  Anglo-Babylonian time and decimal time.  The
-accessors  for ABT are  C<abt_hour>, C<abt_minute>,  C<abt_second> and
-C<abt_hms>,  the accessors  for decimal  time are  C<hour>, C<minute>,
-C<second> and C<hms>. The  C<strftime> and C<iso8601> methods use only
-decimal  time.  The  ABT  accessors are  provided  to be  historically
-correct, since  the decimal time reform  was never put  in force. Yet,
-emphasis is  on decimal time because  it is more  fun than sexagesimal
-time,  which  anyhow  can  be  obtained with  the  standard  Gregorian
-C<DateTime.pm> module.
+The module supports both  Anglo-Babylonian time (24x60x60) and decimal
+time.    The  accessors  for   ABT  are   C<abt_hour>,  C<abt_minute>,
+C<abt_second>  and  C<abt_hms>, the  accessors  for  decimal time  are
+C<hour>,  C<minute>,   C<second>  and  C<hms>.   The  C<strftime>  and
+C<iso8601>  methods use  only  decimal time.   The  ABT accessors  are
+provided to be historically correct, since the decimal time reform was
+never put  in force. Yet,  emphasis is on  decimal time because  it is
+more fun than sexagesimal time,  which anyhow can be obtained with the
+standard Gregorian C<DateTime.pm> module.
 
 =head2 Constructors
 
@@ -982,13 +1003,13 @@ the separator (C<:> by default).
 
 =item * hms
 
-Returns a composite string with the three time elements. Uses the
-decimal time.  An optional parameter allows you to choose the
+Returns  a composite  string with  the three  time elements.  Uses the
+decimal  time.   An  optional  parameter  allows  you  to  choose  the
 separator (C<:> by default).
 
 =item * iso8601
 
-Returns the date and time is a format similar to what ISO-8601 has
+Returns the  date and time  is a format  similar to what  ISO-8601 has
 specified for the Gregorian calendar.
 
 =item * is_leap_year
@@ -1029,8 +1050,8 @@ Returns the current local Rata Die days and seconds purely as seconds.
 
 =item * strftime( $format, ... )
 
-This method implements functionality similar to the C<strftime()>
-method in C.  However, if given multiple format strings, then it will
+This  method  implements functionality  similar  to the  C<strftime()>
+method in C.  However, if  given multiple format strings, then it will
 return multiple elements, one for each format string.
 
 See the L<strftime Specifiers|/strftime Specifiers> section for a list
@@ -1039,17 +1060,17 @@ of all possible format specifiers.
 =item * epoch
 
 Return the UTC epoch value  for the datetime object.  Internally, this
-is  implemented  C<expoch>  from  C<DateTime>,  which  in  turn  calls
+is  implemented  C<epoch>  from   C<DateTime>,  which  in  turn  calls
 C<Time::Local>,  which uses  the Unix  epoch even  on machines  with a
 different epoch (such  as Mac OS).  Datetimes before  the start of the
 epoch will be returned as a negative number.
 
-Since epoch times cannot represent many dates on most platforms, this
+Since epoch times cannot represent  many dates on most platforms, this
 method may simply return undef in some cases.
 
-Using your system's epoch time may be error-prone, since epoch times
-have such a limited range on 32-bit machines.  Additionally, the fact
-that different operating systems have different epoch beginnings is
+Using your system's  epoch time may be error-prone,  since epoch times
+have such a limited range  on 32-bit machines.  Additionally, the fact
+that different  operating systems  have different epoch  beginnings is
 another source of bugs.
 
 =item * on_date
@@ -1099,6 +1120,11 @@ of I<Sans-culottide>, another name for these days).
 
 The full month name.
 
+=item * %c
+
+The date-time,  using the  default format, as  defined by  the current
+locale.
+
 =item * %C
 
 The century number (year/100) as a 2-digit integer.
@@ -1110,26 +1136,32 @@ The day of the month as a decimal number (range 01 to 30).
 =item * %D
 
 Equivalent to  %m/%d/%y.  This  is not a  good standard format  if you
-have want both Americans and Europeans to understand the date!
+have want both Americans and  Europeans (and others) to understand the
+date!
 
 =item * %e
 
-Like %d, the day of the month as a decimal number, but a leading zero
+Like %d, the day of the month  as a decimal number, but a leading zero
 is replaced by a space.
+
+=item * %f
+
+The month as a decimal number (1  to 13). Unlike %m, a leading zero is
+replaced by a space.
 
 =item * %F
 
 Equivalent to %Y-%m-%d (the ISO 8601 date format)
 
-=item * %G
-
-Strictly similar to C<%Y>, since I<décades> are aligned with 
-the beginning of the year in this calendar.
-
 =item * %g
 
-Strictly similar to C<%y>, since I<décades> are aligned with 
-the beginning of the year in this calendar.
+Strictly similar to  %y, since I<décades> are always  aligned with the
+beginning of the year in this calendar.
+
+=item * %G
+
+Strictly similar to  %Y, since I<décades> are always  aligned with the
+beginning of the year in this calendar.
 
 =item * %h
 
@@ -1151,8 +1183,8 @@ The day of the year as a decimal number (range 001 to 366).
 
 =item * %Ej
 
-The feast for the day, in long format ("jour de la pomme de terre").
-Also available as C<%*>.
+The feast for  the day, in long format ("jour de  la pomme de terre").
+Also available as %*.
 
 =item * %EJ
 
@@ -1174,6 +1206,11 @@ result is a 2-char string, the digit is preceded by a blank. (See also
 The hour  as read from a  clockface (range 1  to 10). The result  is a
 2-char string, the digit is preceded  by a blank, except of course for
 10. (See also %I.)
+
+=item * %L
+
+The year as  a decimal number including the  century. Strictly similar
+to %Y and %G.
 
 =item * %m
 
@@ -1226,12 +1263,12 @@ The decimal time in 10-hour notation (%H:%M:%S).
 
 =item * %u
 
-The day of the I<décade> as a decimal, range 1 to 10, Primidi being 1.
-See also %w.
+The day of the I<décade> as a  decimal, range 1 to 10, Primidi being 1
+and Décadi being 10.  See also %w.
 
 =item * %U
 
-The I<décade> number of the current year as a decimal number, range 00
+The I<décade> number of the current year as a decimal number, range 01
 to 37.
 
 =item * %V
@@ -1249,7 +1286,7 @@ See also %u.
 =item * %W
 
 The I<décade> number of the current year as a decimal number, range 00
-to 37.
+to 37. Strictly similar to %U and %V.
 
 =item * %y
 
@@ -1284,7 +1321,7 @@ supported them.
 =item * %*
 
 The feast for the day, in long format ("jour de la pomme de terre").
-Also available as C<%Ej>.
+Also available as %Ej.
 
 =item * %%
 
@@ -1310,7 +1347,9 @@ They are not supported.
 
 For the moment, only French and English are available. For the English
 translation, I have  used Thomas Carlyle's book and  Alan Taylor's web
-site at kokogiak.com (see below).
+site  at   kokogiak.com  (see  below).  Then,  I   have  checked  some
+translations with Wikipedia and Jonathan Badger's French Revolutionary
+Calendar module written in Ruby.
 
 Some feast names are not translated, other's translations are doubtful
 (they are flagged with a question mark).  Remarks are welcome.
@@ -1337,9 +1376,9 @@ L<http://www.mongueurs.net/>.
 
 =head2 Software
 
-date(1), perl(1), DateTime(3), DateTime::Calendar::Pataphysical(3), Date::Convert::French_Rev
+date(1), strftime(3), perl(1), DateTime(3), DateTime::Calendar::Pataphysical(3), Date::Convert::French_Rev
 
-calendar/cal-french.el in emacs-21.2 or xemacs 21.1.8
+calendar/cal-french.el in emacs-21.2 or later or xemacs 21.1.8
 
 =head2 Books
 
@@ -1353,15 +1392,25 @@ The French Revolution, Thomas Carlyle, Oxford University Press
 
 Calendrier Militaire, anonymous
 
+Histoire de l'heure en France, Jacques Gapaillard, publ. Vuibert -- ADAPT
+
 =head2 Internet
 
-http://datetime.perl.org/
+L<http://datetime.perl.org/>
 
-http://www.faqs.org/faqs/calendars/faq/part3/
+L<http://www.faqs.org/faqs/calendars/faq/part3/>
 
-http://zapatopi.net/metrictime.html
+L<http://zapatopi.net/metrictime.html>
 
-http://www.kokogiak.com/frc/default.asp
+L<http://datetime.mongueurs.net/>
+
+L<http://www.kokogiak.com/frc/default.asp> (the link still exists, but
+it seems  to no  longer include stuff  about the  French Revolutionary
+calendar.)
+
+L<https://github.com/jhbadger/FrenchRevCal-ruby>
+
+L<http://en.wikipedia.org/wiki/French_Republican_Calendar>
 
 =head1 LICENSE STUFF
 
