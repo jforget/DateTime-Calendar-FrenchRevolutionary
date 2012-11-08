@@ -5,7 +5,7 @@ package DateTime::Calendar::FrenchRevolutionary::Locale::en;
 
 use vars qw($VERSION);
 
-$VERSION = '0.10'; # same as parent module DT::C::FR
+$VERSION = '0.11'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vin Fog Fro Sno Rai Win Bud Flo Mea Rea Hea Fru S-C);
 
@@ -747,7 +747,7 @@ of Mertzicq, Fredembourg and Saarbruck.
 
 0325
 25 Frimaire II Army of the Moselle. Three divisions take the
-highgrounds of Marsal, Dahubruck and Lambach.
+highgrounds of Marsal, Dahnbruck and Lambach.
 
 25 Frimaire II Army of Italy. The French troops take the fieldworks
 and redoubts that were defending Toulon.
@@ -998,7 +998,7 @@ is taken.
 
 0627
 27 Ventôse VI Treaty of alliance and trade between the French and
-Cisalpin Republics.
+Cisalpine Republics.
 
 0628
 28 Ventôse V Army of Italy. Capture of Palma Nova, which the enemy
@@ -1919,7 +1919,7 @@ attack general Lack in Castlebar and make him flee.
 1211
 11 Fructidor II Army of Western Pyrenees. 7000 Spanish troops
 defeated in Eibon. Spanish rout at Ermilla.
-4000 enemy rout and the French troops enter Oudoroa.
+4000 enemy rout and the French troops enter Ondoroa.
 
 1213
 13 Fructidor II Army of Sambre and Meuse. Condé taken back.

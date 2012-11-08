@@ -49,6 +49,14 @@ sub g2r_em {
 	  ["18 Fructidor XXIV",   "%e %B %EY", 1816,  9,  4],
 	  ["12 Nivôse CCVIII",    "%e %B %EY", 2000,  1,  1], # Y2K compatible?
 	  ["22 Floréal CCIX",     "%e %B %EY", 2001,  5, 11],
+	  ["12 Nivôse MCCVIII",   "%e %B %EY", 3000,  1,  1],
+	  ["11 Nivôse MCCIX",     "%e %B %EY", 3001,  1,  1],
+	  ["12 Nivôse MMCCVIII",  "%e %B %EY", 4000,  1,  1],
+	  ["12 Nivôse MMCCIX",    "%e %B %EY", 4001,  1,  1],
+	  ["12 Nivôse MMMCCVIII", "%e %B %EY", 5000,  1,  1],
+	  ["11 Nivôse MMMCCIX",   "%e %B %EY", 5001,  1,  1],
+	  ["13 Nivôse 4208",      "%e %B %EY", 6000,  1,  1],
+	  ["13 Nivôse 4209",      "%e %B %EY", 6001,  1,  1],
 	  );
 
 printf "1..%d\n", 2 * scalar @tests;

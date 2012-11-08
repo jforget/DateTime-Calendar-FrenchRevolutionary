@@ -7,7 +7,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);
 use Roman;
@@ -630,8 +630,8 @@ my %formats = (
       , 'Z' => sub { $_[0]->{tz}->short_name_for_datetime($_[0]) }
       , '+' => sub { '+' }
       , '%' => sub { '%' }
-      , 'EY' => sub { Roman $_[0]->year }
-      , 'Ey' => sub { roman $_[0]->year }
+      , 'EY' => sub { Roman $_[0]->year || $_[0]->year }
+      , 'Ey' => sub { roman $_[0]->year || $_[0]->year }
       , '*'  => sub { $_[0]->feast_long }
       , 'Ej' => sub { $_[0]->feast_long }
       , 'EJ' => sub { $_[0]->feast_caps }

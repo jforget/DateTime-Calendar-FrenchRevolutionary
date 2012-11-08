@@ -5,7 +5,7 @@ package DateTime::Calendar::FrenchRevolutionary::Locale::fr;
 
 use vars qw($VERSION);
 
-$VERSION = '0.10'; # same as parent module DT::C::FR
+$VERSION = '0.11'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vnd Bru Fri Niv Plu Vnt Ger Flo Pra Mes The Fru S-C);
 #my @add_days_short= qw (Vertu Génie Trav Raison Récomp Révol);
@@ -60,9 +60,9 @@ my @feast = (
        1pomme            0céleri           1poire            1betterave        2oie
        2héliotrope       1figue            1scorsonère       2alisier          1charrue
        0salsifis         1macre            0topinambour      2endive           0dindon
-       4chervis          0cresson          1dentelaire       1grenade          1herse
-       5bacchante        2azerole          1garance          2orange           0faisan
-       1pistache         4macjon           0coing            0cormier          0rouleau
+       0chervis          0cresson          1dentelaire       1grenade          1herse
+       1bacchante        2azerole          1garance          2orange           0faisan
+       1pistache         0macjon           0coing            0cormier          0rouleau
         ),
 # Frimaire
         qw(
@@ -113,7 +113,7 @@ my @feast = (
         qw(
        1rose             0chêne            1fougère          2aubépine         0rossignol
        2ancolie          0muguet           0champignon       1jacinthe         0rateau
-       1rhubarbe         0sainfoin         0bâton-d'or       4chamérisier      0ver_à_soie
+       1rhubarbe         0sainfoin         0bâton-d'or       0chamérisier      0ver_à_soie
        1consoude         1pimprenelle      1corbeille-d'or   2arroche          0sarcloir
        0statice          1fritillaire      1bourrache        1valériane        1carpe
        0fusain           1civette          1buglosse         0sénevé           1houlette
@@ -134,13 +134,13 @@ my @feast = (
        1coriandre        2artichaut        1giroflée         1lavande          0chamois
        0tabac            1groseille        1gesse            1cerise           0parc
        1menthe           0cumin            0haricot          2orcanète         1pintade
-       1sauge            2ail              1vesce            0blé              5chalémie
+       1sauge            2ail              1vesce            0blé              1chalémie
         ),
 # Thermidor
         qw(
        2épautre          0bouillon-blanc   0melon            2ivraie           0bélier
        1prèle            2armoise          0carthame         1mûre             2arrosoir
-       4panis            4salicor          2abricot          0basilic          1brebis
+       0panis            0salicor          2abricot          0basilic          1brebis
        1guimauve         0lin              2amande           1gentiane         2écluse
        1carline          0câprier          1lentille         2aunée            1loutre
        1myrte            0colza            0lupin            0coton            0moulin
@@ -148,11 +148,11 @@ my @feast = (
 # Fructidor
         qw(
        1prune            0millet           0lycoperdon       2escourgeon       0saumon
-       1tubéreuse        4sucrion          2apocyn           1réglisse         2échelle
+       1tubéreuse        0sucrion          2apocyn           1réglisse         2échelle
        1pastèque         0fenouil          2épine-vinette    1noix             1truite
        0citron           1cardère          0nerprun          0tagette          1hotte
        2églantier        1noisette         0houblon          0sorgho           2écrevisse
-       5bagarade         1verge-d'or       0maïs             0marron           0panier
+       1bagarade         1verge-d'or       0maïs             0marron           0panier
         ),
 # Jours complémentaires
         qw(
@@ -205,7 +205,7 @@ sub feast_long {
   my ($self, $date) = @_;
   my $lb = $feast[$date->day_of_year_0];
   $lb =~ s/_/ /g;
-  $lb =~ s/^(\d)/$prefix[$1 % 4]/;
+  $lb =~ s/^(\d)/$prefix[$1]/;
   return $lb;
 }
 
@@ -213,7 +213,7 @@ sub feast_caps {
   my ($self, $date) = @_;
   my $lb = $feast[$date->day_of_year_0];
   $lb =~ s/_/ /g;
-  $lb =~ s/^(\d)(.)/\u$prefix[$1 % 4]\u$2/;
+  $lb =~ s/^(\d)(.)/\u$prefix[$1]\u$2/;
   return $lb;
 }
 
@@ -753,7 +753,7 @@ Saarbruck.
 
 0325
 25 Frimaire II Armée de la Moselle. Enlèvement de vive force des
-hauteurs de Marsal du Dahubruck et de Lambach.
+hauteurs de Marsal du Dahnbruck et de Lambach.
 
 25 Frimaire II Armée d'Italie. Les Républicains enlèvent de vive
 force les retranchements et redoutes qui défendaient Toulon.
@@ -2008,7 +2008,7 @@ de canons et le mettent en fuite.
 1211
 11 Fructidor II Armée des Pyrénées occidentales. Défaite de sept mille
 Espagnols à Eibon. Déroute des Espagnols à Ermilla. Déroute de
-quatre mille ennemis et entrée des Français à Oudoroa.
+quatre mille ennemis et entrée des Français à Ondoroa.
 
 1213
 13 Fructidor II Armée de Sambre et Meuse. Reprise de Condé.

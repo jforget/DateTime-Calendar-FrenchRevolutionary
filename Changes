@@ -1,9 +1,17 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
+0.11  Octidi 18 Brumaire CCXXI, jour de la dentelaire, 213th anniversary of Bonaparte's coup (also known as Thursday 2012-11-08)
+        - French locale: replacing the "4" and "5" "possible genre" indicators for feasts by "0" 
+        or "1". The only indicator I am still not sure of is for "bagarade", but let us get rid 
+        of "4" and "5".
+        - testing dates with big years (>= 1000)
+        - fix the %EY and %Ey date specifiers when outside of the Roman number range (1--3999)
+
 0.10  Nonidi 9 Thermidor CCXX, jour de la mûre, 218th anniversary of Robespierre's downfall (also known as Thursday 2012-07-26)
         - a few documentation fixes
         - use the oe ligature where appropriate
         - check the English translations for feasts
+        - checking the "now" constructor
 
 0.09  Sextidi 26 Messidor CCXIX, jour de la sauge (also known as Bastille Day, Thursday 2011-07-14)
         - Fix the long running bug shown by 45_lastday.t when using an interpreter 
