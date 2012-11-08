@@ -1,7 +1,5 @@
 Implement durations, addition and subtraction
 
-Test scripts for C<clone> and C<last_day_of_month>
-
 Check test coverage for other cases (which cases?)
 
 printf specifiers C<%V>, C<%w>

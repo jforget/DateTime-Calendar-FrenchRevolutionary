@@ -1,5 +1,11 @@
-#!/home/p80/perl/bin/perl -w
+# Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
+#
+# Bistandard clock : Gregorian with 24x60x60 time,
+#                    French Revolionary with 10x100x100 time.
+#
 
+use strict;
+use warnings;
 use DateTime::Calendar::FrenchRevolutionary;
 use Tk;
 use Tk::Font;
