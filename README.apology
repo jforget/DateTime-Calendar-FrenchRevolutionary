@@ -1,0 +1,35 @@
+-*- encoding: utf-8; indent-tabs-mode: nil -*-
+
+This file applies only to the Git repository, not to the CPAN distribution.
+
+What is the "real-history" branch?
+
+When I  decided to host  the development of  my module on  Github, the
+obvious first step was cloning the Gitpan repository.  Then, I updated
+the various files  according to version 0.08 and  I commited it, using
+the release  date of this version.   And I did the  same with versions
+0.09, 0.10 and 0.11.
+
+Then I  discovered I made a  mistake when typing  the various commits,
+and some files were updated  but not commited. And there were mistakes
+about the  precise times  of the commits.  So I committed  the missing
+updates into a version 0.11a.
+
+Because  of   the  paragraph  "Caution  About   Altering  History"  in
+O'Reilly's Git  book, I could not  alter these commits  to reflect the
+real history  of my  module.  So,  I decided to  create a  new branch,
+named "real-history", in  which I would replay the  updates and commit
+them properly.
+
+I let the  subject rest for more  than a year, during which  I had the
+intention of destroying the repository,  both my local version and the
+Github  version  and  then,  rebuilding  from scratch  with  a  single
+branch. But in the end, I understood that it would be more or less the
+same  as what  the  paragraph "Cautions  About  Altering History"  was
+advising against.
+
+So  here   is  the  result:  a   merge  from  the   "master"  and  the
+"real-history" branches.
+
+And please find my apologies for the fumble during the first string of
+commits.
