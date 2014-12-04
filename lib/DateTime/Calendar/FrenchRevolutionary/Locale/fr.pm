@@ -1,5 +1,10 @@
-# Copyright (c) 2003, 2004, 2010, 2011 Jean Forget. All rights reserved.
 # -*- encoding: utf-8; indent-tabs-mode: nil -*-
+#
+# Perl DateTime extension for providing French strings for the French Revolutionary calendar
+# Copyright (c) 2003, 2004, 2010, 2011, 2014 Jean Forget. All rights reserved.
+#
+# See the license in the embedded documentation below.
+#
 
 package DateTime::Calendar::FrenchRevolutionary::Locale::fr;
 
@@ -2203,3 +2208,135 @@ EVENTS
 # A module must return a true value. Traditionally, a module returns 1.
 # But this module is a revolutionary one, so it discards all old traditions.
 "Dansons la carmagnole, vive le son du canon.";
+
+__END__
+
+=encoding utf8
+
+=head1 NAME
+
+DateTime::Calendar::FrenchRevolutionary::Locale::fr -- French localization for the French 
+revolutionary calendar.
+
+=head1 SYNOPSIS
+
+  use DateTime::Calendar::FrenchRevolutionary::Locale;
+  my $french_locale = DateTime::Calendar::FrenchRevolutionary::Locale->load('fr');
+
+  my $french_month_name =$french_locale->month_name($date);
+
+=head1 DESCRIPTION
+
+This module provides localization for DateTime::Calendar::FrenchRevolutionary.
+Usually, its methods will be invoked only from DT::C::FR.
+
+=head1 USAGE
+
+This module provides the following class methods:
+
+=over 4
+
+=item * new
+
+Returns an  object instance,  which is just  a convenient value  to be
+stored in a variable.
+
+Contrary to  the widely used Gregorian  calendar, there is  no need to
+customize a French Revolutionary calendar locale. Therefore, there are
+no instance data and no instance methods.
+
+=item * month_name ($date)
+
+Returns  the French  name for  C<$date>'s month,  where C<$date>  is a
+C<DateTime::Calendar::FrenchRevolutionary> object.
+
+=item * month_abbreviation ($date)
+
+Returns a 3-letter abbreviation for the French month name.
+
+=item * day_name ($date)
+
+Returns the French day name.
+
+=item * day_abbreviation ($date)
+
+Returns a 3-letter abbreviation for the French day name.
+
+=item * feast_short ($date)
+
+Returns  the name for  the plant,  animal or  tool that  correspond to
+C<$date>'s feast.
+
+=item * feast_long ($date)
+
+Same  as  C<feast_short>, with  a  "jour"  prefix.
+
+=item * feast_caps ($date)
+
+Same as C<feast_long> with capitalized first letters.
+
+=item * on_date ($date)
+
+Gives a small text about the  events which occurred the same month and
+day as C<$date> between the calendar's epoch (22 Sep 1792) and the day
+it was rescinded (31 Dec 1805).
+
+Most of these events come  from an anonymous propaganda book published
+in year  VIII (1799--1800). The others are  common knowledge available
+in any French History book or any encyclopedia.
+
+=back
+
+=head1 SUPPORT
+
+Support for this module is provided via the datetime@perl.org email
+list. See http://lists.perl.org/ for more details.
+
+=head1 AUTHOR
+
+Jean Forget <JFORGET@cpan.org>
+
+The development of this module is hosted by I<Les Mongueurs de Perl>,
+L<http://www.mongueurs.net/>.
+
+=head1 SEE ALSO
+
+=head2 Books
+
+Calendrier Militaire, anonymous
+
+=head2 Internet
+
+L<http://datetime.perl.org/>
+
+=head1 LICENSE STUFF
+
+Copyright (c)  2003, 2004, 2010,  2012, 2014 Jean Forget.   All rights
+reserved. This  program is free software. You  can distribute, modify,
+and otherwise mangle DateTime::Calendar::FrenchRevolutionary under the
+same terms as perl 5.16.3.
+
+This program is  distributed under the same terms  as Perl 5.16.3: GNU
+Public License version 1 or later and Perl Artistic License
+
+You can find the text of the licenses in the F<LICENSE> file or at
+L<http://www.perlfoundation.org/artistic_license_1_0> and
+L<http://www.gnu.org/licenses/gpl-1.0.html>.
+
+Here is the summary of GPL:
+
+This program is  free software; you can redistribute  it and/or modify
+it under the  terms of the GNU General Public  License as published by
+the Free  Software Foundation; either  version 1, or (at  your option)
+any later version.
+
+This program  is distributed in the  hope that it will  be useful, but
+WITHOUT   ANY  WARRANTY;   without  even   the  implied   warranty  of
+MERCHANTABILITY  or FITNESS  FOR A  PARTICULAR PURPOSE.   See  the GNU
+General Public License for more details.
+
+You  should have received  a copy  of the  GNU General  Public License
+along with this program; if not, see <http://www.gnu.org/licenses/> or
+write to the Free Software Foundation, Inc., L<http://fsf.org>.
+
+=cut
