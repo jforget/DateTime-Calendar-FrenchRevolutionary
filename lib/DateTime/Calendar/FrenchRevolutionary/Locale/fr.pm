@@ -5,7 +5,7 @@ package DateTime::Calendar::FrenchRevolutionary::Locale::fr;
 
 use vars qw($VERSION);
 
-$VERSION = '0.11'; # same as parent module DT::C::FR
+$VERSION = '0.12'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vnd Bru Fri Niv Plu Vnt Ger Flo Pra Mes The Fru S-C);
 #my @add_days_short= qw (Vertu Génie Trav Raison Récomp Révol);

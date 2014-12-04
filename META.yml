@@ -15,19 +15,19 @@ name: DateTime-Calendar-FrenchRevolutionary
 provides:
   DateTime::Calendar::FrenchRevolutionary:
     file: lib/DateTime/Calendar/FrenchRevolutionary.pm
-    version: 0.11
+    version: 0.12
   DateTime::Calendar::FrenchRevolutionary::Locale:
     file: lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm
-    version: 0.11
+    version: 0.12
   DateTime::Calendar::FrenchRevolutionary::Locale::en:
     file: lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm
-    version: 0.11
+    version: 0.12
   DateTime::Calendar::FrenchRevolutionary::Locale::fr:
     file: lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm
-    version: 0.11
+    version: 0.12
 requires:
   DateTime: 0.14
   Roman: 1.22
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.11
+version: 0.12
