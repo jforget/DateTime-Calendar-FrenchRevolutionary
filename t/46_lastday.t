@@ -29,6 +29,7 @@
 # To investigate, here is a variant of the same test.
 
 use DateTime::Calendar::FrenchRevolutionary;
+use utf8;
 
 my $n = 1;
 

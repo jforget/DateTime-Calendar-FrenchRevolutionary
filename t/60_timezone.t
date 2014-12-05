@@ -31,6 +31,7 @@
 # which time it is.
 use DateTime::Calendar::FrenchRevolutionary;
 use DateTime;
+use utf8;
 
 sub g2r {
   my ($n, $date_r1, $tz) = @_;

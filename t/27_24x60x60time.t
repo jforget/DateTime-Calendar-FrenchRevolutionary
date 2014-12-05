@@ -26,6 +26,7 @@
 #     Inc., <http://www.fsf.org/>.
 #
 use DateTime::Calendar::FrenchRevolutionary;
+use utf8;
 
 my $n = 1;
 my @tests = ( [ "0:41:66", "0:41:67",  1,  0,  0],

@@ -26,6 +26,7 @@
 #     Inc., <http://www.fsf.org/>.
 #
 use DateTime::Calendar::FrenchRevolutionary;
+use utf8;
 
 my %years = qw/ 1 0  2 0  3 1  4 0  5 0  6 0  7 1  8 0  9 0 10 0
                11 1 12 0 13 0 14 0 15 1 16 0 17 0 18 0 19 0 20 1

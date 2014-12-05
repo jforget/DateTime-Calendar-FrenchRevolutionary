@@ -26,6 +26,7 @@
 #     Inc., <http://www.fsf.org/>.
 #
 use DateTime::Calendar::FrenchRevolutionary;
+use utf8;
 
 # Yes, that's shotgun testing. You have in the end 990 tests and the
 # 0.08 version would fail 57/990. So I guess that it is still a good

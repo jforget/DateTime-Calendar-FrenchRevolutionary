@@ -27,6 +27,7 @@
 #
 use DateTime::Calendar::FrenchRevolutionary;
 use DateTime;
+use utf8;
 
 # Checking dates with default French locale
 sub g2r {

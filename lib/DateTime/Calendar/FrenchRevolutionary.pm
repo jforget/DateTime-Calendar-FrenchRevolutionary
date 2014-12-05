@@ -8,6 +8,7 @@
 
 package DateTime::Calendar::FrenchRevolutionary;
 
+use utf8;
 use strict;
 
 use vars qw($VERSION);

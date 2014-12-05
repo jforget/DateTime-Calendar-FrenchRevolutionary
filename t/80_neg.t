@@ -33,6 +33,7 @@
 #
 use DateTime::Calendar::FrenchRevolutionary;
 use DateTime;
+use utf8;
 
 sub check {
   my ($n, $y, $m, $d, $H, $M, $S) = @_;

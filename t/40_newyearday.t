@@ -27,6 +27,7 @@
 #
 use DateTime::Calendar::FrenchRevolutionary;
 use DateTime;
+use utf8;
 
 my $n = 1;
 
