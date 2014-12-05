@@ -28,6 +28,9 @@
 #
 # The labels hash, under an assumed name
 #
+use utf8;
+use strict;
+
 my %labels =
 (  calendar  => 'Calendar'
  , month3    => [ qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec) ]

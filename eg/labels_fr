@@ -27,6 +27,9 @@
 #
 # Le hachage des libellés
 #
+use utf8;
+use strict;
+
 my %labels =
 (  calendar  => 'Calendrier'
  , month3    => [ qw(jan fév mars avr mai juin juil août sep oct nov déc) ]

@@ -7,6 +7,7 @@
 #     See the license in the embedded documentation below.
 #
 
+use utf8;
 use strict;
 use Getopt::Long;
 use DateTime::Calendar::FrenchRevolutionary;
@@ -24,6 +25,8 @@ GetOptions('columns=i'        => \$columns
 die "At least 5 colmuns" if $columns < 5;
 die "The number of columns must be a multiple of 4 plus 1 (e.g. 5, 9 or 13)"
   unless $columns % 4 == 1;
+
+binmode STDOUT, ':utf8';
 
 --$columns; # because actually we do not want to be bothered with the heading column
 
