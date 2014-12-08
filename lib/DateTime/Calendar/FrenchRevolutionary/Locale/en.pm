@@ -61,15 +61,15 @@ my @feast = (
 # Vendémiaire
         qw(
        grape                    saffron         ?sweet_chestnut ?colchic        horse
-       impatiens                carrot          amaranth        parsnip         vat
-       potato                   strawflower     ?squash         mignonette      donkey
+       balsam                   carrot          amaranth        parsnip         vat
+       potato                   everlasting     ?squash         mignonette      donkey
        four_o'clock_flower      pumpkin         buckwheat       sunflower       wine-press
        hemp                     peach           turnip          amaryllis       ox
        eggplant                 chili_pepper    tomato          barley          barrel
         ),
 # Brumaire
         qw(
-       apple            celery          pear                    beet_root       goose
+       apple            celery          pear                    beetroot        goose
        heliotrope       fig             black_salsify           ?whitebeam      plow
        salsify          water_chestnut  jerusalem_artichoke     endive          turkey
        skirret          cress           ?plumbago               pomegranate     harrow
@@ -83,7 +83,7 @@ my @feast = (
        wax              horseradish     cedar_tree      fir_tree        roe_deer
        gorse            cypress_tree    ivy             savin_juniper   grub-hoe
        maple_tree       heather         reed            sorrel          cricket
-       pinenut          cork            truffle         olive           shovel
+       pine_nut         cork            truffle         olive           shovel
         ),
 # Nivôse
         qw(
@@ -100,7 +100,7 @@ my @feast = (
        laurustinus      tinder_polypore mezereon        poplar_tree             axe
        hellebore        broccoli        laurel          common_hazel            cow
        box_tree         lichen          yew_tree        lungwort                billhook
-       pennycress       daphne          couch_grass     common_knotgrass        hare
+       penny-cress      daphne          couch_grass     common_knotgrass        hare
        woad             hazel_tree      cyclamen        celandine               sleigh
         ),
 # Ventôse
@@ -109,7 +109,7 @@ my @feast = (
        wild_ginger      mediterranean_buckthorn   violet            goat_willow     spade
        narcissus        elm_tree                  fumitory          hedge_mustard   goat
        spinach          leopard's_bane            pimpernel         chervil         line
-       mandrake         parsley                   scurvy_grass      daisy           tuna_fish
+       mandrake         parsley                   scurvy-grass      daisy           tuna_fish
        dandelion        windflower                maidenhair_fern   ash_tree        dibble
         ),
 # Germinal
@@ -119,7 +119,7 @@ my @feast = (
        periwinkle       hornbeam        morel           beech_tree      bee
        lettuce          larch           hemlock         radish          hive
        ?redbud          roman_lettuce   chestnut_tree   rocket          pigeon
-       lilac            anemone         pansy           blueberry       grafter
+       lilac            anemone         pansy           blueberry       dibber
         ),
 # Floréal
         qw(
@@ -162,7 +162,7 @@ my @feast = (
        plum             millet          lycoperdon      barley          salmon
        tuberose         bere            dogbane         liquorice       stepladder      
        watermelon       fennel          barberry        walnut          trout
-       lemon            teasel          buckthorn       marigold        harverting_basket
+       lemon            teasel          buckthorn       marigold        harvesting_basket
        wild_rose        hazelnut        hops            sorghum         crayfish
        bitter_orange    goldenrod       corn            chestnut        basket
         ),
