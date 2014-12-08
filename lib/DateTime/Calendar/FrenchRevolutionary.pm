@@ -10,9 +10,9 @@ package DateTime::Calendar::FrenchRevolutionary;
 
 use utf8;
 use strict;
+use warnings;
 
 use vars qw($VERSION);
-
 $VERSION = '0.12';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);

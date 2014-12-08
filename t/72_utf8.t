@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2014 Jean Forget
@@ -30,6 +31,8 @@
 # as an UTF-8 string and not a Mojibake ISO-8859 string.
 
 use utf8;
+use strict;
+use warnings;
 use DateTime::Calendar::FrenchRevolutionary;
 
 #my $nb_tests = @tests;
@@ -39,7 +42,7 @@ my $nb_tests = 11;
 print "1..$nb_tests\n";
 
 # "Octidi 08 Pluviôse, jour du Mézéréon"
-# and not "Octidi 08 PluviÂ´se, jour du MÂ©zÂ©rÂ©on"
+# and not "Octidi 08 PluviÃ´se, jour du MÃ©zÃ©rÃ©on"
 my $d1 = DateTime::Calendar::FrenchRevolutionary->new(year => 223, month => 5, day => 8, locale => 'fr');
 my $l = length($d1->month_name());
 if ($l == 8)
@@ -73,7 +76,7 @@ else
   { print "not ok 5, expected 36, actual ", $l, "\n" }
 
 # "Décadi 10 Nivôse, jour du Fléau"
-# and not "DÂ©cadi 08 NivÂ´se, jour du FlÂ©ua"
+# and not "DÃ©cadi 08 NivÃ´se, jour du FlÃ©ua"
 $d1 = DateTime::Calendar::FrenchRevolutionary->new(year => 223, month => 4, day => 10, locale => 'fr');
 $l = length($d1->day_name());
 if ($l == 6)

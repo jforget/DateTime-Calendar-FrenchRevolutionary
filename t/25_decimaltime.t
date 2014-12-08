@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2011, 2012, 2014 Jean Forget
@@ -27,6 +28,8 @@
 #
 use DateTime::Calendar::FrenchRevolutionary;
 use utf8;
+use strict;
+use warnings;
 
 # Yes, that's shotgun testing. You have in the end 990 tests and the
 # 0.08 version would fail 57/990. So I guess that it is still a good

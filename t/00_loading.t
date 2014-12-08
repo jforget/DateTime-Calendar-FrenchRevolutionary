@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2003, 2004, 2010, 2011, 2012, 2014 Jean Forget

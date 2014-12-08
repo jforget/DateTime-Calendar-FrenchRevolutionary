@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2011, 2012, 2014 Jean Forget
@@ -27,6 +28,8 @@
 #
 use DateTime::Calendar::FrenchRevolutionary;
 use utf8;
+use strict;
+use warnings;
 
 my %years = qw/ 1 0  2 0  3 1  4 0  5 0  6 0  7 1  8 0  9 0 10 0
                11 1 12 0 13 0 14 0 15 1 16 0 17 0 18 0 19 0 20 1

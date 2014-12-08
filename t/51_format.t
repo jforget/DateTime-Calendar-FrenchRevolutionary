@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2011, 2012, 2014 Jean Forget
@@ -28,6 +29,8 @@
 use DateTime::Calendar::FrenchRevolutionary;
 use DateTime;
 use utf8;
+use strict;
+use warnings;
 
 # Checking dates with default French locale
 sub g2r {
@@ -53,7 +56,7 @@ sub g2r_en {
   my @format = @$ref_format;
   my @date_r = @$ref_date_r;
   my $date_g = DateTime->new(year => $y, month => $m, day => $d);
-  my $date_resul = DateTime::Calendar::FrenchRevolutionary->from_object(object => $date_g)->set(locale => 'en')->strftime(@format);
+  my @date_resul = DateTime::Calendar::FrenchRevolutionary->from_object(object => $date_g)->set(locale => 'en')->strftime(@format);
 
   my $ok = "ok";
   for (my $i = 0; $i < @date_resul; $i++) {
@@ -80,12 +83,12 @@ sub fr_t {
 }
 
 my @tests = ([ [ qw/Nonidi 09 Thermidor II/ ], [ qw/%A %d %B %EY/ ], 1794,  7, 27],
-	     [ [ qw/Oct 18 Bru 0008/ ],        [ qw/%a %d %b %Y/ ],  1799, 11,  9],
-	     );
+             [ [ qw/Oct 18 Bru 0008/ ],        [ qw/%a %d %b %Y/ ],  1799, 11,  9],
+             );
 
 my @tests_en = ([ [ qw/Nineday 09 Heatidor II/ ], [ qw/%A %d %B %EY/ ], 1794,  7, 27],
        [ [ qw/Tenday Ten 10/ ], [ qw/%A %a %d/ ], 1794, 7, 28],
-	     );
+             );
 
 
 my $nb_tests = @tests + @tests_en;

@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2003, 2004, 2010, 2011, 2012, 2014 Jean Forget
@@ -27,6 +28,8 @@
 #
 use DateTime::Calendar::FrenchRevolutionary;
 use utf8;
+use strict;
+use warnings;
 
 
 #my $nb_tests = @tests;
@@ -190,7 +193,7 @@ else {
 $d = DateTime::Calendar::FrenchRevolutionary->new( year  => 8,
                                          month =>  2,
                                          day   => 18,
-					 locale => 'fr');
+                                         locale => 'fr');
 my $event_fr = <<'EOF';
 18 Brumaire I. Prise de la ville de Tournay par les Français.
 
@@ -227,7 +230,7 @@ else {
 $d = DateTime::Calendar::FrenchRevolutionary->new( year  => 8,
                                          month =>  2,
                                          day   => 10,
-					 locale => 'fr');
+                                         locale => 'fr');
 if ($d->on_date eq '') {
   print "ok 16\n";
 }

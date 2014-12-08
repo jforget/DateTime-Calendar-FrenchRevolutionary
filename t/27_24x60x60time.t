@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2011, 2012, 2014 Jean Forget
@@ -27,6 +28,8 @@
 #
 use DateTime::Calendar::FrenchRevolutionary;
 use utf8;
+use strict;
+use warnings;
 
 my $n = 1;
 my @tests = ( [ "0:41:66", "0:41:67",  1,  0,  0],

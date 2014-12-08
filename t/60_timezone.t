@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2003, 2004, 2010, 2011, 2012, 2014 Jean Forget
@@ -32,6 +33,8 @@
 use DateTime::Calendar::FrenchRevolutionary;
 use DateTime;
 use utf8;
+use strict;
+use warnings;
 
 sub g2r {
   my ($n, $date_r1, $tz) = @_;
@@ -56,7 +59,7 @@ my @tests = (["0211 07 29 5 00 00", "Europe/Paris"]
            , ["0211 07 29 9 16 66", "Pacific/Auckland"]  #  10 ABT hours, -416.67 d-minutes
            , ["0211 07 29 0 00 00", "Pacific/Tahiti"]    # -12 ABT hours, -500    d-minutes
            , ["0211 07 28 9 58 33", "Pacific/Pago_Pago"] # -13 ABT hours, -541.67 d-minutes
-	     );
+             );
 
 my $nb_tests = @tests;
 my $n = 1;

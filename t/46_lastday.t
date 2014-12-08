@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2010, 2011, 2012, 2014 Jean Forget
@@ -30,6 +31,8 @@
 
 use DateTime::Calendar::FrenchRevolutionary;
 use utf8;
+use strict;
+use warnings;
 
 my $n = 1;
 
@@ -54,14 +57,14 @@ sub check_last {
 }
 
 
-@tests = ([ 1, 30, 212,  1, 5, 85, 90],
-	  [ 2, 30, 212,  2, 5, 85, 90],
-	  [ 3, 30, 211,  3, 0, 17, 90],
-	  [10, 30, 211, 10, 9, 17, 99],
-	  [12, 30, 211, 12, 9,  7,  9],
-	  [13,  5, 211, 13, 8,  1,  1],
-	  [13,  6, 212, 13, 8,  1,  1],
-	  );
+my @tests = ([ 1, 30, 212,  1, 5, 85, 90],
+             [ 2, 30, 212,  2, 5, 85, 90],
+             [ 3, 30, 211,  3, 0, 17, 90],
+             [10, 30, 211, 10, 9, 17, 99],
+             [12, 30, 211, 12, 9,  7,  9],
+             [13,  5, 211, 13, 8,  1,  1],
+             [13,  6, 212, 13, 8,  1,  1],
+             );
 
 printf "1..%d\n", 2 * scalar @tests;
 

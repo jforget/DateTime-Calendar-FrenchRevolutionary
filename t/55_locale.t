@@ -1,3 +1,4 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
 #     Copyright (C) 2010, 2011, 2012, 2014 Jean Forget
@@ -28,6 +29,8 @@
 use DateTime::Calendar::FrenchRevolutionary::Locale::en;
 use DateTime::Calendar::FrenchRevolutionary::Locale::fr;
 use utf8;
+use strict;
+use warnings;
 
 my $n = 0;
 

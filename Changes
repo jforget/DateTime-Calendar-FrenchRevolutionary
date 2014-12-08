@@ -3,7 +3,8 @@ Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 0.12  xxx Frimaire CCXXIII (also known as xxx 2014-12-xx)
         - add the GPL-mandated comments in all Perl code files
         - fix RT ticket 100311: produce real UTF-8 strings, instead of Mojibake ISO-8859 which
-          will accidently display in a UTF-8 terminal a a proper string.
+          will accidently display in a UTF-8 terminal as a proper string.
+        - playing the CPANTS game (when appropriate): use strict and use warnings in all Perl code
 
 0.11  Octidi 18 Brumaire CCXXI, jour de la dentelaire, 213th anniversary of Bonaparte's coup (also known as Thursday 2012-11-08)
         - French locale: replacing the "4" and "5" "possible genre" indicators for feasts by "0" 
