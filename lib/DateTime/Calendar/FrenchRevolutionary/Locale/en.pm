@@ -274,78 +274,75 @@ sub on_date {
 sub _load_events {
   %event = ('dummy', split /(\d{4})\n/, <<'EVENTS');
 0101
-1 Vendémiaire I. The French troops enter Savoie
+1 Vendémiaire I The French troops enter Savoy.
 
-1 Vendémiaire III. The posts in the woods of Aachen and Reckem are
+1 Vendémiaire III The posts in the woods of Aachen and Reckem are
 taken by the Army of North.
 
 0102
-2 Vendémiaire I. Conquest of Chambéry
+2 Vendémiaire I Conquest of Chambéry.
 
-2 Vendémiaire III. The Costouge redoubt and camp are taken by the Army
-of Eastern Pyrenees.
+2 Vendémiaire III The Costouge redoubt and camp are taken by the Army of Eastern Pyrenees.
 
-2 Vendémiaire V. The Army of Italy routs the enemy at Governolo.
+2 Vendémiaire V The Army of Italy routs the enemy at Governolo.
 
 0103
-3 Vendémiaire IV. Affair of Garesio.
+3 Vendémiaire IV Affair of Garesio.
 
 0104
-4 Vendémiaire II. The Army of Alps takes the 
-Chatillon fieldworks; Piemontese rout across the Giffe river.
+4 Vendémiaire II The Army of Alps takes the Chatillon fieldworks; Piemontese rout across the Giffe river.
 
 0105
-5 Vendémiaire III. The Spanish are defeated in Olia and Monteilla by the
+5 Vendémiaire III The Spanish are defeated in Olia and Monteilla by the
 Army of Eastern Pyrenees.
 
 0106
-6 Vendémiaire III. Surrender at Crevecoeur to the Army of the North.
+6 Vendémiaire III Surrender at Crevecoeur to the Army of the North.
 
-6 Vendémiaire III. Kayserlautern, Alsborn and other surrounding posts
+6 Vendémiaire III Kayserlautern, Alsborn and other surrounding posts
 are taken again by the Army of the Rhine.
 
-6 Vendémiaire V. The enemy attacks the Army of Sambre and Meuse at
+6 Vendémiaire V The enemy attacks the Army of Sambre and Meuse at
 Wurstatt, Nider-Ulm, Ober and Nider-Ingelheim; the attack is repulsed.
 
-6 Vendémiaire XII Birth of Prosper Mérimée
+6 Vendémiaire XII Birth of Prosper Mérimée, French writer.
 
 0107
-7 Vendémiaire I. Anselme's troops conquer the city of Nice and the Montalban fortress. 
+7 Vendémiaire I Anselme's troops conquer the city of Nice and the Montalban fortress. 
 
-7 Vendémiaire II. The Army of Alps (Verdelin) defeats the enemy in the Sallanges 
+7 Vendémiaire II The Army of Alps (Verdelin) defeats the enemy in the Sallanges 
 defiles and takes the Saint-Martin redoubt.
 
 0108
-8 Vendémiaire V. 150 men from the Army of Italy sortie from Mantoue to forage.
+8 Vendémiaire V 150 men from the Army of Italy sortie from Mantoue to forage.
 They must surrender to the people of Reggio.
 
 0109
-9 Vendémiaire I. Custines' French conquer Spire.
+9 Vendémiaire I Custines' French conquer Spire.
 
-9 Vendémiaire II. The Army of Alps takes the fieldworks at
+9 Vendémiaire II The Army of Alps takes the fieldworks at
 Mont-Cormet, previously held by Piemontese.
 
 0111
-11 Vendémiaire II. Prisy's troops (Army of Alps) take the Valmeyer outpost
+11 Vendémiaire II Prisy's troops (Army of Alps) take the Valmeyer outpost
 after a bayonet charge, Saint-André's and Chamberlhac's troops take the Beaufort
 post, General-in-Chief Kellerman's troops take Moutiers and the Saint-Maurice
 town and Ledoyen's troops storm the Madeleine pass post. 
 
-11 Vendémiaire III. Battle of Aldenhoven, the Army of Sambre and Meuse
+11 Vendémiaire III Battle of Aldenhoven, the Army of Sambre and Meuse
 routs the coalised troops.
 
-11 Vendémiaire V. The Army of Rhine and Moselle attacks
+11 Vendémiaire V The Army of Rhine and Moselle attacks
 on the whole front and routs the enemy.
 
 0112
-12 Vendémiaire II. The Spanish troops are repulsed back in their camps in the Boulon 
+12 Vendémiaire II The Spanish troops are repulsed back in their camps in the Boulon 
 and Argelès by the Army of Eastern Pyrenees.
 
-12 Vendémiaire III. The land of Juliers surrenders to the Army of Sambre and Meuse.
+12 Vendémiaire III The land of Juliers surrenders to the Army of Sambre and Meuse.
 
 0113
-13 Vendémiaire I. The Austrians must leave Worms
-and Custines' troops enter the city.
+13 Vendémiaire I The Austrians must leave Worms and Custines' troops enter the city.
 
 13 Vendémiaire II Army of Eastern Pyrenees: Dagobert's troops take
 Campredon while the Colioure garrison fights and routs the Spanish cavalry.
@@ -353,64 +350,64 @@ Campredon while the Colioure garrison fights and routs the Spanish cavalry.
 13 Vendémiaire II Army of Western Pyrenees. Attacks and capture of the
 Arau and Aure valley posts.
 
-13 Vendémiaire IV. Bonaparte suppresses a royalist demonstration at the 
-Saint-Roch church in Paris
+13 Vendémiaire IV Bonaparte suppresses a royalist demonstration at the 
+Saint-Roch church in Paris.
 
 0115
-15 Vendémiaire III. Cologne surrenders to the Army of Sambre and Meuse.
+15 Vendémiaire III Cologne surrenders to the Army of Sambre and Meuse.
 
 0116
-16 Vendémiaire V. The enemy, blockaded in Mantoue by the Army of Italy
+16 Vendémiaire V The enemy, blockaded in Mantoue by the Army of Italy
 attempt a 4,600-troop sortie but fails.
 
 0117
-17 Vendémiaire I. The Austrians call off the siege of Lille.
+17 Vendémiaire I The Austrians call off the siege of Lille.
 
-17 Vendémiaire III. Fight for and capture of Frankenthal by the Army of the Rhine.
+17 Vendémiaire III Fight for and capture of Frankenthal by the Army of the Rhine.
 
 0118
-18 Vendémiaire II. Bombardment of Lyon, which opens her gates to
+18 Vendémiaire II Bombardment of Lyon, which opens her gates to
 Dubois-de-Crancé's troops.
 
-18 Vendémiaire III. Capture of Shelaudenbach and Vollfstein by the Army of the Rhine
+18 Vendémiaire III Capture of Shelaudenbach and Vollfstein by the Army of the Rhine
 which links with the Army of Moselle in Lautreck.
 
 0119
-19 Vendémiaire III. Before Maestricht, the Army of Sambre and Meuse takes back
+19 Vendémiaire III Before Maestricht, the Army of Sambre and Meuse takes back
 the Mont-Saint-Pierre castle.
 
 0120
-20 Vendémiaire III. The Army of Moselle marches on Birkenfeldt, Oberstein,
+20 Vendémiaire III The Army of Moselle marches on Birkenfeldt, Oberstein,
 Kirn and Meisenheim.
 
 0121
-21 Vendémiaire III. The Army of the North enters in Bois-le-Duc.
+21 Vendémiaire III The Army of the North enters in Bois-le-Duc.
 
 0122
-22 Vendémiaire I. Kellerman forces the Prussians to leave the city of Verdun.
+22 Vendémiaire I Kellerman forces the Prussians to leave the city of Verdun.
 He enters Verdun and continues his march to the Prussians.
 
 0123
-23 Vendémiaire III. The Army of the Rhine takes Otterberg, Rockenhausen, 
+23 Vendémiaire III The Army of the Rhine takes Otterberg, Rockenhausen, 
 Landsberg, Alzein and Oberhausen.
 
 0124
-24 Vendémiaire II. The Army of Moselle fights and routs the
+24 Vendémiaire II The Army of Moselle fights and routs the
 Coalised who had advanced on Bitche and Rorbach.
 
-24 Vendémiaire III. Fight for and capture of Gellheim and Grunstad by
+24 Vendémiaire III Fight for and capture of Gellheim and Grunstad by
 the Army of the Rhine; the French capture also Frankenthal.
 
 0125
-25 Vendémiaire II. Combat near Sarreguemines; the Army of Moselle
+25 Vendémiaire II Combat near Sarreguemines; the Army of Moselle
 repulses the enemy.
 
-25 Vendémiaire II. Queen Marie-Antoinette is beheaded.
+25 Vendémiaire II Queen Marie-Antoinette is beheaded.
 
 0126
-26 Vendémiaire I. The Austrians attack Hasnon and fail several times.
+26 Vendémiaire I The Austrians attack Hasnon and fail several times.
 
-26 Vendémiaire II. Victory of Wattignies near Maubeuge against the
+26 Vendémiaire II Victory of Wattignies near Maubeuge against the
 Austrians and end of the blockade of Maubeuge.
 
 26 Vendémiaire III The Army of Western Pyrenees takes
@@ -422,7 +419,7 @@ Moreau's troops take Creutznach and Custines' troops take Worms.
 26 Vendémiaire VI Army of Italy. Peace treaty in Campo-Formio
 near Udine between Bonaparte and the Austrians.
 
-26 Vendémiaire VI. Congress in Rastadt to conclude peace between the 
+26 Vendémiaire VI Congress in Rastadt to conclude peace between the 
 French Republic and the German Empire.
 
 0127
@@ -451,13 +448,13 @@ Austrians to leave Mayence.
 
 29 Vendémiaire III The Armée of Moselle enters Bingen.
 
-29 Vendémiaire V. The Army of Italy, debarking in Corsica,
+29 Vendémiaire V The Army of Italy, debarking in Corsica,
 captures Bastia, Saint-Florent and Bonifacio.
 
 29 Vendémiaire XIV Battle of Trafalgar.
 
 0130
-30 Vendémiaire II. The Army of Western Pyrenees
+30 Vendémiaire II The Army of Western Pyrenees
 routs three Spanish columns after a five-hour firefight.
 
 30 Vendémiaire V Army of Sambre and Meuse. Enemy crossing of the Rhine
@@ -544,7 +541,7 @@ where it is beaten and repulsed to the Segonzano village.
 crosses back after a murderous fight.
 
 0216
-16 Brumaire I. Battle of Gemmapes. Following this victory, the
+16 Brumaire I Battle of Gemmapes. Following this victory, the
 French enter Mons.
 
 16 Brumaire III Army of the North. The fort of Schenk is taken.
@@ -554,12 +551,12 @@ French enter Mons.
 garrison is repulsed by a French bayonet charge.
 
 0218
-18 Brumaire I. The French capture Tournay.
+18 Brumaire I The French capture Tournay.
 
 18 Brumaire III Army of the North. Triumphant entry of the French
 into Nimègue.
 
-18 Brumaire VIII. Bonaparte's coup: end of Directorate, beginning of Consulate
+18 Brumaire VIII Bonaparte's coup: end of Directorate, beginning of Consulate.
 
 0219
 19 Brumaire IV Army of the North. Burick taken.
@@ -576,17 +573,17 @@ between Saint-Michel and Saint-Martin, the enemy is repulsed.
 22 Brumaire I Army of the North. The city of Gand open her gates to
 the French army.
 
-22 Brumaire I. Charleroy taken by the French.
+22 Brumaire I Charleroy taken by the French.
 
 22 Brumaire III Army of the Rhine. Monbach and neighbour posts
 taken, capture of Weissenau.
 
 0223
-23 Brumaire I. Battle of Anderlecht near Bruxelles. The 
+23 Brumaire I Battle of Anderlecht near Bruxelles. The 
 French army enters in Brussels.
 
 0224
-24 Brumaire I. Capture of Frankfurt.
+24 Brumaire I Capture of Frankfurt.
 
 24 Brumaire II Army of the West. The Vendean rebels are defeated
 before the walls of Granville.
@@ -596,12 +593,12 @@ before the walls of Granville.
 on 27.
 
 0226
-26 Brumaire I. The French control the town and harbour of Ostende,
+26 Brumaire I The French control the town and harbour of Ostende,
 evacuated by the Austrians.
 
-26 Brumaire I. Saint-Remi captured.
+26 Brumaire I Saint-Remi captured.
 
-26 Brumaire I. The town of Malines capitulates.
+26 Brumaire I The town of Malines capitulates.
 
 26 Brumaire II Army of the Rhine. The army launches a surprise attack
 and captures three enemy posts near Strasburg.
@@ -634,7 +631,7 @@ Duke of Parme.
 29 Brumaire II The Army of the Rhine captures two redoubts near
 Bouxweiller.
 
-29 Brumaire VIII Birth of René Caillé, the first European to enter Timbuktu
+29 Brumaire VIII Birth of René Caillé, the first European to enter Timbuktu.
 
 0230
 30 Brumaire II Army of Eastern Pyrenees. Victorious battle at Escola,
@@ -670,7 +667,7 @@ artillery is spiked.
 0303
 3 Frimaire IV Army of Italy. Fight at Intrapa and Garesio.
 
-3 Frimaire V. Sortie by the garrison of Mantoue, which is repulsed.
+3 Frimaire V Sortie by the garrison of Mantoue, which is repulsed.
 
 0304
 4 Frimaire II Army of Italy. 800 Piemontese defeated by 500 French at
@@ -709,12 +706,12 @@ bridge and the fieldworks at Gambsheim are taken.
 11 Frimaire III Army of the Rhine And Moselle. The redoubt known as
 "Merlin redoubt" before Mayence is taken.
 
-11 Frimaire V. The enemy, arrayed in three columns, attacks the
+11 Frimaire V The enemy, arrayed in three columns, attacks the
 bridghead at Huningue and takes a fortification but is repulsed.
 
-11 Frimaire XIII. Napoleon the First is crowned Emperor of the French
+11 Frimaire XIII Napoleon the First is crowned Emperor of the French.
 
-11 Frimaire XIV. Battle of Austerlitz: the French army crushes the Austro-Russian army
+11 Frimaire XIV Battle of Austerlitz: the French army crushes the Austro-Russian army.
 
 0312
 12 Frimaire II Army of Ardennes. Strong sortie of the Givet garrison,
@@ -736,7 +733,7 @@ Salbach redoubts.
 19 Frimaire II Army of the Rhine. The Dawendorff highgrounds are captured.
 
 0320
-20 Frimaire XII Birth of Hector Berlioz
+20 Frimaire XII Birth of Hector Berlioz, French musician.
 
 0321
 21 Frimaire I Army of the North. Capture of Wezem, Wert and Ruremonde.
@@ -750,7 +747,7 @@ near Le Mans.
 near Saint-Jean-de-Luz; they must cross the Bidassoa.
 
 0324
-24 Frimaire I. The French troops take the towns
+24 Frimaire I The French troops take the towns
 of Mertzicq, Fredembourg and Saarbruck.
 
 0325
@@ -761,7 +758,7 @@ highgrounds of Marsal, Dahnbruck and Lambach.
 and redoubts that were defending Toulon.
 
 0326
-26 Frimaire I. Capture of Consarbruck.
+26 Frimaire I Capture of Consarbruck.
 
 26 Frimaire II Army of Italy. Toulon conquered, the English and
 Spanish troops flee.
@@ -860,7 +857,7 @@ Lower-Rhine department. The Vauban fort is taken back.
 29 Nivôse III Army of the North. Capture of Gertuydemberg.
 
 0430
-30 Nivôse VI Birth of Auguste Comte
+30 Nivôse VI Birth of Auguste Comte, French philosopher.
 
 0502
 2 Pluviôse I Louis XVI is beheaded.
@@ -926,7 +923,7 @@ Chauvin-Dragon.
 Adige right bank. Derunbano captured.
 
 0520
-20 Pluviôse IV Birth of Barthélémy Prosper Enfantin
+20 Pluviôse IV Birth of Barthélémy Prosper Enfantin, French social reformer.
 
 0521
 21 Pluviôse V Army of Italy. The Pope's troops, on the highground
@@ -961,7 +958,7 @@ The French, attacked in Bidole, smash the enemy. Kellerman crosses
 the Piave in San-Mamma, and routs some enemy hussards.
 
 0607
-7 Ventôse X. Birth of Victor Hugo
+7 Ventôse X. Birth of Victor Hugo.
 
 0611
 11 Ventôse III Army of Eastern Pyrenees. Bezalu captured.
@@ -978,7 +975,7 @@ di-Savaro and beat him.
 the enemy is defeated.
 
 0617
-17 Ventôse I. War is declared on the King of Spain.
+17 Ventôse I War is declared on the King of Spain.
 
 0618
 18 Ventôse II Army of the Moselle. Three Austrian battalions are
@@ -997,7 +994,7 @@ to the Vidor village and repulses the enemy.
 23 Ventôse V Army of Italy. Fight in Sacile. Fight in Bellurn, in
 which the enemy rearguard is surrounded and taken prisoner.
 
-23 Ventôse VI. After five murderous fights, the Swiss evacuate Morat.
+23 Ventôse VI After five murderous fights, the Swiss evacuate Morat.
 
 0626
 26 Ventôse V Army of Italy. Crossing of the Tagliamento, despite a
@@ -1050,7 +1047,7 @@ resistance, the enemy is routed.
 position is taken.
 
 0707
-26 Germinal V Birth of Alfred de Vigny
+7 Germinal V Birth of Alfred de Vigny, French poet.
 
 0708
 8 Germinal V Army of Italy. Enemy battalions, fresh from the Rhine
@@ -1138,7 +1135,7 @@ Austro-Sards. Fight at Dego, the enemy is routed. Fight and capture
 of Saint-Jean, in the valley of Barmida. Capture of Batisolo, Bagnosco
 and Pontenocetto. Capture of the Montezemo redoubts.
 
-26 Germinal V Birth of Adolphe Thiers
+26 Germinal V Birth of Adolphe Thiers, French writer and politician.
 
 0727
 27 Germinal II Army of the Moselle. The French occupy the highground
@@ -1196,7 +1193,7 @@ Arrola.
 4000 Spanish infantry troops and 10 Spanish cavalry squadrons rout at
 Roqueluche.
 
-7 Floréal VI Birth of Eugène Delacroix
+7 Floréal VI Birth of Eugène Delacroix, French painter.
 
 0808
 8 Floréal II Army of Eastern Pyrenees. 3000 French troops repulse
@@ -1347,7 +1344,7 @@ and Erquelinne after a 6-hour fight.
 1 Prairial IV Army of Italy. An armistice with the Duke of Modene is
 concluded.
 
-1 Prairial VII. Birth of Honoré de Balzac
+1 Prairial VII Birth of Honoré de Balzac, French writer.
 
 0904
 4 Prairial II Army of the Rhine. Battle of Schifferstadt, won
@@ -1414,7 +1411,7 @@ captured.
 14 Prairial II Army of the Ardennes. The enemy is routed near the
 Sainte-Marie woods.
 
-14 Prairial IV Birth of Sadi Carnot
+14 Prairial IV Birth of Sadi Carnot, French politician.
 
 0915
 15 Prairial II Army of Western Pyrenees. Battle won on several
@@ -1479,7 +1476,7 @@ their victorious advances until Gosselies.
 24 Prairial III Army of Sambre and Meuse. Capture of Luxembourg.
 
 0925
-25 Prairial VIII. Battle of Marengo, Italy. The same day, Kleber assassinated in Cairo
+25 Prairial VIII Battle of Marengo, Italy. The same day, general Kleber assassinated in Cairo.
 
 0926
 26 Prairial II United Armies of Moselle, Ardennes and North. Near
@@ -1579,7 +1576,7 @@ Deva.
 11 Messidor IV Army of Italy. The Milan castle capitulates.
 
 1012
-12 Messidor XII Birth of George Sand
+12 Messidor XII Birth of George Sand, French writer.
 
 1013
 13 Messidor II Army of Sambre and Meuse. Capture of the Roxule
@@ -1755,7 +1752,7 @@ of Spain.
 4 Thermidor IV Army of Sambre and Meuse. Capture of Schwinfurt.
 
 1105
-5 Thermidor X Birth of Alexandre Dumas the elder.
+5 Thermidor X Birth of Alexandre Dumas the elder, French writer.
 
 1106
 6 Thermidor II Army of Eastern Pyrenees. The Republican troops enter
@@ -1774,11 +1771,13 @@ Koenigstein fort.
 1109
 9 Thermidor I Army of Sambre and Meuse. The French enter Liège.
 
-9 Thermidor II. Robespierre's downfall.
+9 Thermidor II Robespierre's downfall.
 
 1110
 10 Thermidor II Army of the North. Capture of Cassandria and crossing
 of the Cacysche.
+
+10 Thermidor II Robespierre and several of his followers (Couthon, Saint-Just, etc) are beheaded.
 
 1111
 11 Thermidor III Army of the Alps and Italy. Assault on the redoubts
@@ -1798,7 +1797,7 @@ beaten at Lonado.
 1114
 Army of Italy. Brescia taken back.
 
-14 Thermidor VII Birth of Sophie Rostopchine, later known as countess of Ségur
+14 Thermidor VII Birth of Sophie Rostopchine, later known as countess of Ségur.
 
 1115
 15 Thermidor IV Army of Sambre and Meuse. Capture of Koenigshoffen.
@@ -2084,7 +2083,7 @@ river; capture of Limbourg, Dietz and Nasseau.
 
 Army of Italy. Austrian defeat on the Borghetto line.
 
-3 additional day V. Death of general Hoche, general-in-chief of 
+3 additional day V Death of general Hoche, general-in-chief of 
 the Army of Sambre and Meuse.
 
 1304
@@ -2099,13 +2098,13 @@ are stormed, after 7 successive attacks.
 Army of Italy. Victory at Cairo over the Piemontese, supported by
 10,000 Austrians.
 
-4 additional day III. Surrender of Manheim.
+4 additional day III Surrender of Manheim.
 
 1305
 5 additional day II Army of Western Pyrenees. Spanish troops at
 Mont-Roch are routed.
 
-5 additional day IV. Death of general Marceau, aged 27, killed at
+5 additional day IV Death of general Marceau, aged 27, killed at
 Altenkirchen by a carbine shot.
 EVENTS
   delete $event{dummy};

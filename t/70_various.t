@@ -195,21 +195,21 @@ $d = DateTime::Calendar::FrenchRevolutionary->new( year  => 8,
                                          day   => 18,
                                          locale => 'fr');
 my $event_fr = <<'EOF';
-18 Brumaire I. Prise de la ville de Tournay par les Français.
+18 Brumaire I Prise de la ville de Tournay par les Français.
 
 18 Brumaire III Armée du Nord. Entrée triomphante des Français dans
 Nimègue.
 
-18 Brumaire VIII. Coup d'état de Bonaparte : fin du Directoire, début du Consulat
+18 Brumaire VIII Coup d'état de Bonaparte : fin du Directoire, début du Consulat.
 
 EOF
 my $event_en = <<'EOF';
-18 Brumaire I. The French capture Tournay.
+18 Brumaire I The French capture Tournay.
 
 18 Brumaire III Army of the North. Triumphant entry of the French
 into Nimègue.
 
-18 Brumaire VIII. Bonaparte's coup: end of Directorate, beginning of Consulate
+18 Brumaire VIII Bonaparte's coup: end of Directorate, beginning of Consulate.
 
 EOF
 if ($d->on_date eq $event_fr) {
