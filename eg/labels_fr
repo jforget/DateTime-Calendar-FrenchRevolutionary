@@ -29,6 +29,7 @@
 #
 use utf8;
 use strict;
+use warnings;
 
 my %labels =
 (  calendar  => 'Calendrier'
@@ -41,6 +42,8 @@ my %labels =
  , title2    => { b => "Début d'année", m => "Milieu d'année", e => "Fin d'année" }
  , title3    => "Nom des mois et des jours"
  , year_ttl  => "Année"
+ , titleg2r  => "Conversion de dates du calendrier grégorien vers le calendrier républicain"
+ , titler2g  => "Conversion de dates du calendrier républicain vers le calendrier grégorien"
 );
 
 #

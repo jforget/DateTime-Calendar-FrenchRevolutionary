@@ -118,6 +118,7 @@ else
   { $ref_labels = do "$FindBin::Bin/labels_en" }
 my %labels = %$ref_labels;
 
+html_0($labels{titleg2r});
 html_1($labels{title1});
 html_2($_) foreach (@parts);
 print "<p>\n";
@@ -126,6 +127,7 @@ print "<p>\n";
 print "<table><tr><td>\n" if $table_workaround;
 usage($example);
 print "</td></tr></table>\n" if $table_workaround;
+print "</body>\n</html>\n";
 
 #
 # Gives the letter for a year and a part
@@ -225,6 +227,19 @@ sub formulas {
     }
 
   @formulas;
+}
+
+sub html_0 {
+  my ($title) = @_;
+  print <<"EOF";
+<html>
+<head>
+<title>$title</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>$title</h1>
+EOF
 }
 
 sub html_1 {

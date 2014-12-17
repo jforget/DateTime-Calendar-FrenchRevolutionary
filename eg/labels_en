@@ -30,6 +30,7 @@
 #
 use utf8;
 use strict;
+use warnings;
 
 my %labels =
 (  calendar  => 'Calendar'
@@ -42,6 +43,8 @@ my %labels =
  , title2    => { b => "Beginning of Year", m => "Middle of Year", e => "End of Year" }
  , title3    => "Month names and day names"
  , year_ttl  => "Year"
+ , titleg2r  => "Converting dates from Gregorian to French Revolutionary"
+ , titler2g  => "Converting dates from French Revolutionary to Gregorian"
 );
 
 #

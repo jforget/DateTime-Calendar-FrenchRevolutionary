@@ -121,11 +121,13 @@ my @fr_month = qw (Vendémiaire Brumaire Frimaire Nivôse   Pluviôse  Ventôse
                    Germinal    Floréal  Prairial Messidor Thermidor Fructidor);
 push @fr_month, "Sans-Culottides<br>$labels{add_days}";
 
+html_0($labels{titler2g});
 html_1($labels{title1});
 html_2($_) foreach (@parts);
 print "<table><tr><td>\n" if $table_workaround;
 usage($example);
 print "</td></tr></table>\n" if $table_workaround;
+print "</body>\n</html>\n";
 
 #
 # Gives the letter for a year and a part
@@ -206,6 +208,19 @@ sub formulas {
       push @formulas, "-$offset $labels{month3}[$date->month() - 1]";
     }
   @formulas;
+}
+
+sub html_0 {
+  my ($title) = @_;
+  print <<"EOF";
+<html>
+<head>
+<title>$title</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>$title</h1>
+EOF
 }
 
 sub html_1 {
