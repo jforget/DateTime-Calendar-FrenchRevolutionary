@@ -4,7 +4,7 @@
       "Jean Forget <JFORGET@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4001, CPAN::Meta::Converter version 2.110930",
+   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.110440",
    "license" : [
       "perl_5"
    ],
@@ -22,7 +22,8 @@
       "runtime" : {
          "requires" : {
             "DateTime" : "0.14",
-            "Roman" : "1.22"
+            "Roman" : "1.22",
+            "perl" : "v5.8.5"
          }
       }
    },
