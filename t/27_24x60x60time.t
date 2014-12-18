@@ -38,6 +38,12 @@ my @tests = ( [ "0:41:66", "0:41:67",  1,  0,  0],
               [ "7:99:99", "8:00:00", 19, 12,  0],
               [ "8:99:99", "9:00:00", 21, 36,  0],
             );
+my @tests1 = ( [ "01-00-00",      1,  0,  0, '-'],
+               [ "01+45+00",      1, 45,  0, '+'],
+               [ "02*03*04",      2,  3,  4, '*'],
+               [ "19<->12<->00", 19, 12, 0, '<->'],
+               [ '21$$$36$$$00', 21, 36, 0, '$$$'],
+             );
 
 sub check_time {
   my ($n, $ch1, $ch2, $h, $m, $s) = @_;
@@ -54,9 +60,25 @@ sub check_time {
   }
 }
 
+sub check_time_1 {
+  my ($n, $ch1, $h, $m, $s, $sep) = @_;
+  my $dt = DateTime::Calendar::FrenchRevolutionary->new(
+            year => 1, month => 2, day => 3, abt_hour => $h, abt_minute => $m, abt_second => $s);
+  my $resul    = $dt->abt_hms($sep);
+  if ($resul eq $ch1) {
+    print "ok $n\n";
+  }
+  else {
+    print "not ok $n : expected $ch1, got $resul\n";
+  }
+}
 
-printf "1..%d\n", scalar @tests;
+printf "1..%d\n", scalar(@tests) + scalar(@tests1);
 
 for (@tests) {
   check_time $n++, @$_;
+}
+
+for (@tests1) {
+  check_time_1 $n++, @$_;
 }

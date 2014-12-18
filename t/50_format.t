@@ -103,7 +103,7 @@ my @tests = (["Nonidi 09 Thermidor II", "%A %d %B %EY", 1794,  7, 27],
              ["6 (Sextidi), jour de la bagarade", "%w (%A), %Ej", 2001, 9, 12],
              ["6 (Sextidi), jour de la bagarade",
                 "%{wday} (%{day_name}), %{feast_long}", 2001, 9, 12],
-             ["Décadi Déc 10", "%A %a %d", 1794, 7, 28],
+             ["Décadi Déc 10 10", "%A %a %d %u", 1794, 7, 28],
              );
 
 my @tests_en = (["Nineday 09 Heatidor II", "%A %d %B %EY", 1794,  7, 27],

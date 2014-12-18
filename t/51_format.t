@@ -72,8 +72,7 @@ sub g2r_en {
 sub fr_t {
   my ($n, $date_r, $format, $locale, $y, $m, $d, $H, $M, $S) = @_;
   my $date_resul = DateTime::Calendar::FrenchRevolutionary->new(
-        year => $y, month => $m, day => $d, hour => $H, minute => $M, second => $S,
-          )->set(locale => $locale)->strftime($format);
+        year => $y, month => $m, day => $d, hour => $H, minute => $M, second => $S, locale => $locale)->strftime($format);
   if ($date_r eq $date_resul) {
     print "ok $n\n";
   }

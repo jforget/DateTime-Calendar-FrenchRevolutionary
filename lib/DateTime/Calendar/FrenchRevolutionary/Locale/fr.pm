@@ -248,17 +248,15 @@ sub default_datetime_format { join ' ', ( $_[0]->default_date_format, $_[0]->def
 sub default_date_format_length { $default_date_format_length }
 sub default_time_format_length { $default_time_format_length }
 
-sub month_names         { [ @months ] }
-sub month_abbreviations { [ @months_short ] }
-sub day_names           { [ @decade_days ] }
-sub day_abbreviations   { [ @decade_days_short ] }
-sub am_pms              { [ @am_pms ] }
-sub date_formats                   { \%date_formats                   }
-sub time_formats                   { \%time_formats                   }
-sub date_before_time               { $date_before_time                }
-sub _default_date_format_length    { $default_date_format_length      }
-sub _default_time_format_length    { $default_time_format_length      }
-sub date_parts_order               { $date_parts_order                }
+sub month_names                { [ @months ] }
+sub month_abbreviations        { [ @months_short ] }
+sub day_names                  { [ @decade_days ] }
+sub day_abbreviations          { [ @decade_days_short ] }
+sub am_pms                     { [ @am_pms ] }
+sub date_formats               { \%date_formats         }
+sub time_formats               { \%time_formats         }
+sub date_before_time           { $date_before_time      }
+sub date_parts_order           { $date_parts_order      }
 
 sub on_date {
   my ($self, $date) = @_;

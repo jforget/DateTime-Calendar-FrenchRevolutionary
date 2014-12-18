@@ -81,7 +81,7 @@ my $BasicValidate =
                       { "only 'fr' and 'en' possible" =>
                         sub { ($_[0] eq 'fr') or ($_[0] eq 'en') or ref($_[0]) =~ /(?:en|fr)$/ },
                       },
-                     default => 'fr' },
+                     default => DefaultLocale() },
     };
 
 my $NewValidate =
@@ -104,7 +104,6 @@ sub new {
     my $self = {};
 
     $self->{tz} = DateTime::TimeZone->new(name => 'floating');
-    $args{locale} = $class->DefaultLocale unless defined $args{locale};
     if ( ref $args{locale} )
       { $self->{locale} = $args{locale} }
     else
