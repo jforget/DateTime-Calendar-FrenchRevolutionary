@@ -228,6 +228,8 @@ EOT
 
 __END__
 
+=encoding utf8
+
 =head1 NOM
 
 prt_cal - Imprime le calendrier républicain pour une date.
@@ -291,6 +293,8 @@ Vous pouvez essayer
 Mais surtout pas
 
   http://images.google.com/images?q=Delacroix+libert%C3%A9+guidant+peuple&hl=en&lr=&ie=UTF-8&output=search
+
+=back
 
 =head1 PARAMÈTRE DE C<prt_cal>
 
