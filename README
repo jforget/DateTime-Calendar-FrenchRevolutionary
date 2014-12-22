@@ -10,18 +10,20 @@ Revolutionary calendar and decimal time.
 
 INSTALLATION
 
-The preferred way, which requires Module::Build, is:
+The simplest  way, of course, is  using a CPAN  client: CPAN.pm, cpanp
+(from CPANPLUS.pm) or cpanm (from App::cpanminus).
+
+If you downloaded  the .tar.gz archive, or if you  cloned the git repo
+with
+
+  git clone https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary.git
+
+then the preferred way, which requires Module::Build, is:
 
    perl Build.PL
    ./Build
    ./Build test
    ./Build install
-
-Note:  This module  uses  Roman.pm.   This is  an  old module  (1997),
-released at a time when the Makefile.PL mantra was not always done. As
-stated in this  module, it is installed by  "manually" copying it into
-lib's proper subdirectory. Yet, it seems that Module::Build is able to
-cope with such a situation.
 
 Note to the users of old filesystems.
 
