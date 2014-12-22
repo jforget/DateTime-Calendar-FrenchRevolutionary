@@ -1,5 +1,7 @@
 Revision history for Perl extension DateTime::Calendar::FrenchRevolutionary.
 
+0.13  xxx CCXXIII (also known as xxx 2015-xx-xx)
+
 0.12  Octidi 28 Frimaire CCXXIII, jour de la Truffe (also known as Thursday 2014-12-18)
         - add the GPL-mandated comments in all Perl code files
         - fix RT ticket 100311: produce real UTF-8 strings, instead of Mojibake ISO-8859 which
