@@ -1,0 +1,132 @@
+-*- encoding: utf-8; indent-tabs-mode: nil -*-
+
+See Merijn's checklist:
+https://github.com/Tux/Release-Checklist/blob/master/Checklist.md
+
+Check GPL-mandated comments (including electronic address of FSF) in:
+-- Build.PL
+-- Makefile.PL
+-- lib/DateTime/Calendar/FrenchRevolutionary.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary.pm POD "COPYRIGHT" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm POD "LICENSE STUFF" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm POD "LICENSE STUFF" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm POD "LICENSE STUFF" paragraph
+-- t/*.t
+
+Check version number in:
+-- Changes
+-- README
+-- Build.PL (no: using 'version_from')
+-- Makefile.PL
+-- lib/DateTime/Calendar/FrenchRevolutionary.pm, code ($VERSION)
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm $VERSION variable
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm $VERSION variable
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm $VERSION variable
+
+Check copyright years in:
+-- README
+-- Build.PL
+-- lib/DateTime/Calendar/FrenchRevolutionary.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary.pm POD "COPYRIGHT" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm POD "LICENSE STUFF" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm POD "LICENSE STUFF" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm POD "LICENSE STUFF" paragraph
+-- t/*.t
+
+MANIFEST: among others, check that all new test files are mentionned
+
+Checks by file
+--------------
+
+lib/DateTime/Calendar/FrenchRevolutionary.pm top of the file
+-- GPL mandated comment
+-- version number
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary.pm POD "COPYRIGHT" paragraph
+-- GPL mandated comment
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm top of the file
+-- GPL mandated comment
+-- version number
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm POD "LICENSE STUFF" paragraph
+-- GPL mandated comment
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm top of the file
+-- GPL mandated comment
+-- version number
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm POD "LICENSE STUFF" paragraph
+-- GPL mandated comment
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm top of the file
+-- GPL mandated comment
+-- version number
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm POD "LICENSE STUFF" paragraph
+-- GPL mandated comment
+-- copyright years
+
+Makefile.PL
+-- GPL mandated comment
+-- version number in "provides"
+-- copyright years
+
+t/*.t
+-- GPL mandated comment
+-- copyright years
+
+MANIFEST
+-- among others, check that all new test files are mentionned
+
+Changes
+-- version number
+-- release date
+-- event related to the release date, if applicable
+
+Kwalitee
+--------
+
+Coverage: preferably with perlbrew perl-lgdbl (or later?)
+
+Changes: Type the proper release date for the latest version
+
+Build META.{json,yml} and .tar.gz with perlbrew perl-lgdbl (or other? perl-5.20.2?)
+and make. Use "make dist" rather than "./Build dist", because Build.PL is not complete.
+
+Check contents of META.{json,yml}:
+  version number (2x)
+  minimum perl version
+  dynamic config 0
+  provides (with version number)
+  prerequisite: strict and warnings
+
+After release
+=============
+
+Github:
+    git tag -m 'Release to CPAN' v0.13
+    git push --tags -u origin master
+
+Change version number in:
+-- Changes
+-- Makefile.PL
+-- lib/DateTime/Calendar/FrenchRevolutionary.pm
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm
+
+
