@@ -7,7 +7,7 @@ Check GPL-mandated comments (including electronic address of FSF) in:
 -- Build.PL
 -- Makefile.PL
 -- lib/DateTime/Calendar/FrenchRevolutionary.pm top-file comments
--- lib/DateTime/Calendar/FrenchRevolutionary.pm POD "COPYRIGHT" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary.pm POD "LICENSE STUFF" paragraph
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm top-file comments
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm POD "LICENSE STUFF" paragraph
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm top-file comments
@@ -30,7 +30,7 @@ Check copyright years in:
 -- README
 -- Build.PL
 -- lib/DateTime/Calendar/FrenchRevolutionary.pm top-file comments
--- lib/DateTime/Calendar/FrenchRevolutionary.pm POD "COPYRIGHT" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary.pm POD "LICENSE STUFF" paragraph
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm top-file comments
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm POD "LICENSE STUFF" paragraph
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm top-file comments
@@ -49,7 +49,7 @@ lib/DateTime/Calendar/FrenchRevolutionary.pm top of the file
 -- version number
 -- copyright years
 
-lib/DateTime/Calendar/FrenchRevolutionary.pm POD "COPYRIGHT" paragraph
+lib/DateTime/Calendar/FrenchRevolutionary.pm POD "LICENSE STUFF" paragraph
 -- GPL mandated comment
 -- copyright years
 
@@ -80,12 +80,19 @@ lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm POD "LICENSE STUFF" parag
 -- GPL mandated comment
 -- copyright years
 
+Build.PL
+-- GPL mandated comment
+-- copyright years
+
 Makefile.PL
 -- GPL mandated comment
--- version number in "provides"
 -- copyright years
 
 t/*.t
+-- GPL mandated comment
+-- copyright years
+
+eg/*
 -- GPL mandated comment
 -- copyright years
 
