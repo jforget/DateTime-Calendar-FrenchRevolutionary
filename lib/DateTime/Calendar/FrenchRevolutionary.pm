@@ -661,8 +661,8 @@ sub strftime {
       # And if the user asks for %E!,
       # it defaults to E! because neither %E! nor %! exist.
       $f =~ s/
-	        %([EO]?([*%a-zA-Z]))
-              | %{(\w+)}
+	        \%([EO]?([*%a-zA-Z]))
+              | \%\{(\w+)\}
              /
               $3 ? ($self->can($3) ? $self->$3() : "\%{$3}")
                  : ($formats{$1} ? $formats{$1}->($self)
