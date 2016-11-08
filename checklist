@@ -131,6 +131,7 @@ Github:
 Change version number in:
 -- Changes
 -- Makefile.PL
+-- README
 -- lib/DateTime/Calendar/FrenchRevolutionary.pm
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm
