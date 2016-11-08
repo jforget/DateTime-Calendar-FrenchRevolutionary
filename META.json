@@ -4,7 +4,7 @@
       "Jean Forget <JFORGET@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.110440",
+   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.143240",
    "license" : [
       "perl_5"
    ],
