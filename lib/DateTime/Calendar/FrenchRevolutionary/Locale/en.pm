@@ -545,7 +545,7 @@ French enter Mons.
 16 Brumaire III Army of the North. The fort of Schenk is taken.
 
 0217
-17 Brumaire III Army of the North. The sortie of the Berg-op-zomm
+17 Brumaire III Army of the North. The sortie of the Berg-op-zoom
 garrison is repulsed by a French bayonet charge.
 
 0218

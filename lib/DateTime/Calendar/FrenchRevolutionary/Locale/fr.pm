@@ -540,7 +540,7 @@ obligé de la repasser après un combat meurtrier.
 
 0217
 17 Brumaire III Armée du Nord. La sortie de la garnison de
-Berg-op-zomm est repoussée.
+Berg-op-zoom est repoussée.
 
 0218
 18 Brumaire I Prise de la ville de Tournay par les Français.
