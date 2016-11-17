@@ -356,7 +356,7 @@ Saint-Roch church in Paris.
 
 0116
 16 Vendémiaire V The enemy, blockaded in Mantoue by the Army of Italy
-attempt a 4,600-troop sortie but fails.
+attempts a 4,600-troop sortie but fails.
 
 0117
 17 Vendémiaire I The Austrians call off the siege of Lille.
@@ -379,7 +379,7 @@ the Mont-Saint-Pierre castle.
 Kirn and Meisenheim.
 
 0121
-21 Vendémiaire III The Army of the North enters in Bois-le-Duc.
+21 Vendémiaire III The Army of the North enters Bois-le-Duc.
 
 0122
 22 Vendémiaire I Kellerman forces the Prussians to leave the city of Verdun.
@@ -441,8 +441,7 @@ and destroys the legion of Rohan.
 Retzengen and Simonswald.
 
 0129
-29 Vendémiaire I The French Army forces the
-Austrians to leave Mayence.
+29 Vendémiaire I The French Army forces the Austrians to leave Mayence.
 
 29 Vendémiaire III The Armée of Moselle enters Bingen.
 
@@ -577,8 +576,8 @@ the French army.
 taken, capture of Weissenau.
 
 0223
-23 Brumaire I Battle of Anderlecht near Bruxelles. The 
-French army enters in Brussels.
+23 Brumaire I Battle of Anderlecht near Brussels. The 
+French army enters Brussels.
 
 0224
 24 Brumaire I Capture of Frankfurt.
@@ -620,7 +619,7 @@ the Spaniards at Saint-Sebastien.
 The French enter Anvers.
 
 28 Brumaire II Army of the Rhine. The Neuviller post and four other
-are taken. A big redoubt and 7 guns are captured near Wantzenau.
+are taken. A big redoubt and 7 cannons are captured near Wantzenau.
 
 28 Brumaire V Peace treaty signed between the French Republic and the
 Duke of Parme.
@@ -811,8 +810,7 @@ from the Vendean rebels.
 0420
 20 Nivôse VI Army of Italy. Two French columns converge on Rome to
 avenge the death of general Duphot and the insult to the ambassador of
-the French Republic. Popular uprising and
-overthrow of the papal government.
+the French Republic. Popular uprising and overthrow of the papal government.
 
 0422
 22 Nivôse III Army of the North. Capture of Thiel and six forts.
@@ -935,7 +933,7 @@ on Rome.
 22 Pluviôse V Army of Italy. Capture of Lorette.
 
 0527
-27 Pluviôse VI Army of Italy. The French enter in Rome. General
+27 Pluviôse VI Army of Italy. The French enter Rome. General
 Berthier proclaims the Roman Republic.
 
 0601
@@ -1482,7 +1480,7 @@ Charleroy, the French troops capture and destroy a redoubt while under
 enemy cannonfire.
 
 Before Charleroy, in less than 10 minutes, the French capture the
-redoubt near the Bruxelles road. The 1st Bas-Rhin battalion repulses a
+redoubt near the Brussels road. The 1st Bas-Rhin battalion repulses a
 sortie by the Charleroy garrison.
 
 26 Prairial III Army of Eastern Pyrenees. Battle of Fluvia; 28,000
@@ -1657,8 +1655,7 @@ Army of Sambre and Meuse. Fight before Butzbach, Obermel and
 Camberg; capture of Friedberg.
 
 1022
-22 Messidor II Army of Sambre and Meuse. The army victoriously enters
-Bruxelles.
+22 Messidor II Army of Sambre and Meuse. The army victoriously enters Brussels.
 
 Army of Western Pyrenees. The French troops capture the Emigrates' camp
 near Berdaritz.

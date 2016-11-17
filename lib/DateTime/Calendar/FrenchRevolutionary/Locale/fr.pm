@@ -308,7 +308,7 @@ points de Wurstatt, Nider-Ulm, Ober et Nider-Ingelheim et est repoussé.
 de Sallanges et prend la redoute de Saint-Martin.
 
 0108
-8 Vendémiaire V Armée d'Italie. 150 hommes de font une sortie de Mantoue pour
+8 Vendémiaire V Armée d'Italie. 150 hommes font une sortie de Mantoue pour
 se procurer du fourrage et doivent se rendre aux habitants de Reggio.
 
 0109
@@ -435,8 +435,7 @@ et détruit la légion de Rohan.
 et à Simonswald.
 
 0129
-29 Vendémiaire I L'Armée française force les
-Autrichiens à évacuer Mayence.
+29 Vendémiaire I L'Armée française force les Autrichiens à évacuer Mayence.
 
 29 Vendémiaire III L'Armée de la Moselle entre dans Bingen
 après avoir chassé les Prussiens des positions qu'ils tenaient en avant
@@ -508,8 +507,8 @@ Français, prise du fort de Khel.
 8 Brumaire III Armée du Nord. Prise de Venlo.
 
 0209
-9 Brumaire II Armée des Pyrénées orientales. Reprise à la baïonnette,
-d'une batterie ennemie, en avant de Ville longue.
+9 Brumaire II Armée des Pyrénées orientales. Reprise à la baïonnette
+d'une batterie ennemie en avant de Ville longue.
 
 0211
 11 Brumaire III Armée des Pyrénées orientales. Déroute des Espagnols
@@ -563,8 +562,7 @@ rencontre l'ennemi entre Saint-Michel et Saint-Martin, le culbute et
 le poursuit l'espace de trois milles.
 
 0222
-22 Brumaire I Armée du Nord. La ville de Gand ouvre ses portes à
-l'armée française.
+22 Brumaire I Armée du Nord. La ville de Gand ouvre ses portes à l'armée française.
 
 22 Brumaire I Prise de Charleroy par les Français.
 
@@ -591,7 +589,7 @@ sous les murs de Granville.
 26 Brumaire I Les Français se rendent maîtres de la ville et du port
 d'Ostende, évacué par les Autrichiens.
 
-26 Brumaire I Prise de Sainte-Remi.
+26 Brumaire I Prise de Saint-Remi.
 
 26 Brumaire I Capitulation de la ville de Malines.
 
@@ -640,8 +638,7 @@ d'infanterie, et de trois cents de cavalerie auprès de Blascheidt, et
 de Lorentsweiller.
 
 0301
-1 Frimaire I Armée des Ardennes. Prise de la ville de Namur par les
-Français.
+1 Frimaire I Armée des Ardennes. Prise de la ville de Namur par les Français.
 
 1 Frimaire III Armée de la Moselle. Défaite de plus de quatre cents
 ennemis dans la forêt de Grunnevald, près Luxembourg.
@@ -661,8 +658,7 @@ de l'ennemi.
 2 Frimaire IV Armée d'Italie. Bataille de Loano, déroute des
 Austro-Sardes ; prise de la Pietra, Loano, Finale, Vado et Savonne.
 
-2 Frimaire V Armée du Rhin et Moselle. Sortie par la
-garnison de Kehl.
+2 Frimaire V Armée du Rhin et Moselle. Sortie par la garnison de Kehl.
 
 0303
 3 Frimaire IV Armée d'Italie. Combat d'Intrapa et de Garesio.
@@ -695,15 +691,12 @@ Espagnols à Begara, Ascuatia et Aspetia.
 0310
 10 Frimaire I Armée du Nord. Capitulation de la citadelle d'Anvers.
 
-10 Frimaire II Armée du Nord. Attaque des postes ennemis sur
-la Lys.
+10 Frimaire II Armée du Nord. Attaque des postes ennemis sur la Lys.
 
-10 Frimaire IV Armée de Sambre et Meuse. Attaque et prise de
-Creutzenach.
+10 Frimaire IV Armée de Sambre et Meuse. Attaque et prise de Creutzenach.
 
 0311
-11 Frimaire I Armée des Ardennes. Capitulation de la citadelle de
-Namur.
+11 Frimaire I Armée des Ardennes. Capitulation de la citadelle de Namur.
 
 11 Frimaire II Armée du Rhin. Enlèvement de la redoute du pont de
 Landgraben et des retranchements de Gambsheim.
