@@ -26,31 +26,69 @@
 #     Inc., <http://www.fsf.org/>.
 #
 use strict;
+use ExtUtils::MakeMaker;
+WriteMakefile
+(
+    'ABSTRACT'       => 'Converting dates to or from the French Revolutionary calendar',
+    'PL_FILES'       => {},
+    'INSTALLDIRS'    => 'site',
+    'NAME'           => 'DateTime::Calendar::FrenchRevolutionary',
+    'EXE_FILES'      => [],
+    'VERSION_FROM'   => 'lib/DateTime/Calendar/FrenchRevolutionary.pm',
+    'PREREQ_PM' => {
+                     'Test::More'                     => 0,
+                     'DateTime'                       => 0.14,
+                     'Roman'                          => 1.22,
+                     'Params::Validate'               => 0,
+                     'strict'                         => 0,
+                     'warnings'                       => 0,
+                   },
+    'AUTHOR'         => [ 'Jean Forget <JFORGET@cpan.org>' ],
+    'LICENSE'        => 'perl',
+    MIN_PERL_VERSION => '5.8.5',
+    META_MERGE       => {
+       dynamic_config => 0,
+       prereqs => {
+         build => {
+           requires => {
+             'strict'                         => 0,
+             'warnings'                       => 0,
+           },
+         },
+         runtime => {
+           requires => {
+             'DateTime'                       => 0.14,
+             'Roman'                          => 1.22,
+             'Params::Validate'               => 0,
+             'perl'                           => '5.8.5',
+             'strict'                         => 0,
+             'warnings'                       => 0,
+           },
+         },
+         test => {
+           requires => {
+             'Test::More'                     => '0',
+             'List::Util'                     => 1.33,
+             'strict'                         => 0,
+             'warnings'                       => 0,
+           },
+         },
+       },
+       provides       => {
+           'DateTime::Calendar::FrenchRevolutionary' => {
+                file => 'lib/DateTime/Calendar/FrenchRevolutionary.pm',
+                version => '0.14',
+           },
+       },
+       'meta-spec' => { version => 2 },
+       resources => {
+           repository => {
+               type => 'git',
+               url  => 'https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary.git',
+               web  => 'https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary',
+           },
+       },
+    },
+)
+;
 
-unless (eval "use Module::Build::Compat 0.02; 1" ) {
-    print "This module requires Module::Build to install itself.\n";
-
-    require ExtUtils::MakeMaker;
-    my $yn = ExtUtils::MakeMaker::prompt
-        ('  Install Module::Build from CPAN?', 'y');
-
-    if ($yn =~ /^y/i) {
-        require Cwd;
-        require File::Spec;
-        require CPAN;
-
-        # Save this 'cause CPAN will chdir all over the place.
-        my $cwd = Cwd::cwd();
-        my $makefile = File::Spec->rel2abs($0);
-
-        CPAN::Shell->install('Module::Build::Compat');
-
-        chdir $cwd or die "Cannot chdir() back to $cwd: $!";
-        exec $^X, $makefile, @ARGV;  # Redo now that we have Module::Build
-    } else {
-        warn " *** Cannot install without Module::Build.  Exiting ...\n";
-        exit 1;
-    }
-}
-Module::Build::Compat->run_build_pl(args => \@ARGV);
-Module::Build::Compat->write_makefile();
