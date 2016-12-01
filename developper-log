@@ -1,0 +1,156 @@
+-*- encoding: utf-8; indent-tabs-mode: nil -*-
+
+=head1 Version 0.14, november 2016
+
+=head2 Why
+
+Since its beginning, F<DT::C::FR> has used F<Params::Validate>,
+juste like the older versions of L<DateTime> did.
+
+But L<DateTime> has switched to L<specio> since version 1.37.
+The problem is, when I try to install L<Specio> on my computer, I have errors
+involving L<B::Generate::Hook::EndOfScope> or something like that.
+I have tried with several versions under C<perlbrew> 
+and on a few virtual machines, but it always fails.
+
+So, to test version 0.13, I decided to use an older version of
+L<DateTime> before the switch to L<Specio>.
+
+Problem is, I check my module in several environments I<with> L<Params::Validate>,
+so I did not see that this module should be mentionned in the prerequisites.
+
+Version 0.14 was about adding L<Params::Validate> as a prerequisite. How could I 
+check that my fix was good? How could I check that I would get an error when
+building my module in an environment without L<Params::Validate>?
+
+=head2 Preparation
+
+I use a virtual machine with VirtualBox. I always install
+L<Module::Version> on each virtual machine I create.
+For this case, I also install the prerequisites for L<DateTime>
+(install with C<cpan>, not C<make> or C<Build>).
+
+=head3 Prerequisites for L<DateTime> 1.36
+
+According to L<metacpan.org>:
+
+  base
+  Carp
+  constant
+  DateTime::Locale
+  DateTime::TimeZone
+  Dist::CheckConflicts
+  integer
+  namespace::autoclean
+  overload
+  Params::Validate
+  POSIX
+  Scalar::Util
+  strict
+  Try::Tiny
+  warnings
+  warnings::register
+  XSLoader
+
+=head3 Prerequisites for L<DateTime::TimeZone> 2.01
+
+According to L<metacpan.org>:
+
+  Class::Singleton
+  constant
+  Cwd
+  File::Basename
+  File::Compare
+  File::Find
+  File::Spec
+  List::Util
+  Module::Runtime
+  Params::Validate
+  parent
+  strict
+  Try::Tiny
+  vars
+  warnings
+
+and possibly others
+
+=head3 Prerequisites for L<DateTime::Locale> 1.05
+
+According to L<metacpan.org>:
+
+  Carp
+  Dist::CheckConflicts
+  Exporter
+  List::Util
+  Params::Validate
+  strict
+  warnings
+
+=head3 Modules that need to be installed
+
+Most of the prerequisites above are core modules. Non-core modules are often related to each other
+as prerequisites.  So using C<cpan>, I had only to install a few modules. I think these modules are
+L<Dist::CheckConflicts>, L<Module::Runtime> and possibly L<Try::Tiny>.
+
+Post-scriptum: also, I should have installed L<Test::Warnings>, L<namespace::autoclean>, L<CPAN::Meta::Check>
+and a newer version of L<List::Util>. I installed them during the second step (see below).
+
+I did not install L<Params::Validate>, L<DateTime::TimeZone> and L<DateTime::Locale>
+on purpose.
+
+=head2 Testing version 0.14
+
+=head3 First step
+
+Without L<Params::Validate>, L<DateTime>, L<DateTime::TimeZone> and L<DateTime::Locale>,
+untar F<DateTime-Calendar-FrenchRevolutionary.tar.gz>.
+
+Run F<Makefile.PL> and F<Build.PL>. If it stops, claiming that L<Params::Validate> is missing,
+the test is conclusive. If it stops because of another prerequisite, the test is successful,
+but not conclusive.
+
+Post-scriptum: the test was conclusive, it mentioned L<DateTime>, L<Roman> and L<Params::Validate>.
+
+=head3 Second Step
+
+Install L<Params::Validate> with C<cpan>.
+
+Install L<DateTime::Locale>, L<DateTime::TimeZone> and L<DateTime>.
+Manual installation with:
+
+  perl Makefile.PL
+  make
+  make test
+  make install
+
+Within the F<DateTime-Calendar-FrenchRevolutionary> directory, run
+
+  perl Makefile.PL
+  make
+  make test
+
+and
+
+  perl Build.PL
+  ./Build
+  ./Build test
+
+There should be no errors.
+
+=head3 Third Step
+
+Rename the F<lib/Params/Validate.pm> file to another name.
+So L<DateTime> is still installed, even if it is unusable.
+Within the F<DateTime-Calendar-FrenchRevolutionary> directory, run
+
+  perl Makefile.PL
+
+and
+
+  perl Build.PL
+
+It should fail because of L<Params::Validate>.
+
+=head2 To do
+
+Find why L<Specio> fails on my computer.
