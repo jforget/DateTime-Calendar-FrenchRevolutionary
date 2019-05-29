@@ -2390,6 +2390,6 @@ General Public License for more details.
 
 You should  have received  a copy  of the  GNU General  Public License
 along with  this program; if not,  see <https://www.gnu.org/licenses/>
-or write to the Free Software Foundation, Inc., L<https://fsf.org>.
+or write to the Free Software Foundation, Inc., L<https://www.fsf.org>.
 
 =cut

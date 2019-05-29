@@ -1359,7 +1359,7 @@ Calendar module written in Ruby.
 Some feast names are not translated, other's translations are doubtful
 (they are flagged with a question mark).  Remarks are welcome.
 
-=head2 FEASTS
+=head2 Feasts
 
 The various  sources for  the feasts  are somewhat  contradictory. The
 most obvious  example if  the 4th  additional day,  which is  "Jour de
@@ -1378,6 +1378,9 @@ typos  in  [Annexe] (yes  it  can  happen!)  are preserved,  with  the
 exception  of accented  letters  because they  are  fuzzy rendered  in
 original prints, or  cannot be printed at all at  that time on letters
 in uppercase.
+
+The bracket  references refer  to entries in  the "SEE  ALSO" section,
+"Internet" subsection below.
 
 =head1 SUPPORT
 
@@ -1418,7 +1421,6 @@ Also,  many thanks  to all  the  persons who  gave me  advices on  the
 DateTime mailing list. I will not mention them, because I might forget
 some of them.
 
-
 =head1 SEE ALSO
 
 =head2 Perl Software
@@ -1429,14 +1431,14 @@ L<DateTime>
 
 L<DateTime::Calendar::Pataphysical>
 
-L<Date::Convert::French_Rev> or or L<https://github.com/jforget/Date-Convert-French_Rev>
+L<Date::Convert::French_Rev> or L<https://github.com/jforget/Date-Convert-French_Rev>
 
 L<Date::Converter>
 
 =head2 Other Software
 
-calendar/cal-french.el in emacs-21.2 or later or xemacs 21.1.8, forked in
-L<https://github.com/jforget/emacs-lisp-cal-french>
+F<calendar/cal-french.el>  in emacs-21.2  or later  or xemacs  21.1.8,
+forked in L<https://github.com/jforget/emacs-lisp-cal-french>
 
 =head2 Books
 
@@ -1524,10 +1526,10 @@ method.
 =head1 LICENSE STUFF
 
 Copyright (c)  2003, 2004, 2010,  2012, 2014, 2016, 2019  Jean Forget.
-All   rights   reserved.   This  program   is   free   software.   You
-can      distribute,      modify,       and      otherwise      mangle
-DateTime::Calendar::FrenchRevolutionary under  the same terms  as perl
-5.16.3.
+All  rights  reserved.   This  program  is  free   software.  You  can
+distribute,    adapt,    modify,     and    otherwise    mangle    the
+DateTime::Calendar::FrenchRevolutionary module under the same terms as
+perl 5.16.3.
 
 This program is  distributed under the same terms  as Perl 5.16.3: GNU
 Public License version 1 or later and Perl Artistic License
@@ -1550,6 +1552,6 @@ General Public License for more details.
 
 You  should have received  a copy  of the  GNU General  Public License
 along with  this program; if not,  see <https://www.gnu.org/licenses/>
-or write to the Free Software Foundation, Inc., L<https://fsf.org>.
+or write to the Free Software Foundation, Inc., L<https://www.fsf.org>.
 
 =cut
