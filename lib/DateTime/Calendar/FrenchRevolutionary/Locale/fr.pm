@@ -1846,8 +1846,7 @@ du village de Roccavion.
 Koenigstein.
 
 1109
-9 Thermidor I Armée de Sambre et Meuse. Entrée des Français dans
-Liège.
+9 Thermidor I Armée de Sambre et Meuse. Entrée des Français dans Liège.
 
 9 Thermidor II La chute de Robespierre.
 

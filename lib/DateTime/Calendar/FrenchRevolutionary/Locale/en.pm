@@ -1472,7 +1472,7 @@ their victorious advances until Gosselies.
 24 Prairial III Army of Sambre and Meuse. Capture of Luxembourg.
 
 0925
-25 Prairial VIII Battle of Marengo, Italy. The same day, general Kleber assassinated in Cairo.
+25 Prairial VIII Battle of Marengo, Italy. The same day, general Kleber is assassinated in Cairo.
 
 0926
 26 Prairial II United Armies of Moselle, Ardennes and North. Near
