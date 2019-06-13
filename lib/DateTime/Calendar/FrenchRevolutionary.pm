@@ -13,7 +13,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = '0.15';
+$VERSION = '0.16';
 
 use Params::Validate qw(validate SCALAR BOOLEAN OBJECT);
 use Roman;
