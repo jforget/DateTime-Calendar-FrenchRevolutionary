@@ -850,7 +850,7 @@ the Greb lines, crossing of the Lech.
 29 Nivôse II Army of the Rhine. The coalized evacuate completely the
 Lower-Rhine department. The Vauban fort is taken back.
 
-29 Nivôse III Army of the North. Capture of Gertuydemberg.
+29 Nivôse III Army of the North. Capture of Gertruydemberg.
 
 0430
 30 Nivôse VI Birth of Auguste Comte, French philosopher.

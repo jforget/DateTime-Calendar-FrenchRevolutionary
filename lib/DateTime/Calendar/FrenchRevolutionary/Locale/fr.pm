@@ -865,7 +865,7 @@ lignes du Greb, passage de la Lech.
 29 Nivôse II Armée du Rhin. Evacuation totale du département du
 Bas-Rhin par les coalisés ; reprise du fort Vauban.
 
-29 Nivôse III Armée du Nord. Prise de Gertuydemberg.
+29 Nivôse III Armée du Nord. Prise de Gertruydemberg.
 
 0430
 30 Nivôse VI Naissance d'Auguste Comte, philosophe français.
