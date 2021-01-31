@@ -87,6 +87,9 @@ WriteMakefile
                url  => 'https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary.git',
                web  => 'https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary',
            },
+           bugtracker => {
+               web  => 'https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary/issues',
+           },
        },
     },
 )
