@@ -241,6 +241,86 @@ h %h H %H I %I j %j k %k l %l m %m M %M p %p P %P r %r R %R
 S %S T %T u %u U %U V %V w %w W %W y %y Y %Y Ey %Ey EY %EY z %z Z %Z
 Ea %Ea EA %EA Oa %Oa OA %OA E! %E!
 FMT
+        # almost every accessor at once, in Spanish
+        [<<"RES", <<"FMT",      'es', 212, 12, 1, 2, 51, 25],
+year: 212
+month: 12, 11, Fructidor, Fru
+day of month: 1, 1, 1, 0, 0, 0
+day of decade: 1, 1, 1, 1, 1, Primidi, Pri
+day of decade: 0, 0, 0, 0, 0
+day of year: 331, 331, 330, 330
+feast: ciruela, día de la ciruela, Día de la Ciruela, 1ciruela
+composite: 0212-12-01, 01-12-0212, 12-01-0212, 0212-12-01T2:51:25
+decimal time: 2, 51, 25, 25, 2:51:25
+sexagesimal time: 6, 1, 48, 06:01:48
+decade: 34, 34
+wrong method: %{wrong_method}
+RES
+year: %{year}
+month: %{month}, %{month_0}, %{month_name}, %{month_abbr}
+day of month: %{day}, %{day_of_month}, %{mday}, %{day_0}, %{day_of_month_0}, %{mday_0}
+day of decade: %{day_of_decade}, %{dod}, %{day_of_week}, %{dow}, %{wday}, %{day_name}, %{day_abbr}
+day of decade: %{day_of_decade_0}, %{dod_0}, %{day_of_week_0}, %{dow_0}, %{wday_0}
+day of year: %{day_of_year}, %{doy}, %{day_of_year_0}, %{doy_0}
+feast: %{feast_short}, %{feast_long}, %{feast_caps}, %{_raw_feast}
+composite: %{ymd}, %{dmy}, %{mdy}, %{iso8601}
+decimal time: %{hour}, %{minute}, %{second}, %{sec}, %{hms}
+sexagesimal time: %{abt_hour}, %{abt_minute}, %{abt_second}, %{abt_hms}
+decade: %{decade_number}, %{week_number}
+wrong method: %{wrong_method}
+FMT
+        # almost every specifier, in Spanish
+        [<<"RES", <<"FMT",      'es', 212, 12, 1, 6, 95, 80],
+a Pri A Primidi b Fru B Fructidor C 2 d 01 D 12/01/12 e  1 F 0212-12-01 G 0212 g 12
+h Fru H 6 I 6 j 331 k  6 l  6 m 12 M 95 p PM P pm r 6:95:80 PM R 6:95
+S 80 T 6:95:80 u  1 U 34 V 34 w 1 W 34 y 12 Y 0212 Ey ccxii EY CCXII z +0000 Z floating
+Ea Pri EA Primidi Oa Pri OA Primidi E! E!
+RES
+a %a A %A b %b B %B C %C d %d D %D e %e F %F G %G g %g
+h %h H %H I %I j %j k %k l %l m %m M %M p %p P %P r %r R %R
+S %S T %T u %u U %U V %V w %w W %W y %y Y %Y Ey %Ey EY %EY z %z Z %Z
+Ea %Ea EA %EA Oa %Oa OA %OA E! %E!
+FMT
+        # almost every accessor at once, in Italian
+        [<<"RES", <<"FMT",      'it', 212, 12, 1, 2, 51, 25],
+year: 212
+month: 12, 11, Fruttidoro, Fru
+day of month: 1, 1, 1, 0, 0, 0
+day of decade: 1, 1, 1, 1, 1, Primidi, Pri
+day of decade: 0, 0, 0, 0, 0
+day of year: 331, 331, 330, 330
+feast: prugna, giorno della prugna, Giorno della Prugna, 3prugna
+composite: 0212-12-01, 01-12-0212, 12-01-0212, 0212-12-01T2:51:25
+decimal time: 2, 51, 25, 25, 2:51:25
+sexagesimal time: 6, 1, 48, 06:01:48
+decade: 34, 34
+wrong method: %{wrong_method}
+RES
+year: %{year}
+month: %{month}, %{month_0}, %{month_name}, %{month_abbr}
+day of month: %{day}, %{day_of_month}, %{mday}, %{day_0}, %{day_of_month_0}, %{mday_0}
+day of decade: %{day_of_decade}, %{dod}, %{day_of_week}, %{dow}, %{wday}, %{day_name}, %{day_abbr}
+day of decade: %{day_of_decade_0}, %{dod_0}, %{day_of_week_0}, %{dow_0}, %{wday_0}
+day of year: %{day_of_year}, %{doy}, %{day_of_year_0}, %{doy_0}
+feast: %{feast_short}, %{feast_long}, %{feast_caps}, %{_raw_feast}
+composite: %{ymd}, %{dmy}, %{mdy}, %{iso8601}
+decimal time: %{hour}, %{minute}, %{second}, %{sec}, %{hms}
+sexagesimal time: %{abt_hour}, %{abt_minute}, %{abt_second}, %{abt_hms}
+decade: %{decade_number}, %{week_number}
+wrong method: %{wrong_method}
+FMT
+        # almost every specifier, in Italian
+        [<<"RES", <<"FMT",      'it', 212, 12, 1, 6, 95, 80],
+a Pri A Primidi b Fru B Fruttidoro C 2 d 01 D 12/01/12 e  1 F 0212-12-01 G 0212 g 12
+h Fru H 6 I 6 j 331 k  6 l  6 m 12 M 95 p PM P pm r 6:95:80 PM R 6:95
+S 80 T 6:95:80 u  1 U 34 V 34 w 1 W 34 y 12 Y 0212 Ey ccxii EY CCXII z +0000 Z floating
+Ea Pri EA Primidi Oa Pri OA Primidi E! E!
+RES
+a %a A %A b %b B %B C %C d %d D %D e %e F %F G %G g %g
+h %h H %H I %I j %j k %k l %l m %m M %M p %p P %P r %r R %R
+S %S T %T u %u U %U V %V w %w W %W y %y Y %Y Ey %Ey EY %EY z %z Z %Z
+Ea %Ea EA %EA Oa %Oa OA %OA E! %E!
+FMT
         );
 
 my $nb_tests = @tests + @tests_en + @tests_es + @tests_it + @tests_time;

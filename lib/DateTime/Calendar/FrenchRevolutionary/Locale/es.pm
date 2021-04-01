@@ -213,7 +213,7 @@ sub feast_short {
   my $lb = $feast[$date->day_of_year_0];
   $lb =~ s/^\?//;
   $lb =~ s/_/ /g;
-  return $lb;
+  return substr($lb, 1);
 }
 
 sub feast_long {
