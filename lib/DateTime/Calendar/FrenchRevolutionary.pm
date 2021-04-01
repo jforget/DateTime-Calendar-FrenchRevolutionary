@@ -78,8 +78,11 @@ my $BasicValidate =
                     },
       locale    => { type => SCALAR | OBJECT,
                       callbacks =>
-                      { "only 'fr' and 'en' possible" =>
-                        sub { ($_[0] eq 'fr') or ($_[0] eq 'en') or ref($_[0]) =~ /(?:en|fr)$/ },
+                      { "only 'fr', 'en', 'es' and 'it' possible" =>
+                        sub { ($_[0] eq 'fr') or ($_[0] eq 'en')
+                                              or ($_[0] eq 'es')
+                                              or ($_[0] eq 'it')
+                                              or ref($_[0]) =~ /(?:en|es|fr|it)$/ },
                       },
                      default => DefaultLocale() },
     };

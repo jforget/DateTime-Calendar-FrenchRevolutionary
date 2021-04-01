@@ -58,6 +58,32 @@ sub g2r_en {
   }
 }
 
+# Checking dates with alternate Spanish locale
+sub g2r_es {
+  my ($n, $date_r, $format, $y, $m, $d) = @_;
+  my $date_g = DateTime->new(year => $y, month => $m, day => $d);
+  my $date_resul = DateTime::Calendar::FrenchRevolutionary->from_object(object => $date_g)->set(locale => 'es')->strftime($format);
+  if ($date_r eq $date_resul) {
+    print "ok $n\n";
+  }
+  else {
+    print "not ok $n : expected $date_r, got $date_resul\n";
+  }
+}
+
+# Checking dates with alternate Italian locale
+sub g2r_it {
+  my ($n, $date_r, $format, $y, $m, $d) = @_;
+  my $date_g = DateTime->new(year => $y, month => $m, day => $d);
+  my $date_resul = DateTime::Calendar::FrenchRevolutionary->from_object(object => $date_g)->set(locale => 'it')->strftime($format);
+  if ($date_r eq $date_resul) {
+    print "ok $n\n";
+  }
+  else {
+    print "not ok $n : expected $date_r, got $date_resul\n";
+  }
+}
+
 # checking times and dates-times
 sub fr_t {
   my ($n, $date_r, $format, $locale, $y, $m, $d, $H, $M, $S) = @_;
@@ -112,6 +138,22 @@ my @tests_en = (["Nineday 09 Heatidor II", "%A %d %B %EY", 1794,  7, 27],
         "%{day_name} %{day} %{month_name} %{year}, %{feast_caps}", 2000, 10, 2],
        [" 5 additional day 09, Rewards Day", "%e %B %y, %EJ", 2001, 9, 21],
        ["Tenday Ten 10", "%A %a %d", 1794, 7, 28],
+             );
+
+my @tests_es = (["Nonidi 09 Termidor II", "%A %d %B %EY", 1794,  7, 27],
+       ["Primidi 11 Vendimiario ccix, Día de la Patata", "%A %d %B %Ey, %EJ", 2000, 10, 2],
+       ["Primidi 11 Vendimiario 209, Día de la Patata", 
+        "%{day_name} %{day} %{month_name} %{year}, %{feast_caps}", 2000, 10, 2],
+       [" 5 día complementario 09, Día de las Recompensas", "%e %B %y, %EJ", 2001, 9, 21],
+       ["Décadi Déc 10", "%A %a %d", 1794, 7, 28],
+             );
+
+my @tests_it = (["Nonidi 09 Termidoro II", "%A %d %B %EY", 1794,  7, 27],
+       ["Primidi 11 Vendemmiaio ccix, Giorno della Patata", "%A %d %B %Ey, %EJ", 2000, 10, 2],
+       ["Primidi 11 Vendemmiaio 209, Giorno della Patata", 
+        "%{day_name} %{day} %{month_name} %{year}, %{feast_caps}", 2000, 10, 2],
+       [" 5 giorni supplementari 09, Giorno delle Ricompense", "%e %B %y, %EJ", 2001, 9, 21],
+       ["Decadi Dec 10", "%A %a %d", 1794, 7, 28],
              );
 
 my @tests_time = ([" 1 Fructidor 0212, 6:95:80", "%e %B %Y, %H:%M:%S", 'fr', 212, 12, 1, 6, 95, 80],
@@ -201,12 +243,14 @@ Ea %Ea EA %EA Oa %Oa OA %OA E! %E!
 FMT
         );
 
-my $nb_tests = @tests + @tests_en + @tests_time;
+my $nb_tests = @tests + @tests_en + @tests_es + @tests_it + @tests_time;
 my $n = 1;
 
 print "1..$nb_tests\n";
 
 foreach (@tests     ) { g2r    $n++, @$_ }
 foreach (@tests_en  ) { g2r_en $n++, @$_ }
+foreach (@tests_es  ) { g2r_es $n++, @$_ }
+foreach (@tests_it  ) { g2r_it $n++, @$_ }
 foreach (@tests_time) { fr_t   $n++, @$_ }
 
