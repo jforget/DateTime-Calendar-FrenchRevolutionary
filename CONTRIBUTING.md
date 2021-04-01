@@ -1,7 +1,7 @@
 -*- encoding: utf-8; indent-tabs-mode: nil -*-
 
 Please   report  any   bugs   or  feature   requests   to  Github   at
-C<https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary>,
+<https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary>,
 and create an issue or submit a pull request.
 
 If you have no  feedback after a week or so, try to  reach me by email
@@ -12,12 +12,12 @@ email to the proper folder.
 
 On the other  hand, I may be  on vacation or away from  Internet for a
 good  reason. Do  not be  upset if  I do  not answer  immediately. You
-should write  me at a leasurely  rythm, about once per  month, until I
+should write  me at a leisurely  rythm, about once per  month, until I
 react.
 
 If after about six  months or a year, there is  still no reaction from
 me, you can worry and start the CPAN procedure for module adoption.
-See L<https://groups.google.com/g/perl.module-authors/c/IPWjASwuLNs>
-L<https://www.cpan.org/misc/cpan-faq.html#How_maintain_module>
-and L<https://www.cpan.org/misc/cpan-faq.html#How_adopt_module>.
+See <https://groups.google.com/g/perl.module-authors/c/IPWjASwuLNs>,
+<https://www.cpan.org/misc/cpan-faq.html#How_maintain_module>
+and <https://www.cpan.org/misc/cpan-faq.html#How_adopt_module>.
 
