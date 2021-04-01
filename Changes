@@ -138,7 +138,7 @@ Revision history for Perl extension Date::Convert::French_Rev.
         use statement and the @ISA array are not sufficient)
         - add a few examples in the eg/ subdirectory
         - fix a few bugs: $_ was squashed by date_string, the month value
-        was not controlled
+        was not checked
         - compatibility with diagnostics-1.2
 
 0.03  20 Thermidor CCIX (2001-08-07, Tuesday)
