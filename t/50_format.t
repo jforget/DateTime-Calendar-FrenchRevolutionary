@@ -1,7 +1,7 @@
 # -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Test script for DateTime::Calendar::FrenchRevolutionary
-#     Copyright (C) 2003, 2004, 2010, 2011, 2012, 2014, 2016, 2019 Jean Forget. All rights reserved.
+#     Copyright (C) 2003, 2004, 2010, 2011, 2012, 2014, 2016, 2019, 2021 Jean Forget. All rights reserved.
 #
 #     This program is distributed under the same terms as Perl 5.16.3:
 #     GNU Public License version 1 or later and Perl Artistic License
@@ -161,6 +161,8 @@ my @tests_time = ([" 1 Fructidor 0212, 6:95:80", "%e %B %Y, %H:%M:%S", 'fr', 212
         ["6:95:80 PM", "%r",    'fr', 212, 12, 1, 6, 95, 80],
         ["3:95:80 AM", "%r",    'fr', 212, 12, 1, 3, 95, 80],
         ["3:95:80 AM", "%r",    'en', 212, 12, 1, 3, 95, 80],
+        ["3:94:80 AM", "%r",    'es', 212, 12, 1, 3, 94, 80],
+        ["3:95:90 AM", "%r",    'it', 212, 12, 1, 3, 95, 90],
         # almost every accessor at once
         [<<"RES", <<"FMT",      'fr', 212, 12, 1, 2, 51, 25],
 year: 212

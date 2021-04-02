@@ -254,10 +254,10 @@ sub default_time_format      { $_[0]->time_formats->{ $_[0]->default_time_format
 
 sub _datetime_format_pattern_order { $_[0]->date_before_time ? (0, 1) : (1, 0) }
 
-sub    full_datetime_format { join ' ', ( $_[0]->full_date_format, $_[0]->full_time_format )[ $_[0]->_datetime_format_pattern_order ] }
-sub    long_datetime_format { join ' ', ( $_[0]->long_date_format, $_[0]->long_time_format )[ $_[0]->_datetime_format_pattern_order ] }
-sub  medium_datetime_format { join ' ', ( $_[0]->medium_date_format, $_[0]->medium_time_format )[ $_[0]->_datetime_format_pattern_order ] }
-sub   short_datetime_format { join ' ', ( $_[0]->short_date_format, $_[0]->short_time_format )[ $_[0]->_datetime_format_pattern_order ] }
+sub    full_datetime_format { join ' ', ( $_[0]->full_date_format   , $_[0]->full_time_format    )[ $_[0]->_datetime_format_pattern_order ] }
+sub    long_datetime_format { join ' ', ( $_[0]->long_date_format   , $_[0]->long_time_format    )[ $_[0]->_datetime_format_pattern_order ] }
+sub  medium_datetime_format { join ' ', ( $_[0]->medium_date_format , $_[0]->medium_time_format  )[ $_[0]->_datetime_format_pattern_order ] }
+sub   short_datetime_format { join ' ', ( $_[0]->short_date_format  , $_[0]->short_time_format   )[ $_[0]->_datetime_format_pattern_order ] }
 sub default_datetime_format { join ' ', ( $_[0]->default_date_format, $_[0]->default_time_format )[ $_[0]->_datetime_format_pattern_order ] }
 
 sub default_date_format_length { $default_date_format_length }
@@ -334,6 +334,12 @@ Returns an Italian translation for the day name.
 
 Returns a 3-letter abbreviation for the Italian day name.
 
+=item * am_pm ($date)
+
+Returns a code (typically C<AM> or C<PM>) showing whether the datetime
+is in the morning or the  afternoon. Outside the sexagesimal time with
+a 1..12 hour range, this is not very useful.
+
 =item * feast_short ($date)
 
 Hopefully  returns  an adequate  italian  translation  for the  plant,
@@ -355,6 +361,24 @@ Same as C<feast_long> with capitalized first letters.
 =item * on_date ($date)
 
 Not implemented for the Italian locale. This method returns an empty string.
+
+=item * full_date_format, long_date_format, medium_date_format, short_date_format
+
+Class  methods,  giving four  C<strftime>  canned  formats for  dates,
+without the need to remember all the C<%> specifiers.
+
+=item * full_time_format, long_time_format, medium_time_format, short_time_format
+
+Same thing, C<strftime> canned formats for decimal time.
+
+=item * full_datetime_format, long_datetime_format, medium_datetime_format, short_datetime_format
+
+Same thing, for formats including both the date and the decimal time.
+
+=item * default_date_format, default_time_format, default_datetime_format
+
+Class methods  suggesting one each  of the  date formats, of  the time
+formats and of the datetime formats.
 
 =back
 

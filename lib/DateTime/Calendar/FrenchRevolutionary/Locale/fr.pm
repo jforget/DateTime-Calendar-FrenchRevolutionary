@@ -1,7 +1,7 @@
 # -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 # Perl DateTime extension for providing French strings for the French Revolutionary calendar
-# Copyright (c) 2003, 2004, 2010, 2011, 2014, 2016, 2019 Jean Forget. All rights reserved.
+# Copyright (c) 2003, 2004, 2010, 2011, 2014, 2016, 2019, 2021 Jean Forget. All rights reserved.
 #
 # See the license in the embedded documentation below.
 #
@@ -2257,6 +2257,12 @@ Returns the French day name.
 
 Returns a 3-letter abbreviation for the French day name.
 
+=item * am_pm ($date)
+
+Returns a code (typically C<AM> or C<PM>) showing whether the datetime
+is in the morning or the  afternoon. Outside the sexagesimal time with
+a 1..12 hour range, this is not very useful.
+
 =item * feast_short ($date)
 
 Returns  the name for  the plant,  animal or  tool that  correspond to
@@ -2279,6 +2285,24 @@ it was rescinded (31 Dec 1805).
 Most of these events come  from an anonymous propaganda book published
 in year  VIII (1799--1800). The others are  common knowledge available
 in any French History book or any encyclopedia.
+
+=item * full_date_format, long_date_format, medium_date_format, short_date_format
+
+Class  methods,  giving four  C<strftime>  canned  formats for  dates,
+without the need to remember all the C<%> specifiers.
+
+=item * full_time_format, long_time_format, medium_time_format, short_time_format
+
+Same thing, C<strftime> canned formats for decimal time.
+
+=item * full_datetime_format, long_datetime_format, medium_datetime_format, short_datetime_format
+
+Same thing, for formats including both the date and the decimal time.
+
+=item * default_date_format, default_time_format, default_datetime_format
+
+Class methods  suggesting one each  of the  date formats, of  the time
+formats and of the datetime formats.
 
 =back
 
@@ -2362,8 +2386,8 @@ method.
 
 =head1 LICENSE STUFF
 
-Copyright (c)  2003, 2004, 2010,  2012, 2014, 2016, 2019  Jean Forget.
-All  rights  reserved.   This  program  is  free   software.  You  can
+Copyright  (c) 2003,  2004, 2010,  2012, 2014,  2016, 2019,  2021 Jean
+Forget. All  rights reserved. This  program is free software.  You can
 distribute,         modify,        and         otherwise        mangle
 DateTime::Calendar::FrenchRevolutionary under  the same terms  as perl
 5.16.3.
