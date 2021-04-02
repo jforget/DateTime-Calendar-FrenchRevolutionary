@@ -2304,6 +2304,37 @@ Same thing, for formats including both the date and the decimal time.
 Class methods  suggesting one each  of the  date formats, of  the time
 formats and of the datetime formats.
 
+=item * full_time_format, long_time_format, medium_time_format, short_time_format
+
+Same thing, C<strftime> canned formats for decimal time.
+
+=item * full_datetime_format, long_datetime_format, medium_datetime_format, short_datetime_format
+
+Same thing, for formats including both the date and the decimal time.
+
+=item * default_date_format, default_time_format, default_datetime_format
+
+Class methods  suggesting one each  of the  date formats, of  the time
+formats and of the datetime formats.
+
+=item * default_date_format_length, default_time_format_length
+
+While  C<default_date_format>  and   C<default_time_format>  give  the
+actual default formats, with C<%> and  all, these class methods give a
+one-word  description of  the  default  formats: C<short>,  C<medium>,
+C<long> or C<full>.
+
+=item date_formats, time_formats
+
+These  class methods  give a  hashtable where  the key  is the  length
+(C<short>,  C<medium>,  C<long> and  C<full>)  and  the value  is  the
+corresponding format, complete with C<%> and specifiers.
+
+=item month_names, month_abbreviations, day_names, day_abbreviations
+
+Class methods giving the whole array of month or day names or abbrevs,
+not limited to the date implemented by the invocant.
+
 =back
 
 =head1 SUPPORT

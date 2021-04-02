@@ -40,6 +40,12 @@ Please refer to parent module:
 
   perldoc DateTime::Calendar::FrenchRevolutionary
 
+=head1 METHOD
+
+=head2 C<load>
+
+Used internally by C<DateTime::Calendar::FrenchRevolutionary>.
+
 =head1 SUPPORT
 
 Support for this module is provided via the datetime@perl.org email
