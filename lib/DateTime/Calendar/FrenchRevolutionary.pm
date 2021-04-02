@@ -718,9 +718,9 @@ DateTime::Calendar::FrenchRevolutionary - Dates in the French Revolutionary Cale
   use DateTime::Calendar::FrenchRevolutionary;
 
   # Use the date "18 Brumaire VIII" (Brumaire being the second month)
-  $dt = DateTime::Calendar::FrenchRevolutionary->new( year  => 8,
-                                         month =>  2,
-                                         day   => 18,
+  $dt = DateTime::Calendar::FrenchRevolutionary->new( year  =>  8,
+                                                      month =>  2,
+                                                      day   => 18,
                                        );
 
   # convert from French Revolutionary to Gregorian...
@@ -753,7 +753,7 @@ The Revolutionary calendar was in  use in France from 24 November 1793
 (4 Frimaire  II) to 31  December 1805 (10  Nivôse XIV). An  attempt to
 apply  the  decimal rule  (the  basis of  the  metric  system) to  the
 calendar. Therefore, the week  disappeared, replaced by the décade. In
-addition, all months have exactly 3 decades, no more, no less.
+addition, all months have exactly 3 décades, no more, no less.
 
 At first,  the year was  beginning on the  equinox of autumn,  for two
 reasons.  First, the  republic had  been established  on  22 September
@@ -866,9 +866,9 @@ decimal time parameters (see above).
 
 =item * C<locale>
 
-Only   the   values   C<fr>   (French)   and   C<en>   (English)   are
-allowed.  Default  is  French.  No  other values  are  possible,  even
-territory variants such as C<fr_BE> or C<en_US>.
+Only the values  C<fr> (French), C<en> (English),  C<es> (Spanish) and
+C<it> (Italian)  are allowed. Default  is French. No other  values are
+possible, even territory variants such as C<fr_BE> or C<en_US>.
 
 =back
 
@@ -915,13 +915,13 @@ C<new()> method.
 
 =item * year
 
-Returns the year. C<%G> in C<strftime>.
+Returns the year. C<%Y> or C<%G> in C<strftime>.
 
 =item * month
 
 Returns the month in the 1..12 range. If the date is an additional day
 at  the end  of the  year, returns  13, which  is not  really  a month
-number. C<%f> in C<strftime>.
+number. C<%m> or C<%f> in C<strftime>.
 
 =item * month_0
 
@@ -951,9 +951,10 @@ Returns the day of the month, from 1..30. C<%d> or C<%e> in C<strftime>.
 
 =item * day_of_decade, dod, day_of_week, dow, wday
 
-Returns the  day of  the decade, from  1..10. The C<dow>,  C<wday> and
-C<day_of_week>   names  are  there   for  compatibility's   sake  with
-C<DateTime>, even if the word "week" is improper.
+Returns the day of the I<décade>,  from 1..10. The C<dow>, C<wday> and
+C<day_of_week>  names   are  there   for  compatibility's   sake  with
+C<DateTime>,  even   if  the  word   "week"  is  improper.   C<%u>  in
+C<strftime>, but not C<%w> (because the value differs on I<décadi>).
 
 =item * day_name
 
@@ -995,7 +996,7 @@ elements. C<%F> in C<strftime>.
 =item * abt_hour, abt_minute, abt_min, abt_second, abt_sec
 
 Return  the corresponding  time elements,  using a  sexagesimal scale.
-This is also known as the I<Anglo-Babylonian Time>.
+This is also sometimes known as the I<Anglo-Babylonian Time>.
 
 =item * hour, minute, min, second, sec
 
@@ -1030,7 +1031,7 @@ Returns the I<décade> number. C<%U>, C<%V> or C<%W> in C<strftime>.
 
 =item * decade, week
 
-Returns a 2-element list, with  the year number and the decade number.
+Returns a 2-element list, with  the year number and the décade number.
 Since the  I<décade> is always  aligned with a  month and then  with a
 year, the year element is always the same as the date's year.  Anyhow,
 this is done for compatibility with DateTime's C<week> method.
@@ -1113,11 +1114,11 @@ C<strftime()> method:
 
 =item * %a
 
-The abbreviated day of decade name.
+The abbreviated day of I<décade> name.
 
 =item * %A
 
-The full day of decade name.
+The full day of I<décade> name.
 
 =item * %b
 
@@ -1281,9 +1282,9 @@ to 37.
 
 =item * %V
 
-The  decade  number  (French   Revolutionary  equivalent  to  the  ISO
-8601:1988 week number) of the  current year as a decimal number, range
-01  to  37.  Identical to  %U,  since  décades  are aligned  with  the
+The  I<décade>  number (French  Revolutionary  equivalent  to the  ISO
+8601:1988 week number) of the current  year as a decimal number, range
+01 to  37. Identical to C<%U>,  since I<décades> are aligned  with the
 beginning of the year.
 
 =item * %w
@@ -1353,11 +1354,11 @@ They are not supported.
 
 =head2 I18N
 
-For the moment, only French and English are available. For the English
-translation, I have  used Thomas Carlyle's book and  Alan Taylor's web
-site  at   kokogiak.com  (see  below).  Then,  I   have  checked  some
-translations with Wikipedia and Jonathan Badger's French Revolutionary
-Calendar module written in Ruby.
+For  the  moment,  only  French,  English,  Spanish  and  Italian  are
+available. For the  English translation, I have  used Thomas Carlyle's
+book and Alan  Taylor's web site at kokogiak.com (see  below). Then, I
+have checked  some translations  with Wikipedia and  Jonathan Badger's
+French Revolutionary Calendar module written in Ruby.
 
 Some feast names are not translated, other's translations are doubtful
 (they are flagged with a question mark).  Remarks are welcome.
@@ -1435,8 +1436,9 @@ Many thanks to those who sent me a RT ticket or a pull request:
 
 =item * Slaven Rezić
 
-=item * and especially Gérald Sédrati-Dinet (GIBUS at cpan dot org),
-for his thorough documentation research.
+=item * and  especially Gérald Sédrati-Dinet (GIBUS at  cpan dot org),
+for  his thorough  documentation  research  and for  his  work on  the
+Spanish and Italian locales.
 
 =back
 
@@ -1573,8 +1575,8 @@ WITHOUT   ANY  WARRANTY;   without  even   the  implied   warranty  of
 MERCHANTABILITY  or FITNESS  FOR A  PARTICULAR PURPOSE.   See  the GNU
 General Public License for more details.
 
-You  should have received  a copy  of the  GNU General  Public License
-along with  this program; if not,  see <https://www.gnu.org/licenses/>
-or write to the Free Software Foundation, Inc., L<https://www.fsf.org>.
+You should  have received  a copy  of the  GNU General  Public License
+along with this program;  if not, see L<https://www.gnu.org/licenses/>
+or contact the Free Software Foundation, Inc., L<https://www.fsf.org>.
 
 =cut
