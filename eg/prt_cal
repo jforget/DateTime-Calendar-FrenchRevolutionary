@@ -39,9 +39,9 @@ foreach $annee (@ARGV) {
 
 
 sub prt_cal {
-  my $year   = $_[0];		# French revolutionary year
-  my $year_1 = $year + 1791;	# first corresponding Gregorian year
-  my $year_2 = $year + 1792;	# second corresponding Gregorian year
+  my $year   = $_[0];           # French revolutionary year
+  my $year_1 = $year + 1791;    # first corresponding Gregorian year
+  my $year_2 = $year + 1792;    # second corresponding Gregorian year
 
   # HTML header
   print <<"EOT";

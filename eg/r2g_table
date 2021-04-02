@@ -165,20 +165,18 @@ sub build_intervals {
   %line_for_interval = (1 => '  ' x $columns);
   $end_of_interval{1}   = 4;
 
-  foreach my $year (1..$last)
-    {
-      my $old_line = $line_for_interval{$current_start};
-      my $new_line = '  ' x $columns;
-      substr($new_line, $year % 100 % $columns * 2, 2) = word_for_year($year);
-      my $intersection = $old_line & $new_line;
-      $intersection =~ tr / /./;
-      unless ($old_line =~ m{$intersection} && $new_line =~ m{$intersection})
-        {
-	  $current_start = $year;
-	  $line_for_interval{$year} = $new_line;
-	}
-      $line_for_interval{$current_start} |= $new_line;
-      $end_of_interval{$current_start} = $year;
+  foreach my $year (1..$last) {
+    my $old_line = $line_for_interval{$current_start};
+    my $new_line = '  ' x $columns;
+    substr($new_line, $year % 100 % $columns * 2, 2) = word_for_year($year);
+    my $intersection = $old_line & $new_line;
+    $intersection =~ tr / /./;
+    unless ($old_line =~ m{$intersection} && $new_line =~ m{$intersection}) {
+      $current_start = $year;
+      $line_for_interval{$year} = $new_line;
+    }
+    $line_for_interval{$current_start} |= $new_line;
+    $end_of_interval{$current_start} = $year;
   }
 }
 

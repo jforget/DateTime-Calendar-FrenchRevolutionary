@@ -212,7 +212,7 @@ sub set
 sub set_time_zone { } # do nothing, only 'floating' allowed
 
 # Internal functions
-use constant REV_BEGINNING => 654415; # RD value for 1 Vendémiaire I in the Revolutionary calendar
+use constant REV_BEGINNING  => 654415; # RD value for 1 Vendémiaire I in the Revolutionary calendar
 use constant NORMAL_YEAR    => 365;
 use constant LEAP_YEAR      => 366;
 use constant FOUR_YEARS     =>  4 * NORMAL_YEAR + 1; # one leap year every four years
@@ -223,7 +223,7 @@ use constant FOUR_MILLENIA  => 10 * FOUR_CENTURIES - 1; # ...except every four m
 # number of days between the start of the revolutionary calendar, and the
 # beginning of year n - 1 as long as the equinox rule is in effect
 my @YEARS_BEGINS=    (0, 365, 730, 1096, 1461, 1826, 2191, 2557, 2922, 3287, 3652,
-		   4018, 4383, 4748, 5113, 5479, 5844);
+                   4018, 4383, 4748, 5113, 5479, 5844);
 sub _is_leap_year {
     my ($self, $year) = @_;
 
@@ -313,22 +313,24 @@ sub _ymd2rd {
     my $rd = REV_BEGINNING - 1; # minus 1 for the zeroth Vendémiaire
     $y --;  #get years *before* this year.  Makes math easier.  :)
     # first, convert year into days. . .
-    if ($y < 0 || $y >= 16) # Romme rule in effect, or nearly so
-      {
-        my $x = int($y/4000);
-        --$x if $y <= 0;
-	$rd += $x * FOUR_MILLENIA;
-	$y  %= 4000;
-	$rd += int($y/400)* FOUR_CENTURIES;
-	$y  %= 400;
-	$rd += int($y/100)* CENTURY;
-	$y  %= 100;
-	$rd += int($y/4)* FOUR_YEARS;
-	$y  %= 4;
-	$rd += $y * NORMAL_YEAR;
-      }
-    else # table look-up for the programmer-hostile equinox rule
-      {	$rd += $YEARS_BEGINS[$y] }
+    if ($y < 0 || $y >= 16) {
+      # Romme rule in effect, or nearly so
+      my $x = int($y/4000);
+      --$x if $y <= 0;
+      $rd += $x * FOUR_MILLENIA;
+      $y  %= 4000;
+      $rd += int($y/400)* FOUR_CENTURIES;
+      $y  %= 400;
+      $rd += int($y/100)* CENTURY;
+      $y  %= 100;
+      $rd += int($y/4)* FOUR_YEARS;
+      $y  %= 4;
+      $rd += $y * NORMAL_YEAR;
+    }
+    else {
+      # table look-up for the programmer-hostile equinox rule
+      $rd += $YEARS_BEGINS[$y];
+    }
 
     # now, month into days.
     $rd += 30 * ($m - 1) + $d;
@@ -343,46 +345,44 @@ sub _rd2ymd {
     # note:  years and days are initially days *before* today, rather than
     # today's date.  This is because of fenceposts.  :)
     $doy =  $rd - REV_BEGINNING;
-    if ($doy >= 0 && $doy < $YEARS_BEGINS[16])
-      {
-       	$y = scalar grep { $_ <= $doy } @YEARS_BEGINS;
-	$doy -= $YEARS_BEGINS[$y - 1];
-	$doy++;
-      }
-    else
-      {
-	#$doy --;
-	my $x;
-	$x    = int ($doy / FOUR_MILLENIA);
-        --$x  if $doy < 0; # So pre-1792 dates will give something that look about right
-        $y   += $x * 4000;
-	$doy -= $x * FOUR_MILLENIA;
+    if ($doy >= 0 && $doy < $YEARS_BEGINS[16]) {
+      $y = scalar grep { $_ <= $doy } @YEARS_BEGINS;
+      $doy -= $YEARS_BEGINS[$y - 1];
+      $doy++;
+    }
+    else {
+      #$doy --;
+      my $x;
+      $x    = int ($doy / FOUR_MILLENIA);
+      --$x  if $doy < 0; # So pre-1792 dates will give something that look about right
+      $y   += $x * 4000;
+      $doy -= $x * FOUR_MILLENIA;
 
-	$x    = int ($doy / FOUR_CENTURIES);
-        $y   += $x * 400;
-	$doy -= $x * FOUR_CENTURIES;
+      $x    = int ($doy / FOUR_CENTURIES);
+      $y   += $x * 400;
+      $doy -= $x * FOUR_CENTURIES;
 
-	$x    = int ($doy / CENTURY);
-        $x    = 3 if $x == 4; # last day of the 400-year period; see comment below
-        $y   += $x * 100;
-	$doy -= $x * CENTURY;
+      $x    = int ($doy / CENTURY);
+      $x    = 3 if $x == 4; # last day of the 400-year period; see comment below
+      $y   += $x * 100;
+      $doy -= $x * CENTURY;
 
-	$x    = int ($doy / FOUR_YEARS);
-        $y   += $x * 4;
-	$doy -= $x * FOUR_YEARS;
+      $x    = int ($doy / FOUR_YEARS);
+      $y   += $x * 4;
+      $doy -= $x * FOUR_YEARS;
 
-	$x    = int ($doy / NORMAL_YEAR);
-        # The integer division above divides the 4-year period, 1461 days,
-        # into 5 parts: 365, 365, 365, 365 and 1. This mathematically sound operation
-        # is wrong with respect to the calendar, which needs to divide
-        # into 4 parts: 365, 365, 365 and 366. Therefore the adjustment below.
-        $x    = 3 if $x == 4; # last day of the 4-year period
-        $y   += $x;
-	$doy -= $x * NORMAL_YEAR;
+      $x    = int ($doy / NORMAL_YEAR);
+      # The integer division above divides the 4-year period, 1461 days,
+      # into 5 parts: 365, 365, 365, 365 and 1. This mathematically sound operation
+      # is wrong with respect to the calendar, which needs to divide
+      # into 4 parts: 365, 365, 365 and 366. Therefore the adjustment below.
+      $x    = 3 if $x == 4; # last day of the 4-year period
+      $y   += $x;
+      $doy -= $x * NORMAL_YEAR;
 
-        ++$y; # because of 0-based mathematics vs 1-based chronology
-        ++$doy;
-      }
+      ++$y; # because of 0-based mathematics vs 1-based chronology
+      ++$doy;
+    }
     my $d  = $doy % 30 || 30;
     my $m = ($doy - $d) / 30 + 1;
     if ($extra)
@@ -664,7 +664,7 @@ sub strftime {
       # And if the user asks for %E!,
       # it defaults to E! because neither %E! nor %! exist.
       $f =~ s/
-	        \%([EO]?([*%a-zA-Z]))
+                \%([EO]?([*%a-zA-Z]))
               | \%\{(\w+)\}
              /
               $3 ? ($self->can($3) ? $self->$3() : "\%{$3}")

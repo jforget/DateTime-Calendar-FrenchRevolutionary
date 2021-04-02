@@ -40,7 +40,7 @@ sub g2r {
   my ($n, $date_r1, $tz) = @_;
   my $format = "%Y %m %d %H %M %S";
   my $date_g = DateTime->new(year => 2003, month => 4, day => 18, 
-			hour => 12, minute => 0, second => 0, time_zone => 'Europe/Paris');
+                        hour => 12, minute => 0, second => 0, time_zone => 'Europe/Paris');
   $date_g->set_time_zone($tz);
   my $date_result = DateTime::Calendar::FrenchRevolutionary->from_object(object => $date_g)
                              ->strftime($format);
