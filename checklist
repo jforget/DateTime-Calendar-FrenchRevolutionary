@@ -3,6 +3,12 @@
 See Merijn's checklist:
 https://github.com/Tux/Release-Checklist/blob/master/Checklist.md
 
+Check spaces vs tabs, check encoding, check "use utf8;"
+
+Check URL, replacing http by https when possible
+
+Check that search.cpan.org and rt.cpan.org are no longer referenced.
+
 Check GPL-mandated comments (including electronic address of FSF) in:
 -- Build.PL
 -- Makefile.PL
@@ -10,11 +16,10 @@ Check GPL-mandated comments (including electronic address of FSF) in:
 -- lib/DateTime/Calendar/FrenchRevolutionary.pm POD "LICENSE STUFF" paragraph
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm top-file comments
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm POD "LICENSE STUFF" paragraph
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm top-file comments
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm POD "LICENSE STUFF" paragraph
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm top-file comments
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm POD "LICENSE STUFF" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/{en,es,fr,it}.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/{en,es,fr,it}.pm POD "LICENSE STUFF" paragraph
 -- t/*.t
+-- eg/*
 
 Check version number in:
 -- Changes
@@ -23,8 +28,7 @@ Check version number in:
 -- Makefile.PL
 -- lib/DateTime/Calendar/FrenchRevolutionary.pm, code ($VERSION)
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm $VERSION variable
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm $VERSION variable
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm $VERSION variable
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/{en,es,fr,it}.pm $VERSION variable
 
 Check copyright years in:
 -- README
@@ -33,11 +37,10 @@ Check copyright years in:
 -- lib/DateTime/Calendar/FrenchRevolutionary.pm POD "LICENSE STUFF" paragraph
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm top-file comments
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm POD "LICENSE STUFF" paragraph
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm top-file comments
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm POD "LICENSE STUFF" paragraph
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm top-file comments
--- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm POD "LICENSE STUFF" paragraph
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/{en,es,fr,it}.pm top-file comments
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/{en,es,fr,it}.pm POD "LICENSE STUFF" paragraph
 -- t/*.t
+-- eg/*
 
 MANIFEST: among others, check that all new test files are mentionned
 
@@ -71,12 +74,30 @@ lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm POD "LICENSE STUFF" parag
 -- GPL mandated comment
 -- copyright years
 
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/es.pm top of the file
+-- GPL mandated comment
+-- version number
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/es.pm POD "LICENSE STUFF" paragraph
+-- GPL mandated comment
+-- copyright years
+
 lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm top of the file
 -- GPL mandated comment
 -- version number
 -- copyright years
 
 lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm POD "LICENSE STUFF" paragraph
+-- GPL mandated comment
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/it.pm top of the file
+-- GPL mandated comment
+-- version number
+-- copyright years
+
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/it.pm POD "LICENSE STUFF" paragraph
 -- GPL mandated comment
 -- copyright years
 
@@ -114,12 +135,17 @@ Changes: Type the proper release date for the latest version
 Build META.{json,yml} and .tar.gz with perlbrew perl-lgdbl (or other? perl-5.20.2?)
 and make. Use "make dist" rather than "./Build dist", because Build.PL is not complete.
 
+Checking the *.tar.gz file
+==========================
+
 Check contents of META.{json,yml}:
   version number (2x)
   minimum perl version
   dynamic config 0
   provides (with version number)
   prerequisite: strict and warnings
+
+Check installation on a Virtualbox machine
 
 After release
 =============
@@ -135,6 +161,8 @@ Change version number in:
 -- lib/DateTime/Calendar/FrenchRevolutionary.pm
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/es.pm
 -- lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm
+-- lib/DateTime/Calendar/FrenchRevolutionary/Locale/it.pm
 
 
