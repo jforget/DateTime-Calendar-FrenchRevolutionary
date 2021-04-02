@@ -1,7 +1,7 @@
 # -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 # Perl DateTime extension for providing localised strings for the French Revolutionary calendar
-# Copyright (c) 2003, 2004, 2010, 2011, 2014, 2016, 2019 Jean Forget. All rights reserved.
+# Copyright (c) 2003, 2004, 2010, 2011, 2014, 2016, 2019, 2021 Jean Forget. All rights reserved.
 #
 # See the license in the embedded documentation below.
 #
@@ -72,8 +72,8 @@ Jean Forget <JFORGET@cpan.org>
 
 =head1 LICENSE STUFF
 
-Copyright (c)  2003, 2004, 2010,  2012, 2014, 2016, 2019  Jean Forget.
-All  rights  reserved.   This  program  is  free   software.  You  can
+Copyright  (c) 2003,  2004, 2010,  2012, 2014,  2016, 2019,  2021 Jean
+Forget. All  rights reserved. This  program is free software.  You can
 distribute,      adapt,     modify,      and     otherwise      mangle
 DateTime::Calendar::FrenchRevolutionary under  the same terms  as perl
 5.16.3.
