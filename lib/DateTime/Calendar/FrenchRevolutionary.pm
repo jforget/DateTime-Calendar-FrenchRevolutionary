@@ -1392,7 +1392,7 @@ Support for this module is provided via the datetime@perl.org email
 list. See L<https://lists.perl.org/> for more details.
 
 Please   report  any   bugs   or  feature   requests   to  Github   at
-C<https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary>,
+L<https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary>,
 and create an issue or submit a pull request.
 
 If you have no  feedback after a week or so, try to  reach me by email
@@ -1403,7 +1403,7 @@ email to the proper folder.
 
 On the other  hand, I may be  on vacation or away from  Internet for a
 good  reason. Do  not be  upset if  I do  not answer  immediately. You
-should write  me at a leasurely  rythm, about once per  month, until I
+should write  me at a leisurely  rythm, about once per  month, until I
 react.
 
 If after about six  months or a year, there is  still no reaction from
