@@ -77,7 +77,7 @@ WriteMakefile
        provides       => {
            'DateTime::Calendar::FrenchRevolutionary' => {
                 file => 'lib/DateTime/Calendar/FrenchRevolutionary.pm',
-                version => '0.17',
+                version => '0.18',
            },
        },
        'meta-spec' => { version => 2 },

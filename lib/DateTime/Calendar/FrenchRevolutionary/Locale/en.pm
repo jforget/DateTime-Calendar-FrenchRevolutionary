@@ -13,7 +13,7 @@ use strict;
 use warnings;
 use vars qw($VERSION);
 
-$VERSION = '0.17'; # same as parent module DT::C::FR
+$VERSION = '0.18'; # same as parent module DT::C::FR
 
 my @months_short  = qw (Vin Fog Fro Sno Rai Win Bud Flo Mea Rea Hea Fru S-C);
 

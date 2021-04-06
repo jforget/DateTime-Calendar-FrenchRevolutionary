@@ -13,7 +13,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = '0.17'; # same as parent module DT::C::FR
+$VERSION = '0.18'; # same as parent module DT::C::FR
 
 sub load {
   my ($self, $lang) = @_;
