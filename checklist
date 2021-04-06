@@ -151,7 +151,7 @@ After release
 =============
 
 Github:
-    git tag -m 'Release to CPAN' v0.13
+    git tag -m 'Release to CPAN' v0.17
     git push --tags -u origin master
 
 Change version number in:
