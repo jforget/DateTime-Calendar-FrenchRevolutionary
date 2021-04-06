@@ -43,5 +43,6 @@ t/60_timezone.t
 t/70_various.t
 t/71_now.t
 t/72_utf8.t
+t/73_pod.t
 t/80_neg.t
 META.json
