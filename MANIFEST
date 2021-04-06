@@ -10,7 +10,9 @@ TODO
 lib/DateTime/Calendar/FrenchRevolutionary.pm
 lib/DateTime/Calendar/FrenchRevolutionary/Locale.pm
 lib/DateTime/Calendar/FrenchRevolutionary/Locale/en.pm
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/es.pm
 lib/DateTime/Calendar/FrenchRevolutionary/Locale/fr.pm
+lib/DateTime/Calendar/FrenchRevolutionary/Locale/it.pm
 eg/README
 eg/g2r_table
 eg/labels_en
