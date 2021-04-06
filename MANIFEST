@@ -1,10 +1,9 @@
 Changes
-CONTRIBUTING
+CONTRIBUTING.md
 LICENSE
 MANIFEST
 README
 Makefile.PL
-Build.PL
 META.yml
 TODO
 lib/DateTime/Calendar/FrenchRevolutionary.pm
